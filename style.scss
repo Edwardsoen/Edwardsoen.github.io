@@ -1,0 +1,91 @@
+$text-color: white; 
+$unselected-text-color: lighten($color: grey, $amount: 30);
+$title-font-size: 5vh; 
+$subtitle-font-size: 5vh; 
+$icons-font-size: 3vh; 
+
+
+#app { 
+  margin: 0;
+}
+
+body {
+  margin: 0;
+}
+
+.parent {
+  overflow-y: scroll;
+  overflow-x: hidden; 
+  top: 0;
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  background-image: url(/assets/prism.png);
+  section {
+    scroll-snap-align: start;
+    height: 100vh;
+  }
+}
+
+
+div.page1 { 
+  div.mainbox { 
+    h1 { 
+      margin: 0;
+      margin-top: 10vh;
+      color: $text-color;
+      font-size: $title-font-size;
+      text-align: center;
+      height:fit-content;
+      width: 50vw;
+    }
+    ul{ 
+      li{ 
+        color: $unselected-text-color; 
+        font-size: $subtitle-font-size;
+        text-align: center;
+        align-items: center;
+        height: fit-content;
+        margin: 6vh;
+      }
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    position: relative; 
+    display:inline-block;
+    left: 25vw;
+    height: 80vh;
+    width: 50vw;
+  }
+
+  height: inherit; 
+  div.icons {
+    a { 
+      text-decoration: none;
+    }
+    div { 
+      display: flex;
+      margin-left: 7vw;
+      margin-right: 7vw;
+    }
+    img { 
+      height: 60%;
+      padding-top: 5%;
+      align-content: center;
+      justify-content: center;
+    }
+    h2
+      {
+        font-size: $icons-font-size;
+        padding-left: 2vw;
+        padding-right: 2vw;
+        color: $text-color;
+        align-items: center;
+        justify-content: center;
+      }
+    display: flex;
+    justify-content:space-between; 
+    width: 100vw;
+    height: 10vh;
+  }
+}
