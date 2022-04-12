@@ -5,12 +5,6 @@ import {OnSelectHighlighter, onSelectSetBorderVisible , onDeselectSetBorderIndvi
 
 
 
-function eventHandler(event){ 
-  console.log(event.detail.previouslySelected); 
-}
-
-
-
 function main(){ 
   var MainMenuList = document.getElementById("MainMenuItem"); 
   var MainMenuNavigator = new NavigationManager(MainMenuList.children,MainMenuList.children[0] );
