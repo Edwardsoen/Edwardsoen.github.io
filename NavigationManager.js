@@ -1,9 +1,13 @@
 
 
-function NavigationManager (list, selecteditem = 0){
+function NavigationManager (list, FirstSelectedItem){
     this.list = list; 
-    this.selectedItem = selecteditem; 
-    
+    var selectedItem = FirstSelectedItem; 
+
+    var InitalizeEvents = function(){ 
+        const SelectedEvent = new CustomEvent("Selected", {detail:selectedItem}); 
+        selectedItem.dispatchEvent(SelectedEvent);
+    }
 
     this.setSelectedItemByIndex = function(index) { 
         this.selectedItem = list[index]
@@ -22,10 +26,16 @@ function NavigationManager (list, selecteditem = 0){
             list[i].addEventListener(eventlistener, action)
             list[i].index = i
         }
+        InitalizeEvents()
     }
 
     var setSelectedItemOnHover = function(event){ 
-        this.selectedItem = list[event.currentTarget.index]
+        const SelectedEvent = new CustomEvent("Selected", {detail:event.currentTarget}); 
+        const DeSelectedEvent = new CustomEvent("Deselected",{detail:selectedItem})
+        selectedItem.dispatchEvent(DeSelectedEvent);
+        selectedItem = list[event.currentTarget.index]; 
+        event.currentTarget.dispatchEvent(SelectedEvent); 
+        
     }
 
     var SetSelectedOnEachChildElementHover = function(){ 

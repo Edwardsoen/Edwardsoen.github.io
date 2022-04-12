@@ -1,9 +1,33 @@
 $text-color: white; 
 $unselected-text-color: lighten($color: grey, $amount: 30);
+$page-title-font-size: 10vh; 
 $title-font-size: 5vh; 
 $subtitle-font-size: 5vh; 
 $icons-font-size: 3vh; 
+$page2-h3-font-size :2.2vh; 
+$page2-h2-font-size : 4vh; 
+$ui-color: white; 
 
+
+.triangle-right {
+	width: 0;
+	height: 0;
+	border-top: 1.5vh solid transparent;
+	border-left: 3vh solid $ui-color; 
+	border-bottom: 1.5vh solid transparent;
+  margin-right: 2vh;
+  visibility: hidden;
+}
+
+.triangle-left {
+	width: 0;
+	height: 0;
+	border-top: 1.5vh solid transparent;
+	border-right: 3vh solid $ui-color; 
+	border-bottom: 1.5vh solid transparent;
+  margin-left: 2vh;
+  visibility: hidden;
+}
 
 #app { 
   margin: 0;
@@ -46,6 +70,12 @@ div.page1 {
         align-items: center;
         height: fit-content;
         margin: 6vh;
+        div {
+          width: inherit;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+        }
       }
       margin: 0;
       padding: 0;
@@ -89,3 +119,85 @@ div.page1 {
     height: 10vh;
   }
 }
+
+
+div.page2{ 
+  .titlebox { 
+    width: 100%;
+    height: 30vh;
+    h1 { 
+      color: $text-color; 
+      font-size: $page-title-font-size;
+      
+    }
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  .contentbox { 
+    width: 100vw;
+    display: inline-flex;
+    height: 60vh;
+    color: $text-color;
+    .leftbox{
+      color: $unselected-text-color; 
+      height: inherit;
+      width: 35vw;
+      margin-left: 8vh;
+      .projecttitlebox {
+        h2 { 
+          font-size: $page2-h2-font-size;
+          margin-left: 3vh;
+        }
+        h3 { 
+          font-size: $page2-h3-font-size;  
+          margin-right: 5vh;
+        }
+        margin-bottom: 5%;
+        width: 100%;
+        display:inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 2px solid white;
+        border-radius: 15px;
+        background-color: transparent;
+        height: 25%;
+      }
+    }
+    .rightbox{ 
+      justify-content: center;
+      display: block;
+      margin-left: 8vh;
+      height: inherit;
+      width: 50vw;
+      border-radius: 15px;
+      border: 2px solid white;
+      .imagebox { 
+        margin-top: 5%;
+        background-color: red;
+        border-radius: 15px;
+        height: 55%;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      h3 {
+        font-size: $page2-h3-font-size;
+        width: 80%; 
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .contentlink{
+        display: flex;
+        justify-content: space-around;
+        width: 80%;
+        margin-right: auto;
+        margin-left: auto;
+        h2{ 
+          font-size: $page2-h2-font-size;
+          width: fit-content;
+        }
+      }
+    }
+  }
+} 
