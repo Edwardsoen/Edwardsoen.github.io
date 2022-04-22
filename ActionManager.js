@@ -12,6 +12,8 @@ function OnSelectHighlighter(){
 
 function ProjectListManager() { 
     var projectdata = {}
+    var styleString = `style = "height:100%; width:100%; border-radius:15px"`
+
     function AddProjectData(projectName, Description, link, platform,  path )
     { 
         var projectObject = { 
@@ -23,6 +25,14 @@ function ProjectListManager() {
         projectdata[projectName] = projectObject;  
     }
 
+    function insertToImageBox(htmlString) { 
+        var imagebox = document.getElementsByClassName("imagebox")[0]
+        if(imagebox.children[0] != undefined) { 
+            imagebox.children[0].remove()
+        }
+        document.getElementsByClassName("imagebox")[0].insertAdjacentHTML("afterbegin", htmlString)
+    }
+
     this.OnClickChangeDescriptionPanel = function(event){ 
         var descriptionPanel = document.getElementsByClassName("rightbox")[0];
         var projecttitle = event.currentTarget.getElementsByTagName("h2")[0].innerHTML; 
@@ -30,14 +40,25 @@ function ProjectListManager() {
         descriptionPanel.getElementsByTagName("h3")[0].innerHTML = data.description;
         descriptionPanel.getElementsByTagName("a")[0].innerHTML = data.platform; 
         descriptionPanel.getElementsByTagName("a")[0].href = data.link; 
-        descriptionPanel.getElementsByTagName("video")[0].src = data.path; 
+        insertToImageBox(data.path)
     }
+
+
+    
 
     AddProjectData("Planes",
      "Collaborated with 3 other people to create web-based shooter game. In this project i handled the programming for AI behaviour and Analytics with GameAnalytics", 
      "https://itervision.com/planes",
      "Website",  
-     "assets/Project-plane.mp4")
+     `<video autoplay="" loop="" src="assets/Project-plane.mp4"${styleString} ></video>`)
+
+    
+     AddProjectData("Pastebin Clone",
+     "Created Pastebin Clone with Python Flask with syntax highlighting, account system, downloads and  access frequency restriction", 
+     "https://scenic-great-sand-dunes-90208.herokuapp.com/",
+     "Website",  
+     `<img src = "assets/pastebin.png" ${styleString}>`)
+
      
 }
 
