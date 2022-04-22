@@ -1,12 +1,18 @@
 
 
-function NavigationManager (list, FirstSelectedItem){
+function NavigationManager (list, FirstSelectedItem, SelectoOHover = true){
     this.list = list; 
     var selectedItem = FirstSelectedItem; 
 
     var InitalizeEvents = function(){ 
         const SelectedEvent = new CustomEvent("Selected", {detail:selectedItem}); 
         selectedItem.dispatchEvent(SelectedEvent);
+    }
+
+    var init = function(){ 
+        if(SelectoOHover) { 
+            SetSelectedOnEachChildElementHover();
+        }
     }
 
     this.setSelectedItemByIndex = function(index) { 
@@ -43,7 +49,8 @@ function NavigationManager (list, FirstSelectedItem){
             list[i].addEventListener("mouseenter", setSelectedItemOnHover)
         }
     }
-    SetSelectedOnEachChildElementHover(); 
+    
+    init(); 
 } 
 
 

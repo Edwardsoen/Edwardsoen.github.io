@@ -41,7 +41,6 @@ function ProjectListManager() {
      
 }
 
-
 function onSelectSetBorderVisible(event){ 
     event.detail.getElementsByClassName("triangle-right")[0].style.visibility = "visible"; 
     event.detail.getElementsByClassName("triangle-left")[0].style.visibility = "visible"; 
@@ -52,7 +51,6 @@ function onDeselectSetBorderIndvisible(event){
     event.detail.getElementsByClassName("triangle-left")[0].style.visibility = "hidden"; 
 }
 
-
 function onSelectIncreaseSize(event){
     event.currentTarget.style.transform = "scale(1.1) translateZ(10px)"
 }
@@ -61,8 +59,6 @@ function onDeSelectDecreaseSize(event){
     event.currentTarget.style.transform = "initial"
 }
 
-
-
 function closeModal(){ 
     document.getElementById("myModal").style.display = "none"
 }
@@ -70,7 +66,6 @@ function closeModal(){
 function setCloseButtonAction(){ 
     document.getElementsByClassName("close")[0].addEventListener("click", closeModal)
 }
-
 
 function onImageSelected(event) { 
     var modal = document.getElementById("myModal"); 
@@ -81,8 +76,103 @@ function onImageSelected(event) {
     modal.getElementsByTagName("div")[0].innerHTML = fileName
 }
 
+function onHoverAudio() {
+    var hoverAudio = new Audio("./assets/sound kit/Button 2.m4a")
+    hoverAudio.play()
+}
+  
+function onClickAudio(){ 
+    var ClickSound = new Audio("./assets/sound kit/Tab 1.m4a")
+    ClickSound.play()
+}
+
+function MainMenuClickActionManager(){ 
+    var parent = document.getElementsByClassName("parent")[0]
+    var data = { 
+        "Hobby": 3,
+        "Project":2,
+        "Contact":4
+    }
+
+    this.OnClickNavigate = function(event){ 
+        
+        var scrollTarget = data[event.currentTarget.children[0].textContent];
+        
+        OnClickScrollParentTo((scrollTarget-1)*parent.clientHeight);  
+    }
+
+    function OnClickScrollParentTo(y) { 
+        parent.scroll({
+            top: y,
+            left: 0,
+            behavior: 'smooth'
+          });
+    }
+}
 
 
 
 
-export {OnSelectHighlighter, onSelectSetBorderVisible, onDeselectSetBorderIndvisible, onSelectIncreaseSize,onDeSelectDecreaseSize, ProjectListManager, setCloseButtonAction, onImageSelected}; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export {MainMenuClickActionManager, OnSelectHighlighter,onClickAudio, onHoverAudio, onSelectSetBorderVisible, onDeselectSetBorderIndvisible, onSelectIncreaseSize,onDeSelectDecreaseSize, ProjectListManager, setCloseButtonAction, onImageSelected}; 
