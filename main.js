@@ -1,4 +1,5 @@
 import './style.scss'
+import './animation.scss'
 import   NavigationManager from './NavigationManager.js'
 import {MainMenuClickActionManager, onClickAudio, onHoverAudio,OnSelectHighlighter,setCloseButtonAction, onImageSelected, onSelectSetBorderVisible ,ProjectListManager, onDeselectSetBorderIndvisible, onSelectIncreaseSize, onDeSelectDecreaseSize} from './ActionManager.js'
 

@@ -1,0 +1,83 @@
+
+
+
+.modal-content { 
+    animation: zoomIn;
+    animation-duration: 0.6s;
+}
+
+div.page1 div.mainbox h1,div.page2 .titlebox h1 { 
+    animation-timing-function: In Out · Cubic;
+    animation-name: Rotate; 
+    animation-duration: 2s;
+}
+
+#projectbutton, #contactbutton { 
+    animation-name: FromRight;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+}
+
+#hobbybutton { 
+    animation-name: FromLeft;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+}
+
+.triangle-right, .triangle-left{ 
+    animation: FadeIn; 
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+}
+
+
+
+
+@keyframes FromLeft{ 
+    from { 
+        position: absolute;
+        left: 0;
+    }
+    to {
+        position: absolute;
+        left: 50%;
+        transform: translatex(-50%);
+    }
+}
+
+@keyframes FromRight{ 
+    from { 
+        position: absolute;
+        right: 0;
+    }
+    to {
+        position: absolute;
+        right: 50%;
+        transform: translatex(-50%);
+    }
+}
+
+@keyframes FadeIn {
+    from { 
+        opacity: 0;
+    } 
+}
+
+
+
+@keyframes Rotate { 
+    0% { 
+        transform: rotateX(90deg);
+    } 
+}
+
+@keyframes zoomIn { 
+    from { 
+        transform: scale(0);
+    }
+    to { 
+        transform: scale(1);
+    }
+}
+
+
