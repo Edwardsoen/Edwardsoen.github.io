@@ -132,20 +132,70 @@ function MainMenuClickActionManager(){
 }
 
 
+function PageChangeActionManager () {     
+    var OpenedAction  = { 
+        1: addAnimationFirstPage, 
+        2: addAnimationSecondPage, 
+        3: addAnimationThirdPage, 
+        4: addAnimationFourthPage
+    }
 
+    var ClosedAction = { 
+        1: removeAnimationFirstPage, 
+        2: removeAnimationSecondPage, 
+        3: removeAnimationThirdPage, 
+        4: removeAnimationFourthPage
+    }
 
 
+    function addAnimationFirstPage() { 
+        document.getElementsByTagName("h1")[0].style.animation = "Rotate 2s"
+        document.getElementById("projectbutton").style.animation = "FromRight 1.5s ease-in-out"
+        document.getElementById("contactbutton").style.animation = "FromRight 1.5s ease-in-out"
+        document.getElementById("hobbybutton").style.animation =    "FromLeft 1.5s ease-in-out"
+    }
 
+    function removeAnimationFirstPage(){ 
+        document.getElementsByTagName("h1")[0].style.animation = ""
+        document.getElementById("projectbutton").style.animation = ""
+        document.getElementById("contactbutton").style.animation = ""
+        document.getElementById("hobbybutton").style.animation =    ""
+    }
 
+    function addAnimationSecondPage() { 
+        document.getElementsByClassName("titlebox")[0].style.animation = "Rotate 2s"
+    }
 
+    function removeAnimationSecondPage() { 
+        document.getElementsByClassName("titlebox")[0].style.animation = ""
+    } 
 
+    function addAnimationThirdPage() { 
+        document.getElementsByClassName("titlebox")[1].style.animation = "Rotate 2s"
+    }
 
+    function removeAnimationThirdPage() { 
+        document.getElementsByClassName("titlebox")[1].style.animation = ""
+    } 
 
+    function addAnimationFourthPage() { 
+        document.getElementsByTagName("h1")[3].style.animation = "Rotate 2s"
+    }
 
+    function removeAnimationFourthPage() { 
+        document.getElementsByTagName("h1")[3].style.animation = ""
+    } 
 
 
 
+    this.onPageClosed = function(event){
+        ClosedAction[event.detail]()
+    }  
 
+    this.onPageOpened = function(event) { 
+        OpenedAction[event.detail](); 
+    }
+}
 
 
 
@@ -196,4 +246,11 @@ function MainMenuClickActionManager(){
 
 
 
-export {MainMenuClickActionManager, OnSelectHighlighter,onClickAudio, onHoverAudio, onSelectSetBorderVisible, onDeselectSetBorderIndvisible, onSelectIncreaseSize,onDeSelectDecreaseSize, ProjectListManager, setCloseButtonAction, onImageSelected}; 
+
+
+
+
+
+
+
+export {PageChangeActionManager, MainMenuClickActionManager, OnSelectHighlighter,onClickAudio, onHoverAudio, onSelectSetBorderVisible, onDeselectSetBorderIndvisible, onSelectIncreaseSize,onDeSelectDecreaseSize, ProjectListManager, setCloseButtonAction, onImageSelected}; 

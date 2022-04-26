@@ -1,7 +1,7 @@
 import './style.scss'
 import './animation.scss'
-import   NavigationManager from './NavigationManager.js'
-import {MainMenuClickActionManager, onClickAudio, onHoverAudio,OnSelectHighlighter,setCloseButtonAction, onImageSelected, onSelectSetBorderVisible ,ProjectListManager, onDeselectSetBorderIndvisible, onSelectIncreaseSize, onDeSelectDecreaseSize} from './ActionManager.js'
+import  {PageNavigator, NavigationManager} from './NavigationManager.js'
+import {PageChangeActionManager, MainMenuClickActionManager, onClickAudio, onHoverAudio,OnSelectHighlighter,setCloseButtonAction, onImageSelected, onSelectSetBorderVisible ,ProjectListManager, onDeselectSetBorderIndvisible, onSelectIncreaseSize, onDeSelectDecreaseSize} from './ActionManager.js'
 
 
 
@@ -32,7 +32,6 @@ function main(){
   ProjectListNavigator.AddEventlistenerToList("Selected", ProjectList.OnClickChangeDescriptionPanel)
   
 
-
   setCloseButtonAction()
 
 
@@ -44,8 +43,13 @@ function main(){
   ImageListNavigator.AddEventlistenerToList("click", onImageSelected)
   ImageListNavigator.AddEventlistenerToList("click", onClickAudio)
 
-
+  var PageAction = new PageChangeActionManager()
+  var parentPage = document.getElementsByClassName("parent")[0]
+  var pagenavigator = new PageNavigator(parentPage, 4); 
+  parentPage.addEventListener("PageOpened", PageAction.onPageOpened)
+  parentPage.addEventListener("PageClosed", PageAction.onPageClosed)
 }
+
 
 
 

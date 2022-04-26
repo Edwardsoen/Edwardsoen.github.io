@@ -1,5 +1,3 @@
-
-
 function NavigationManager (list, FirstSelectedItem, SelectoOHover = true){
     this.list = list; 
     var selectedItem = FirstSelectedItem; 
@@ -41,7 +39,6 @@ function NavigationManager (list, FirstSelectedItem, SelectoOHover = true){
         selectedItem.dispatchEvent(DeSelectedEvent);
         selectedItem = list[event.currentTarget.index]; 
         event.currentTarget.dispatchEvent(SelectedEvent); 
-        
     }
 
     var SetSelectedOnEachChildElementHover = function(){ 
@@ -54,8 +51,44 @@ function NavigationManager (list, FirstSelectedItem, SelectoOHover = true){
 } 
 
 
+function PageNavigator(parentElement, totalPage,){ 
+    this.parent = parentElement
+    this.totalPage = totalPage
+  
+    var parentHeight = this.parent.scrollHeight; 
+    var heightPerPage = parentHeight/this.totalPage; 
+    var currentPage = 1; 
+    var currentY = 0
+  
+    
+    var FunctionOnScroll = function(event){ 
+      if(currentY > event.currentTarget.scrollTop) { 
+        if(((event.currentTarget.scrollTop / heightPerPage)% 1) < 0.001) { 
+            let pageClosedEvent = new CustomEvent("PageClosed", {detail:currentPage})   
+            event.currentTarget.dispatchEvent(pageClosedEvent);
+            currentPage = Math.round(event.currentTarget.scrollTop / heightPerPage) + 1
+            let pageOpenEvent = new CustomEvent("PageOpened", {detail:currentPage})   
+            event.currentTarget.dispatchEvent(pageOpenEvent);        
+        }
+      }else { 
+        if(currentPage != (Math.trunc(event.currentTarget.scrollTop / heightPerPage) + 1)) {
+            let pageClosedEvent = new CustomEvent("PageClosed", {detail:currentPage})   
+            event.currentTarget.dispatchEvent(pageClosedEvent); 
+            currentPage = Math.round(event.currentTarget.scrollTop / heightPerPage) + 1
+            let pageOpenEvent = new CustomEvent("PageOpened", {detail:currentPage})   
+            event.currentTarget.dispatchEvent(pageOpenEvent); 
+        }
+      }
+      currentY = event.currentTarget.scrollTop; 
+    }
+    this.parent.addEventListener("scroll", FunctionOnScroll)
+}
+    
 
-export default NavigationManager; 
+
+
+
+export {NavigationManager, PageNavigator}; 
 
 
 
