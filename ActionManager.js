@@ -149,7 +149,7 @@ function PageChangeActionManager () {
 
 
     function addAnimationFirstPage() { 
-        document.getElementsByTagName("h1")[0].style.animation = "Rotate 2s"
+        document.getElementsByTagName("h1")[0].style.animation = "Rotate 2s forwards"
         document.getElementById("projectbutton").style.animation = "FromRight 1.5s ease-in-out"
         document.getElementById("contactbutton").style.animation = "FromRight 1.5s ease-in-out"
         document.getElementById("hobbybutton").style.animation =    "FromLeft 1.5s ease-in-out"
@@ -157,29 +157,49 @@ function PageChangeActionManager () {
 
     function removeAnimationFirstPage(){ 
         document.getElementsByTagName("h1")[0].style.animation = ""
+        document.getElementsByTagName("h1")[0].style.transform = "rotateX(90deg)"
         document.getElementById("projectbutton").style.animation = ""
         document.getElementById("contactbutton").style.animation = ""
         document.getElementById("hobbybutton").style.animation =    ""
     }
 
     function addAnimationSecondPage() { 
-        document.getElementsByClassName("titlebox")[0].style.animation = "Rotate 2s"
+        document.getElementsByClassName("titlebox")[0].style.animation = "Rotate 2s forwards"
+        let projecttitle = document.getElementsByClassName("projecttitlebox")
+        for(let i =0; i < projecttitle.length; i ++ ){    
+            projecttitle[i].style.animation = `Rotate 2s forwards`    
+        }
+        document.getElementsByClassName("rightbox")[0].style.animation = `Rotate 2s forwards`    
     }
 
     function removeAnimationSecondPage() { 
         document.getElementsByClassName("titlebox")[0].style.animation = ""
+        let projecttitle = document.getElementsByClassName("projecttitlebox")
+        for(let i =0; i < projecttitle.length; i ++ ){    
+            projecttitle[i].style.animation = ``    
+        }
+        document.getElementsByClassName("rightbox")[0].style.animation = ``
     } 
 
     function addAnimationThirdPage() { 
-        document.getElementsByClassName("titlebox")[1].style.animation = "Rotate 2s"
+        document.getElementsByClassName("titlebox")[1].style.animation = "Rotate 2s forwards"
+        var imageItems = document.getElementsByClassName("imageitem")
+        let interval = 0.25
+        for(let i =0; i < imageItems.length; i ++ ){    
+            imageItems[i].style.animation = `FadeIn 1.5s forwards ${interval*(i+1)}s`    
+        }
     }
 
     function removeAnimationThirdPage() { 
         document.getElementsByClassName("titlebox")[1].style.animation = ""
+        var imageItems = document.getElementsByClassName("imageitem")
+        for(let i =0; i < imageItems.length; i ++ ){    
+            imageItems[i].style.animation = ``    
+        }
     } 
 
     function addAnimationFourthPage() { 
-        document.getElementsByTagName("h1")[3].style.animation = "Rotate 2s"
+        document.getElementsByTagName("h1")[3].style.animation = "Rotate 2s forwards"
     }
 
     function removeAnimationFourthPage() { 
@@ -195,6 +215,9 @@ function PageChangeActionManager () {
     this.onPageOpened = function(event) { 
         OpenedAction[event.detail](); 
     }
+
+
+    addAnimationFirstPage(); 
 }
 
 
