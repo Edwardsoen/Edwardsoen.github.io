@@ -199,11 +199,14 @@ function PageChangeActionManager () {
     } 
 
     function addAnimationFourthPage() { 
-        document.getElementsByTagName("h1")[3].style.animation = "Rotate 2s forwards"
+        document.getElementsByTagName("h1")[3].style.animation = "Rotate 1s forwards"
+        document.getElementsByTagName("h2")[5].style.animation = "FadeIn 1s forwards 0.5s"
+        document.getElementsByTagName("h3")[5].style.animation = "FadeIn 1s forwards 0.5s"
     }
 
     function removeAnimationFourthPage() { 
         document.getElementsByTagName("h1")[3].style.animation = ""
+
     } 
 
 
