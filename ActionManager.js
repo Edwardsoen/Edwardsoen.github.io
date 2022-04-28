@@ -1,9 +1,10 @@
 
 function OnSelectHighlighter(){ 
     var defaultColor; 
+    var targetColor = "white"; 
     this.HighlightOnSelect = function(event){  
         defaultColor =event.currentTarget.style.color;   
-        event.currentTarget.style.color = "white"; 
+        event.currentTarget.style.color = targetColor; 
     }
     this.DeHighlightOnDeselct = function(event){ 
         event.currentTarget.style.color = defaultColor;
@@ -14,18 +15,19 @@ function ProjectListManager() {
     var projectdata = {}
     var styleString = `style = "height:100%; width:100%; border-radius:15px"`
 
-    function AddProjectData(projectName, Description, link, platform,  path )
+    function AddProjectItem(projectName, Description = "", link = "", platform = "",  htmlString = "" )
     { 
         var projectObject = { 
-            "description":Description, 
-            "link":link, 
-            "platform":platform,
-            "path": path
+            description:Description, 
+            link:link, 
+            platform:platform,
+            htmlString: htmlString
         }
+        if(projectdata[projectName] != undefined) return; 
         projectdata[projectName] = projectObject;  
     }
 
-    function insertToImageBox(htmlString) { 
+    function insertToImageBox(htmlString = "") { 
         var imagebox = document.getElementsByClassName("imagebox")[0]
         if(imagebox.children[0] != undefined) { 
             imagebox.children[0].remove()
@@ -40,36 +42,48 @@ function ProjectListManager() {
         descriptionPanel.getElementsByTagName("h3")[0].innerHTML = data.description;
         descriptionPanel.getElementsByTagName("a")[0].innerHTML = data.platform; 
         descriptionPanel.getElementsByTagName("a")[0].href = data.link; 
-        insertToImageBox(data.path)
+        insertToImageBox(data.htmlString)
     }
-
-
     
 
-    AddProjectData("Planes",
+    AddProjectItem("Planes",
      "Collaborated with 3 other people to create web-based shooter game. In this project i handled the programming for AI behaviour and Analytics with GameAnalytics", 
      "https://itervision.com/planes",
      "Website",  
      `<video autoplay="" loop="" src="assets/Project-plane.mp4"${styleString} ></video>`)
 
     
-     AddProjectData("Pastebin Clone",
+    AddProjectItem("Pastebin Clone",
      "Created Pastebin Clone with Python Flask with syntax highlighting, account system, downloads and  access frequency restriction", 
      "https://scenic-great-sand-dunes-90208.herokuapp.com/",
      "Website",  
      `<img src = "assets/pastebin.png" ${styleString}>`)
-
-     
 }
 
-function onSelectSetBorderVisible(event){ 
-    event.detail.getElementsByClassName("triangle-right")[0].style.visibility = "visible"; 
-    event.detail.getElementsByClassName("triangle-left")[0].style.visibility = "visible"; 
-}
+function OnBorderSelectAction() { 
 
-function onDeselectSetBorderIndvisible(event){ 
-    event.detail.getElementsByClassName("triangle-right")[0].style.visibility = "hidden"; 
-    event.detail.getElementsByClassName("triangle-left")[0].style.visibility = "hidden"; 
+    function getElementToBeChanged(targetElem) { 
+        if(targetElem.getElementsByClassName("triangle-right") == undefined 
+        || targetElem.getElementsByClassName("triangle-left") == undefined) return; 
+        var Elementlist = []
+        Elementlist.push(targetElem.getElementsByClassName("triangle-right")[0]); 
+        Elementlist.push(targetElem.getElementsByClassName("triangle-left")[0]); 
+        return Elementlist; 
+    }
+
+    this.onSelectSetBorderVisible = function (event){ 
+        var ElementList = getElementToBeChanged(event.detail)
+        for(let i = 0; i <ElementList.length; i ++) { 
+            ElementList[i].style.visibility = "visible"; 
+        }
+    }
+    
+    this.onDeselectSetBorderIndvisible = function(event){ 
+        var ElementList = getElementToBeChanged(event.detail)
+        for(let i = 0; i <ElementList.length; i ++) { 
+            ElementList[i].style.visibility = "hidden"; 
+        }
+    }
 }
 
 function onSelectIncreaseSize(event){
@@ -80,11 +94,10 @@ function onDeSelectDecreaseSize(event){
     event.currentTarget.style.transform = "initial"
 }
 
-function closeModal(){ 
-    document.getElementById("myModal").style.display = "none"
-}
-
 function setCloseButtonAction(){ 
+    function closeModal(){ 
+        document.getElementById("myModal").style.display = "none"
+    }
     document.getElementsByClassName("close")[0].addEventListener("click", closeModal)
 }
 
@@ -93,18 +106,14 @@ function onImageSelected(event) {
     var imgpath = event.currentTarget.getElementsByTagName("img")[0].src
     modal.style.display = "initial"; 
     modal.getElementsByTagName("img")[0].src = imgpath; 
-    var fileName = String(imgpath).split("/")[String(imgpath).split("/").length -1].split(".")[0]
+    var fileName = String(imgpath).split("/")[String(imgpath).split("/").length -1].split(".")[0] //image file name as caption
     modal.getElementsByTagName("div")[0].innerHTML = fileName
 }
 
-function onHoverAudio() {
-    var hoverAudio = new Audio("./assets/sound kit/Button 2.m4a")
-    hoverAudio.play()
-}
-  
-function onClickAudio(){ 
-    var ClickSound = new Audio("./assets/sound kit/Tab 1.m4a")
-    ClickSound.play()
+function createPlayAudioFunction(path) { 
+    return () => {
+        new Audio(path).play()
+    }
 }
 
 function MainMenuClickActionManager(){ 
@@ -116,9 +125,7 @@ function MainMenuClickActionManager(){
     }
 
     this.OnClickNavigate = function(event){ 
-        
         var scrollTarget = data[event.currentTarget.children[0].textContent];
-        
         OnClickScrollParentTo((scrollTarget-1)*parent.clientHeight);  
     }
 
@@ -131,39 +138,26 @@ function MainMenuClickActionManager(){
     }
 }
 
-
-function PageChangeActionManager () {     
-    var OpenedAction  = { 
-        1: addAnimationFirstPage, 
-        2: addAnimationSecondPage, 
-        3: addAnimationThirdPage, 
-        4: addAnimationFourthPage
-    }
-
-    var ClosedAction = { 
-        1: removeAnimationFirstPage, 
-        2: removeAnimationSecondPage, 
-        3: removeAnimationThirdPage, 
-        4: removeAnimationFourthPage
-    }
-
-
-    function addAnimationFirstPage() { 
+var FirstPage = function() { 
+    this.pageIndex = 1; 
+    this.OnOpened = function() { 
         document.getElementsByTagName("h1")[0].style.animation = "Rotate 2s forwards"
         document.getElementById("projectbutton").style.animation = "FromRight 1.5s ease-in-out"
         document.getElementById("contactbutton").style.animation = "FromRight 1.5s ease-in-out"
         document.getElementById("hobbybutton").style.animation =    "FromLeft 1.5s ease-in-out"
     }
-
-    function removeAnimationFirstPage(){ 
+    this.OnClosed = function() { 
         document.getElementsByTagName("h1")[0].style.animation = ""
         document.getElementsByTagName("h1")[0].style.transform = "rotateX(90deg)"
         document.getElementById("projectbutton").style.animation = ""
         document.getElementById("contactbutton").style.animation = ""
         document.getElementById("hobbybutton").style.animation =    ""
     }
+} 
 
-    function addAnimationSecondPage() { 
+var SecondPage = function() { 
+    this.pageIndex = 2; 
+    this.OnOpened = function() { 
         document.getElementsByClassName("titlebox")[0].style.animation = "Rotate 2s forwards"
         let projecttitle = document.getElementsByClassName("projecttitlebox")
         for(let i =0; i < projecttitle.length; i ++ ){    
@@ -171,17 +165,19 @@ function PageChangeActionManager () {
         }
         document.getElementsByClassName("rightbox")[0].style.animation = `Rotate 2s forwards`    
     }
-
-    function removeAnimationSecondPage() { 
+    this.OnClosed = function() { 
         document.getElementsByClassName("titlebox")[0].style.animation = ""
         let projecttitle = document.getElementsByClassName("projecttitlebox")
         for(let i =0; i < projecttitle.length; i ++ ){    
             projecttitle[i].style.animation = ``    
         }
         document.getElementsByClassName("rightbox")[0].style.animation = ``
-    } 
+    }
+} 
 
-    function addAnimationThirdPage() { 
+var ThirdPage = function() { 
+    this.pageIndex = 3; 
+    this.OnOpened = function() { 
         document.getElementsByClassName("titlebox")[1].style.animation = "Rotate 2s forwards"
         var imageItems = document.getElementsByClassName("imageitem")
         let interval = 0.25
@@ -189,94 +185,65 @@ function PageChangeActionManager () {
             imageItems[i].style.animation = `FadeIn 1.5s forwards ${interval*(i+1)}s`    
         }
     }
-
-    function removeAnimationThirdPage() { 
+    this.OnClosed = function() { 
         document.getElementsByClassName("titlebox")[1].style.animation = ""
         var imageItems = document.getElementsByClassName("imageitem")
         for(let i =0; i < imageItems.length; i ++ ){    
             imageItems[i].style.animation = ``    
         }
-    } 
+    }
+} 
 
-    function addAnimationFourthPage() { 
+var FourthPage = function() { 
+    this.pageIndex = 4; 
+    this.OnOpened = function() { 
         document.getElementsByTagName("h1")[3].style.animation = "Rotate 1s forwards"
         document.getElementsByTagName("h2")[5].style.animation = "FadeIn 1s forwards 0.5s"
         document.getElementsByTagName("h3")[5].style.animation = "FadeIn 1s forwards 0.5s"
     }
-
-    function removeAnimationFourthPage() { 
+    this.OnClosed = function() { 
         document.getElementsByTagName("h1")[3].style.animation = ""
+        document.getElementsByTagName("h2")[5].style.animation = ""
+        document.getElementsByTagName("h3")[5].style.animation = ""
+    }
+} 
 
-    } 
-
-
+function PageChangeActionManager () {     
+    var OpenedAction  = { }
+    var ClosedAction = { }
+    function AddPageObject(PageObject){ 
+        if(PageObject == null ||PageObject.pageIndex == null ) return; 
+        
+        if(PageObject.OnOpened == null) { PageObject.OnOpened = () => { }}
+        if(PageObject.OnClosed == null) { PageObject.OnClosed = () => { }}
+        OpenedAction[PageObject.pageIndex] = PageObject.OnOpened; 
+        ClosedAction[PageObject.pageIndex] = PageObject.OnClosed; 
+    }
 
     this.onPageClosed = function(event){
+        if(typeof(ClosedAction[event.detail]) != 'function') return; 
         ClosedAction[event.detail]()
     }  
 
     this.onPageOpened = function(event) { 
+        if(typeof(OpenedAction[event.detail]) != 'function') return; 
         OpenedAction[event.detail](); 
     }
 
-
-    addAnimationFirstPage(); 
+    AddPageObject(new FirstPage())
+    AddPageObject(new SecondPage())
+    AddPageObject(new ThirdPage())
+    AddPageObject(new FourthPage())
+    new FirstPage().OnOpened()
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export {PageChangeActionManager, MainMenuClickActionManager, OnSelectHighlighter,onClickAudio, onHoverAudio, onSelectSetBorderVisible, onDeselectSetBorderIndvisible, onSelectIncreaseSize,onDeSelectDecreaseSize, ProjectListManager, setCloseButtonAction, onImageSelected}; 
+export {createPlayAudioFunction,
+    PageChangeActionManager,
+    MainMenuClickActionManager, 
+    OnSelectHighlighter, 
+    OnBorderSelectAction,
+    onSelectIncreaseSize,
+    onDeSelectDecreaseSize, 
+    ProjectListManager, 
+    setCloseButtonAction,
+    onImageSelected}; 
