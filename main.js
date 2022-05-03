@@ -64,14 +64,15 @@ function main(){
 
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { ObjectLoader } from 'three';
 
 function ThreeJSManager() { 
   var scene; 
   var camera; 
   var renderer;
-  var box; 
-  var visible = 1.18; 
-  var tv; 
+  var sphere; 
+  var pointLight; 
+
   var initialize= function(){ 
     scene = new THREE.Scene(); 
     camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 ); 
@@ -83,97 +84,56 @@ function ThreeJSManager() {
     camera.position.z = 1; 
   }
 
-
-  function loadAsset() { 
-    const loader = new GLTFLoader();
-    loader.load( '/assets/TV.glb', function ( gltf ) {
-      scene.add( gltf.scene );
-      tv = gltf.scene; 
-      gltf.scene.z = -1; 
-      let defaultScale = 0.3
-      gltf.scene.scale.set(defaultScale,defaultScale,defaultScale); 
-      console.log(gltf.scene.position); 
-    }, undefined, function ( error ) {
-      console.error( error );
-    } );
-  } 
-
-  var AddHelpers = function() { 
-    var axesHelper = new THREE.AxesHelper( 5 );
-    // var lightHelper = new lightHelper(); 
-    // scene.add(lightHelper); 
-    scene.add( axesHelper);
-  }
-
-  function Addbox() { 
-      var Mest = new THREE.BoxGeometry(0.5,0.5,0.5); 
-      var mats = new THREE.MeshStandardMaterial(); 
-      box = new THREE.Mesh(Mest, mats); 
-      box.position.x = 0.2; 
-      scene.add(box); 
+  function AddSphere() { 
+      var texture = new THREE.TextureLoader().load("./assets/Earth_Illumination_6K.jpg")
+      var geometry = new THREE.SphereGeometry(); 
+      var materials = new THREE.MeshStandardMaterial({map:texture}); 
+      sphere = new THREE.Mesh(geometry ,materials);
+      sphere.scale.set(0.5,0.5, 0.5) 
+      scene.add(sphere); 
   }
 
   function AddLight() { 
-    const ambient= new THREE.AmbientLight(0x404040, 10); 
+    const ambient= new THREE.AmbientLight(0xffffff, 1); 
+    pointLight = new THREE.PointLight(0xffffff,10);
+    pointLight.position.set(5, 5, 5);
     ambient.position.set( 0,0 ,1);
-    scene.add( ambient );
+    scene.add( ambient, pointLight );
   }
 
+  function AddStars() { 
+    for(var i =0; i < 100; i ++) { 
+      const Stargeometry = new THREE.SphereGeometry(0.25, 1, 1);
+      const Starmaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
+      const star = new THREE.Mesh(Stargeometry, Starmaterial);
+      star.position.set(THREE.MathUtils.randFloatSpread(100), THREE.MathUtils.randFloatSpread(100), THREE.MathUtils.randFloatSpread(100));
+      scene.add(star);
+    }
+  }
 
   function animate() { 
-    if(tv != undefined) { 
-      // console.log(tv.position); 
-    // tv.position.y -= 0.01;
-    }
     requestAnimationFrame(animate)
+    sphere.rotation.x += 0.0005; 
+    sphere.rotation.y += 0.0005;
+    pointLight.rotation.x += 1; 
+    pointLight.rotation.y += 1; 
+
     renderer.render(scene,camera)
   } 
+  function moveCamera() {
   
-  function debugging(event){ 
- 
-
-
-    if(event.keyCode == 37) { 
-      console.log("left")
-      tv.position.x -= 0.01; 
-    }
-    if(event.keyCode == 38) { 
-      console.log("up")
-      tv.position.y += 0.01; 
-    }
-    if(event.keyCode == 40) { 
-      console.log("down")
-      tv.position.y -= 0.01; 
-    }
-    if(event.keyCode == 39) { 
-      console.log("right")
-      tv.position.x += 0.01; 
-    }
-    if(event.keyCode == 49) { 
-      tv.scale.x -= 0.01; 
-      tv.scale.y -= 0.01;
-      tv.scale.z -= 0.01; 
-    }
-    if(event.keyCode == 50) { 
-      tv.scale.x += 0.01; 
-      tv.scale.y += 0.01;
-      tv.scale.z += 0.01; 
-    }
-    console.log(tv.scale)
-    console.log(tv.position)
+    camera.position.z +=  0.1;
+    camera.position.x += 0.2;
+    camera.rotation.y +=  0.5;
   }
-
-  document.addEventListener('keydown', debugging)
-
-
-
-  loadAsset(); 
+  
   initialize(); 
-  AddHelpers(); 
-  // Addbox(); 
+  document.addEventListener("scroll", moveCamera)
+  // moveCamera(); 
+  // AddStars(); 
+  AddSphere(); 
   AddLight(); 
   animate(); 
-
 }
 
 
