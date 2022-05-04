@@ -1,6 +1,7 @@
 import './style.scss'
 import './animation.scss'
 import  {PageNavigator, NavigationManager} from './NavigationManager.js'
+import * as THREE from 'three'
 import {
   OnBorderSelectAction,
   createPlayAudioFunction,
@@ -12,6 +13,8 @@ import {
   ProjectListManager,
   onSelectIncreaseSize,
   onDeSelectDecreaseSize} from './ActionManager.js'
+
+
 
 
 
@@ -60,8 +63,6 @@ function main(){
   parentPage.addEventListener("PageClosed", PageAction.onPageClosed)
 }
 
-
-import * as THREE from 'three'
 
 function ThreeJSManager() { 
   var scene; 
@@ -132,8 +133,6 @@ function ThreeJSManager() {
     AmbientLight.color.r += getRandomPositiveValue(AmbientLight.color.r)
     AmbientLight.color.g += getRandomPositiveValue(AmbientLight.color.g)
     AmbientLight.color.b += getRandomPositiveValue(AmbientLight.color.b)
-    console.log(AmbientLight.color)
-    
   }
   
   initialize(); 
@@ -146,9 +145,7 @@ function ThreeJSManager() {
 
 
 
-var test = new ThreeJSManager(); 
-
-
+new ThreeJSManager(); 
 main();
 
 
