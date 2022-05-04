@@ -142,9 +142,9 @@ var FirstPage = function() {
     this.pageIndex = 1; 
     this.OnOpened = function() { 
         document.getElementsByTagName("h1")[0].style.animation = "Rotate 2s forwards"
-        document.getElementById("projectbutton").style.animation = "FromRight 1.5s ease-in-out"
-        document.getElementById("contactbutton").style.animation = "FromRight 1.5s ease-in-out"
-        document.getElementById("hobbybutton").style.animation =    "FromLeft 1.5s ease-in-out"
+        document.getElementById("projectbutton").style.animation = "FadeIn 1.5s ease-in-out forwards"
+        document.getElementById("contactbutton").style.animation = "FadeIn 1.5s ease-in-out forwards"
+        document.getElementById("hobbybutton").style.animation =    "FadeIn 1.5s ease-in-out forwards"
     }
     this.OnClosed = function() { 
         document.getElementsByTagName("h1")[0].style.animation = ""
@@ -160,8 +160,9 @@ var SecondPage = function() {
     this.OnOpened = function() { 
         document.getElementsByClassName("titlebox")[0].style.animation = "Rotate 2s forwards"
         let projecttitle = document.getElementsByClassName("projecttitlebox")
+        let interval = 0.75; 
         for(let i =0; i < projecttitle.length; i ++ ){    
-            projecttitle[i].style.animation = `Rotate 2s forwards`    
+            projecttitle[i].style.animation = `SlideColor ease-in-out 0.75s forwards ${interval * (i)}s`    
         }
         document.getElementsByClassName("rightbox")[0].style.animation = `Rotate 2s forwards`    
     }

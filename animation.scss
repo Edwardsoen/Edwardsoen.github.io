@@ -1,9 +1,16 @@
 
-#page1title, #page2title,#page3title,#page4title, .projecttitlebox, .rightbox { 
+#page1title, #page2title,#page3title,#page4title, .rightbox { 
     transform: rotateX(90deg);
 }
 
-.imageitem, div.page4 h2, div.page4 h3 { 
+
+.projecttitlebox { 
+    background: linear-gradient(to right, white 50%,transparent 50%);
+    background-size: 200% 200%;
+    background-position: 0% 100%;
+}
+
+.imageitem, div.page4 h2, div.page4 h3, #contactbutton, #hobbybutton, #projectbutton { 
     opacity: 0;
 }
 
@@ -12,7 +19,14 @@
 }
 
 
-
+@keyframes SlideColor { 
+    from {
+        background-position: 0% 100%;
+    }
+    to {
+    background-position: 100% 0%;
+    }
+}
 
 @keyframes FromLeft{ 
     from { 

@@ -61,10 +61,7 @@ function main(){
 }
 
 
-
 import * as THREE from 'three'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { ObjectLoader } from 'three';
 
 function ThreeJSManager() { 
   var scene; 
@@ -72,6 +69,8 @@ function ThreeJSManager() {
   var renderer;
   var sphere; 
   var pointLight; 
+  var AmbientLight; 
+  var stars = []; 
 
   var initialize= function(){ 
     scene = new THREE.Scene(); 
@@ -94,43 +93,52 @@ function ThreeJSManager() {
   }
 
   function AddLight() { 
-    const ambient= new THREE.AmbientLight(0xffffff, 1); 
-    pointLight = new THREE.PointLight(0xffffff,10);
+    AmbientLight= new THREE.AmbientLight(0xffffff, 1); 
+    pointLight = new THREE.PointLight(0xffffff,1);
     pointLight.position.set(5, 5, 5);
-    ambient.position.set( 0,0 ,1);
-    scene.add( ambient, pointLight );
+    AmbientLight.position.set( 0,0 ,1);
+    scene.add( AmbientLight, pointLight );
   }
 
   function AddStars() { 
-    for(var i =0; i < 100; i ++) { 
-      const Stargeometry = new THREE.SphereGeometry(0.25, 1, 1);
-      const Starmaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
+    for(var i =0; i < 50; i ++) { 
+      const Stargeometry = new THREE.SphereGeometry(0.025, 0.01, 0.01);
+      const Starmaterial = new THREE.MeshStandardMaterial();
+      Starmaterial.roughness = 0; 
       const star = new THREE.Mesh(Stargeometry, Starmaterial);
-      star.position.set(THREE.MathUtils.randFloatSpread(100), THREE.MathUtils.randFloatSpread(100), THREE.MathUtils.randFloatSpread(100));
+      star.position.set(THREE.MathUtils.randFloatSpread(5), THREE.MathUtils.randFloatSpread(5), THREE.MathUtils.randFloatSpread(15));
+      stars.push(star);
       scene.add(star);
     }
   }
 
+  function getRandomPositiveValue(colorValue){ 
+    if(colorValue  > 0)  return THREE.MathUtils.randFloat(-0.2, 0.2);  
+    return  THREE.MathUtils.randFloat(0, 0.2);
+  }
+
   function animate() { 
+    for(let i =0; i < stars.length; i ++ ){ 
+      stars[i].position.x += THREE.MathUtils.randFloat(0, 0.0005) 
+      stars[i].position.y += THREE.MathUtils.randFloat(0, 0.0005) 
+      stars[i].position.z += THREE.MathUtils.randFloat(0, 0.0005)
+    }
     requestAnimationFrame(animate)
     sphere.rotation.x += 0.0005; 
     sphere.rotation.y += 0.0005;
-    pointLight.rotation.x += 1; 
-    pointLight.rotation.y += 1; 
-
     renderer.render(scene,camera)
   } 
-  function moveCamera() {
-  
-    camera.position.z +=  0.1;
-    camera.position.x += 0.2;
-    camera.rotation.y +=  0.5;
+  function scrollEvent() {
+    AmbientLight.color.r += getRandomPositiveValue(AmbientLight.color.r)
+    AmbientLight.color.g += getRandomPositiveValue(AmbientLight.color.g)
+    AmbientLight.color.b += getRandomPositiveValue(AmbientLight.color.b)
+    console.log(AmbientLight.color)
+    
   }
   
   initialize(); 
-  document.addEventListener("scroll", moveCamera)
-  // moveCamera(); 
-  // AddStars(); 
+  document.getElementsByClassName("parent")[0].addEventListener("scroll", scrollEvent)
+  AddStars(); 
   AddSphere(); 
   AddLight(); 
   animate(); 
@@ -139,10 +147,6 @@ function ThreeJSManager() {
 
 
 var test = new ThreeJSManager(); 
-
-
-
-
 
 
 main();

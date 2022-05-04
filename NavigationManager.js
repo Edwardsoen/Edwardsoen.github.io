@@ -22,7 +22,7 @@ function NavigationManager (list, FirstSelectedItem, SelectoOHover = true){
             this.selectedItem = value; 
             return; 
         }
-        return "Value Not in List"; 
+        throw "Value Not in List"; 
     }
 
     this.AddEventlistenerToList = function(eventlistener, action){
