@@ -12,28 +12,22 @@ function OnSelectHighlighter(){
 }
 
 function ProjectListManager() { 
-    var projectdata = {}
-    var styleString = `style = "height:100%; width:100%; border-radius:15px"`
-
-    function AddProjectItem(projectName, Description = "", link = "", platform = "",  htmlString = "" )
+    var projectdata = {} // {project title (str): project object (object)}, 
+    //project object MUST contain 1. title, 2. description 3. link + link Name 4. Tags 
+    //eg. {"Project title":"title", "desc":desc, "link1": {"likTitle":linktitle, link:"link"} , "link2":link2, "tags":[tags]}
+    
+    function AddProjectItem(projectName, Description = "", link = "", platform = "")
     { 
         var projectObject = { 
             description:Description, 
             link:link, 
             platform:platform,
-            htmlString: htmlString
         }
         if(projectdata[projectName] != undefined) return; 
         projectdata[projectName] = projectObject;  
     }
 
-    function insertToImageBox(htmlString = "") { 
-        var imagebox = document.getElementsByClassName("imagebox")[0]
-        if(imagebox.children[0] != undefined) { 
-            imagebox.children[0].remove()
-        }
-        document.getElementsByClassName("imagebox")[0].insertAdjacentHTML("afterbegin", htmlString)
-    }
+    
 
     this.OnClickChangeDescriptionPanel = function(event){ 
         var descriptionPanel = document.getElementsByClassName("rightbox")[0];
@@ -42,23 +36,28 @@ function ProjectListManager() {
         descriptionPanel.getElementsByTagName("h3")[0].innerHTML = data.description;
         descriptionPanel.getElementsByTagName("a")[0].innerHTML = data.platform; 
         descriptionPanel.getElementsByTagName("a")[0].href = data.link; 
-        insertToImageBox(data.htmlString)
     }
     
 
     AddProjectItem("Planes",
-     "Collaborated with 3 other people to create web-based shooter game. In this project i handled the programming for AI behaviour and Analytics with GameAnalytics", 
+     "Collaborated with 3 other developers to create plane shooter game in Unity C#. Implemented AI behaviour, Analytics with GameAnalytics and create Android port", 
      "https://itervision.com/planes",
-     "Website",  
-     `<video autoplay="" loop="" src="assets/Project-plane.mp4"${styleString} ></video>`)
+     "Website")
 
     
-    AddProjectItem("Pastebin Clone",
-     "Created Pastebin Clone with Python Flask with syntax highlighting, account system, downloads and  access frequency restriction", 
-     "https://scenic-great-sand-dunes-90208.herokuapp.com/",
-     "Website",  
-     `<img src = "assets/pastebin.png" ${styleString}>`)
+    AddProjectItem("Respark",
+     "Worked with 6 other developers to create open world 3rd person MMO with Unity and Mirror Networking library", 
+     "https://playrespark.com/",
+     "Website",
+     )
 }
+
+
+
+
+
+
+
 
 function OnBorderSelectAction() { 
 
@@ -200,12 +199,12 @@ var FourthPage = function() {
     this.OnOpened = function() { 
         document.getElementsByTagName("h1")[3].style.animation = "Rotate 1s forwards"
         document.getElementsByTagName("h2")[5].style.animation = "FadeIn 1s forwards 0.5s"
-        document.getElementsByTagName("h3")[5].style.animation = "FadeIn 1s forwards 0.5s"
+        document.getElementsByTagName("h3")[1].style.animation = "FadeIn 1s forwards 0.5s"
     }
     this.OnClosed = function() { 
         document.getElementsByTagName("h1")[3].style.animation = ""
         document.getElementsByTagName("h2")[5].style.animation = ""
-        document.getElementsByTagName("h3")[5].style.animation = ""
+        document.getElementsByTagName("h3")[1].style.animation = ""
     }
 } 
 
