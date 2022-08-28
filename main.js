@@ -2,11 +2,8 @@ import './style.scss'
 import './animation.scss'
 import  {PageNavigator, NavigationManager} from './NavigationManager.js'
 
-
-
 import {
   OnBorderSelectAction,
-  createPlayAudioFunction,
   PageChangeActionManager, 
   MainMenuClickActionManager,
   OnSelectHighlighter,
@@ -14,13 +11,15 @@ import {
   onImageSelected,
   ProjectListManager,
   onSelectIncreaseSize,
-  onDeSelectDecreaseSize} from './ActionManager.js'
+  onDeSelectDecreaseSize 
+} from './ActionManager.js'
 
 
 
 
 
 function main(){ 
+
   var MainMenuClickAction = new MainMenuClickActionManager(); 
   var MainMenuList = document.getElementById("MainMenuItem"); 
   var MainMenuNavigator = new NavigationManager(MainMenuList.children,MainMenuList.children[0]);

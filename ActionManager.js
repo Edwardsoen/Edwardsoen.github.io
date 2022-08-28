@@ -1,4 +1,4 @@
-import { DiscreteInterpolant } from "three";
+import * as fs from 'fs';
 
 function OnSelectHighlighter(){ 
     var defaultColor; 
@@ -242,6 +242,26 @@ var FourthPage = function() {
     }
 } 
 
+
+function imageLoader() { 
+    
+    let testFolder = './assets/HobbyImages/'
+    fs.readdir(testFolder, (err, files) => {
+        files.forEach(file => {
+          console.log(file);
+        });
+      });
+    let imageContainer = document.getElementsByClassName("imagecontainer")[0]
+    for(let i =0; i <= files.length; i ++) { 
+        let imageItem = document.createElement("div")
+        imageItem.className = 'imageitem'
+        let imageElement = document.createElement('img')
+        imageItem.appendChild(imageElement); 
+        console.log(files[i])
+    }
+}
+
+
 function PageChangeActionManager () {     
     var OpenedAction  = { }
     var ClosedAction = { }
@@ -280,4 +300,6 @@ export {createPlayAudioFunction,
     onDeSelectDecreaseSize, 
     ProjectListManager, 
     setCloseButtonAction,
-    onImageSelected}; 
+    onImageSelected,
+    imageLoader, 
+}; 
