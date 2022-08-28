@@ -53,7 +53,8 @@ div
   overflow-x: hidden; 
   height: 100vh;
   scroll-snap-type: y mandatory;
-  background-image: url(/assets/prism.png);
+  background-image: url(/assets/bg.jpg);
+  background-size: cover;
   section {
     height: 100vh;
     scroll-snap-align: start;
@@ -154,42 +155,39 @@ div.page2{
   }
   .contentbox { 
     width: 100%;
-    display: inline-flex;
     height: 80%;
     color: $text-color;
     .leftbox{
       color: $unselected-text-color; 
-      width: 35%;
-      margin-left: 8%;
+      width: 100%;
+      display: inline-flex;
+      justify-content: center;
       .projecttitlebox {
         h2 { 
           font-size: $page2-h2-font-size;
-          margin-left: 3%;
-          margin-right: 3%;
+          margin-left: auto;
+          margin-right: auto;
         }
-        h3 { 
-          font-size: $page2-h3-font-size;  
-          margin-right: 5%;
-        }
-        margin-bottom: 5%;
-        width: 100%;
+        width: 20%;
         display:inline-flex;
-        align-items: center;
-        justify-content: space-between;
-        border: 2px solid white;
-        border-radius: 15px;
-        // background-color: transparent;
-        height: fit-content;
+        border: 1px solid white;
+        border-top-color: transparent;
+      }
+      .projecttitlebox:hover { 
+        background-color: rgba(237, 237, 237, 0.2);
       }
     }
     .rightbox{ 
       justify-content: center;
       display: block;
       margin-left: 2%;
-      height: fit-content;
+      height: 60%;
       width: 50%;
-      border-radius: 15px;
-      border: 2px solid white;
+      border:1px solid;
+      border-right-color: transparent;
+      border-left-color:transparent; 
+      margin-left: auto;
+      margin-right: auto;
       .imagebox { 
         video { 
             height: 100%;
@@ -316,13 +314,18 @@ div.page4 {
     flex-direction: column-reverse; 
   }
   div.page2 .contentbox .leftbox { 
-    width:  80%; 
-    margin: auto; 
-    margin-top: 5%;
-    height: 15%;
-    // overflow-x: hidden;
-    // overflow-y: scroll;
+    display: block; 
   }
+  div.page2 .contentbox .leftbox .projecttitlebox { 
+    h2 { 
+      text-align: center;
+    }
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+
   div.page2 .contentbox .rightbox { 
     width: 80%; 
     margin: auto; 
