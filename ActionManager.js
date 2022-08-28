@@ -1,3 +1,4 @@
+import { DiscreteInterpolant } from "three";
 
 function OnSelectHighlighter(){ 
     var defaultColor; 
@@ -14,42 +15,75 @@ function OnSelectHighlighter(){
 function ProjectListManager() { 
     var projectdata = {} // {project title (str): project object (object)}, 
     //project object MUST contain 1. title, 2. description 3. link + link Name 4. Tags 
+    //Project title must be the same with button text 
     //eg. {"Project title":"title", "desc":desc, "link1": {"likTitle":linktitle, link:"link"} , "link2":link2, "tags":[tags]}
-    
-    function AddProjectItem(projectName, Description = "", link = "", platform = "")
-    { 
-        var projectObject = { 
-            description:Description, 
-            link:link, 
-            platform:platform,
+    // TODO: Make project button dynamic...
+
+
+    function addLink(title, link) { 
+        let descriptionPanel = document.getElementsByClassName("rightbox")[0];
+        let linkBox = descriptionPanel.getElementsByClassName('contentlink')[0]
+        let h2Element = document.createElement("h2");
+        let aElement = document.createElement("a");
+        aElement.href = link
+        aElement.innerHTML = title;  
+        h2Element.appendChild(aElement); 
+        linkBox.appendChild(h2Element)
+    }
+
+    function clearLink(){ 
+        let descriptionPanel = document.getElementsByClassName("rightbox")[0];
+        let linkBox = descriptionPanel.getElementsByClassName('contentlink')[0]
+        while (linkBox.childElementCount >0) { 
+            linkBox.removeChild(linkBox.firstChild)
         }
-        if(projectdata[projectName] != undefined) return; 
-        projectdata[projectName] = projectObject;  
+    }
+
+    function ProjectItemObject(title, description, links) { 
+        this.title = title; 
+        this.description = description; 
+        this.links = links
+    }
+    
+    
+    function LinkObject(title, link){ 
+        this.link = link; 
+        this.title = title; 
+    }
+
+
+
+    function AddProjectItem(projectName, projectData)
+    { 
+        projectdata[projectName] = projectData
     }
 
     
 
     this.OnClickChangeDescriptionPanel = function(event){ 
+        clearLink()
         var descriptionPanel = document.getElementsByClassName("rightbox")[0];
         var projecttitle = event.currentTarget.getElementsByTagName("h2")[0].innerHTML; 
         var data = projectdata[projecttitle]; 
-        descriptionPanel.getElementsByTagName("h3")[0].innerHTML = data.description;
-        descriptionPanel.getElementsByTagName("a")[0].innerHTML = data.platform; 
-        descriptionPanel.getElementsByTagName("a")[0].href = data.link; 
+        var links = data.links
+        descriptionPanel.getElementsByTagName("h3")[0].innerHTML = data.description
+        for(let i =0; i < links.length; i ++ ) { 
+            addLink(links[i].title, links[i].link)
+        }
     }
     
-
-    AddProjectItem("Planes",
-     "Collaborated with 3 other developers to create plane shooter game in Unity C#. Implemented AI behaviour, Analytics with GameAnalytics and create Android port", 
-     "https://itervision.com/planes",
-     "Website")
-
     
-    AddProjectItem("Respark",
-     "Worked with 6 other developers to create open world 3rd person MMO with Unity and Mirror Networking library", 
-     "https://playrespark.com/",
-     "Website",
-     )
+    AddProjectItem("Planes",new ProjectItemObject(
+        "Planes", 
+        "Collaborated with 3 other developers to create plane shooter game in Unity C#. Implemented AI behaviour, Analytics with GameAnalytics and create Android port", 
+        [new LinkObject("Website", "https://itervision.com/planes")]
+    ))
+
+    AddProjectItem("Respark",new ProjectItemObject(
+        "Respark", 
+        "Worked with 6 other developers to create open world 3rd person MMO with Unity and Mirror Networking library", 
+        [new LinkObject("Website", "https://playrespark.com/")]
+    ))
 }
 
 
@@ -163,7 +197,7 @@ var SecondPage = function() {
         for(let i =0; i < projecttitle.length; i ++ ){    
             projecttitle[i].style.animation = `SlideColor ease-in-out 0.75s forwards ${interval * (i)}s`    
         }
-        document.getElementsByClassName("rightbox")[0].style.animation = `Enlarge 2s forwards`    
+        document.getElementsByClassName("rightbox")[0].style.animation = `Enlarge 1.5s forwards`    
     }
     this.OnClosed = function() { 
         document.getElementsByClassName("titlebox")[0].style.animation = ""

@@ -5,7 +5,7 @@
 
 .rightbox { 
     opacity: 0;
-
+    height: 0;
 }
 
 
@@ -58,11 +58,6 @@
 }
 
 @keyframes Enlarge{
-    from{ 
-        height: 0%;
-        opacity: 0;
-    }
-
     to { 
         height: 40%;
         opacity: 1;
