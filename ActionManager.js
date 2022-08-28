@@ -158,13 +158,13 @@ var FirstPage = function() {
 var SecondPage = function() { 
     this.pageIndex = 2; 
     this.OnOpened = function() { 
-        document.getElementsByClassName("titlebox")[0].style.animation = "Rotate 2s forwards"
+        // document.getElementsByClassName("titlebox")[0].style.animation = "Rotate 2s forwards"
         let projecttitle = document.getElementsByClassName("projecttitlebox")
         let interval = 0.75; 
         for(let i =0; i < projecttitle.length; i ++ ){    
             projecttitle[i].style.animation = `SlideColor ease-in-out 0.75s forwards ${interval * (i)}s`    
         }
-        document.getElementsByClassName("rightbox")[0].style.animation = `Rotate 2s forwards`    
+        document.getElementsByClassName("rightbox")[0].style.animation = `Enlarge 2s forwards`    
     }
     this.OnClosed = function() { 
         document.getElementsByClassName("titlebox")[0].style.animation = ""
@@ -179,7 +179,7 @@ var SecondPage = function() {
 var ThirdPage = function() { 
     this.pageIndex = 3; 
     this.OnOpened = function() { 
-        document.getElementsByClassName("titlebox")[1].style.animation = "Rotate 2s forwards"
+        // document.getElementsByClassName("titlebox")[1].style.animation = "Rotate 2s forwards"
         var imageItems = document.getElementsByClassName("imageitem")
         let interval = 0.25
         for(let i =0; i < imageItems.length; i ++ ){    
