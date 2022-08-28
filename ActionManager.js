@@ -233,7 +233,7 @@ var FourthPage = function() {
     this.OnOpened = function() { 
         document.getElementsByTagName("h1")[3].style.animation = "Rotate 1s forwards"
         document.getElementsByTagName("h2")[5].style.animation = "FadeIn 1s forwards 0.5s"
-        document.getElementsByTagName("h3")[1].style.animation = "FadeIn 1s forwards 0.5s"
+        document.getElementsByTagName("h3")[1].style.animation = "FadeIn 1s forwards 1s"
     }
     this.OnClosed = function() { 
         document.getElementsByTagName("h1")[3].style.animation = ""

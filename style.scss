@@ -296,7 +296,6 @@ div.page4 {
 
 @media (min-height:100vw) {
   div.page2 .contentbox {
-    height: initial;
     flex-direction: column-reverse; 
   }
   div.page2 .contentbox .leftbox { 
@@ -314,7 +313,6 @@ div.page4 {
 
   div.page2 .contentbox .rightbox { 
     width: 80%; 
-    margin: auto; 
   }
 
   div.page2 .titlebox { 
