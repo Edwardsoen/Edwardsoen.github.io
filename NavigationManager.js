@@ -63,7 +63,7 @@ function PageNavigator(parentElement, totalPage,){
     
     var FunctionOnScroll = function(event){ 
       if(currentY > event.currentTarget.scrollTop) { 
-        if(((event.currentTarget.scrollTop / heightPerPage)% 1) < 0.001) { 
+        if(((event.currentTarget.scrollTop / heightPerPage)% 1) < 0.1) { 
             let pageClosedEvent = new CustomEvent("PageClosed", {detail:currentPage})   
             event.currentTarget.dispatchEvent(pageClosedEvent);
             currentPage = Math.round(event.currentTarget.scrollTop / heightPerPage) + 1
