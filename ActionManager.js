@@ -174,14 +174,13 @@ function MainMenuClickActionManager(){
 var FirstPage = function() { 
     this.pageIndex = 1; 
     this.OnOpened = function() { 
-        document.getElementsByTagName("h1")[0].style.animation = "Rotate 2s forwards"
-        document.getElementById("projectbutton").style.animation = "FadeIn 1.5s ease-in-out forwards"
-        document.getElementById("contactbutton").style.animation = "FadeIn 1.5s ease-in-out forwards"
-        document.getElementById("hobbybutton").style.animation =    "FadeIn 1.5s ease-in-out forwards"
+        let interval = 0.15; 
+        document.getElementById("projectbutton").style.animation = `FadeIn 1.5s ease-in-out forwards ${interval*1}s`
+        document.getElementById("contactbutton").style.animation = `FadeIn 1.5s ease-in-out forwards ${interval*2}s`
+        document.getElementById("hobbybutton").style.animation =    `FadeIn 1.5s ease-in-out forwards ${interval*3}s`
     }
     this.OnClosed = function() { 
-        document.getElementsByTagName("h1")[0].style.animation = ""
-        document.getElementsByTagName("h1")[0].style.transform = "rotateX(90deg)"
+
         document.getElementById("projectbutton").style.animation = ""
         document.getElementById("contactbutton").style.animation = ""
         document.getElementById("hobbybutton").style.animation =    ""
@@ -262,12 +261,12 @@ function imageLoader() {
 }
 
 
+
 function PageChangeActionManager () {     
     var OpenedAction  = { }
     var ClosedAction = { }
     function AddPageObject(PageObject){ 
         if(PageObject == null ||PageObject.pageIndex == null ) return; 
-        
         if(PageObject.OnOpened == null) { PageObject.OnOpened = () => { }}
         if(PageObject.OnClosed == null) { PageObject.OnClosed = () => { }}
         OpenedAction[PageObject.pageIndex] = PageObject.OnOpened; 
