@@ -51,6 +51,10 @@ function NavigationManager (list, FirstSelectedItem, SelectoOHover = true){
 } 
 
 
+function setColor(color) {
+    document.getElementById('debugger').style.backgroundColor = color
+}
+
 function PageNavigator(parentElement, totalPage){ 
     this.parent = parentElement
     this.totalPage = totalPage
@@ -76,7 +80,7 @@ function PageNavigator(parentElement, totalPage){
             event.currentTarget.dispatchEvent(pageOpenEvent);        
         }
       }else { 
-            if(currentPage != (Math.trunc(event.currentTarget.scrollTop / heightPerPage) + 1)) {
+            if(currentPage != (Math.round(event.currentTarget.scrollTop / heightPerPage) + 1)) {
             let pageClosedEvent = new CustomEvent("PageClosed", {detail:currentPage})   
             event.currentTarget.dispatchEvent(pageClosedEvent); 
             currentPage = Math.round(event.currentTarget.scrollTop / heightPerPage) + 1
