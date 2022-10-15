@@ -4,5 +4,7 @@ jobs:
   deploy-changes: 
     runs-on: ubuntu-latest
     steps: 
-      - run: echo "testing"
+      - run: npm run build
+      - run: git subtree push --prefix dist origin testBuild
+      
       
