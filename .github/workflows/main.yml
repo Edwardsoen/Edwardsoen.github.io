@@ -5,6 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:        
       - uses: actions/setup-node@v3
+      - run: ls -all 
+      - run: cd ..
+      - run: ls -all
       - run: npm run build
       - run: git subtree push --prefix dist origin testBuild
       
