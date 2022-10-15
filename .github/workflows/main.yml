@@ -3,7 +3,8 @@ on: [push]
 jobs: 
   deploy-changes: 
     runs-on: ubuntu-latest
-    steps: 
+    steps:        
+      - uses: actions/setup-node@v3
       - run: npm run build
       - run: git subtree push --prefix dist origin testBuild
       
