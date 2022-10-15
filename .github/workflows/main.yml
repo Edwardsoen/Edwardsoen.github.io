@@ -1,9 +1,5 @@
 name: auto deploy
-on: 
-  push: 
-    branches: 
-      - testing
-      
+on: [push]
 jobs: 
   deploy-changes: 
     runs-on: ubuntu-latest
