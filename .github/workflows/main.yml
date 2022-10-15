@@ -13,9 +13,7 @@ jobs:
           node-version: '14'
       - run: npm install
       - run: npm run build
-      - run: git checkout build
-      - run: git pull
-      - run: git checkout master
+      - run: git subtree pull --prefix dist origin build
       - run: git subtree push --prefix dist origin build
       
       
