@@ -1,5 +1,8 @@
 name: auto deploy
-on: [push]
+on: 
+  push: 
+    branches: 
+    - master
 jobs: 
   deploy-changes: 
     runs-on: ubuntu-latest
@@ -10,6 +13,6 @@ jobs:
           node-version: '14'
       - run: npm install
       - run: npm run build
-      - run: git subtree push --prefix dist origin testBuild
+      - run: git subtree push --prefix dist origin build
       
       
