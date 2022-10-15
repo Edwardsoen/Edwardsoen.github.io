@@ -1,0 +1,12 @@
+name: auto deploy
+on: 
+  push: 
+    branches: 
+      - testing
+      
+jobs: 
+  deploy-changes: 
+    runs-on: ubuntu-latest
+    steps: 
+      - run: echo "testing"
+      
