@@ -17,13 +17,28 @@
     animation: zoomIn 0.5s ease-out;
 }
 
+.projecttitlebox:hover { 
+    animation:  SlideColor 0.5s  forwards ease-in-out;
+} 
+
+.innerimageitem:hover { 
+    animation: zoom 0.2s cubic-bezier(0.36, 0.04, 0, 1) forwards;
+}
+
+@keyframes zoom {
+    to { 
+        transform: scale(1.15) translateZ(30px)
+    }
+}
+
 
 @keyframes SlideColor { 
     from {
-        background-position: 0% 100%;
+        background-position: 100% 0%;
+        
     }
     to {
-    background-position: 100% 0%;
+        background-position: 0% 100%;
     }
 }
 
@@ -59,7 +74,7 @@
 
 @keyframes Enlarge{
     to { 
-        height: 40%;
+        height: 100%;
         opacity: 1;
     }
 }

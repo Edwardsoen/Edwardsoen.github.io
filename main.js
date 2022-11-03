@@ -10,7 +10,6 @@ import {
   setCloseButtonAction, 
   onImageSelected,
   ProjectListManager,
-  onSelectIncreaseSize,
   onDeSelectDecreaseSize 
 } from './ActionManager.js'
 
@@ -44,7 +43,6 @@ function main(){
 
   var ImageList = document.getElementsByClassName("imageitem"); 
   var ImageListNavigator = new NavigationManager(ImageList, ImageList[0])
-  ImageListNavigator.AddEventlistenerToList("mouseenter", onSelectIncreaseSize)
   ImageListNavigator.AddEventlistenerToList("mouseleave", onDeSelectDecreaseSize)
   ImageListNavigator.AddEventlistenerToList("click", onImageSelected)
 

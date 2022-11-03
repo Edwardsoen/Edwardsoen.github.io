@@ -89,10 +89,6 @@ function ProjectListManager() {
 
 
 
-
-
-
-
 function OnBorderSelectAction() { 
 
     function getElementToBeChanged(targetElem) { 
@@ -117,10 +113,6 @@ function OnBorderSelectAction() {
             ElementList[i].style.visibility = "hidden"; 
         }
     }
-}
-
-function onSelectIncreaseSize(event){
-    event.currentTarget.style.transform = "scale(1.1) translateZ(10px)"
 }
 
 function onDeSelectDecreaseSize(event){
@@ -194,9 +186,9 @@ var SecondPage = function() {
         let projecttitle = document.getElementsByClassName("projecttitlebox")
         let interval = 0.75; 
         for(let i =0; i < projecttitle.length; i ++ ){    
-            projecttitle[i].style.animation = `SlideColor ease-in-out 0.75s forwards ${interval * (i)}s`    
+            // projecttitle[i].style.animation = `SlideColor ease-in-out 0.75s forwards ${interval * (i)}s`    
         }
-        document.getElementsByClassName("rightbox")[0].style.animation = `Enlarge ease-in-out 1.2s forwards`    
+        document.getElementsByClassName("rightbox")[0].style.animation = `Enlarge cubic-bezier(0.36, 0.04, 0, 1) 1.2s forwards`    
     }
     this.OnClosed = function() { 
         document.getElementsByClassName("titlebox")[0].style.animation = ""
@@ -243,7 +235,6 @@ var FourthPage = function() {
 
 
 function imageLoader() { 
-    
     let testFolder = './assets/HobbyImages/'
     fs.readdir(testFolder, (err, files) => {
         files.forEach(file => {
@@ -295,7 +286,6 @@ export {createPlayAudioFunction,
     MainMenuClickActionManager, 
     OnSelectHighlighter, 
     OnBorderSelectAction,
-    onSelectIncreaseSize,
     onDeSelectDecreaseSize, 
     ProjectListManager, 
     setCloseButtonAction,

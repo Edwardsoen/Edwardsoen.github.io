@@ -17,6 +17,11 @@ $ui-color: white;
   display: block;
 }
 
+
+.rightouterbox { 
+  height: 40%;
+}
+
 .triangle-right {
 	width: 0;
 	height: 0;
@@ -169,10 +174,12 @@ div.page2{
         width: 20%;
         display:inline-flex;
         border: 1px solid white;
+
+        // for animations
+        background-size: 100% 200%;
+        background-image: linear-gradient(to bottom, transparent 50%, rgba(66, 66, 66, 0.4) 50%);
       }
-      .projecttitlebox:hover { 
-        background-color: rgba(237, 237, 237, 0.2);
-      }
+
     }
     .rightbox{ 
       justify-content: center;
@@ -248,14 +255,12 @@ div.page3 {
       width: auto;
       margin: 1%;
       img { 
-        
         border-radius: 15px;
         max-width: 250px;
         max-height: 150px;
         height: auto;
         width: auto;
       }
-
     }
   }
 
