@@ -18,6 +18,7 @@ function ProjectListManager() {
     //Project title must be the same with button text 
     //eg. {"Project title":"title", "desc":desc, "link1": {"likTitle":linktitle, link:"link"} , "link2":link2, "tags":[tags]}
     // TODO: Make project button dynamic...
+    var isInitialized = false; 
 
 
     function addLink(title, link) { 
@@ -59,9 +60,18 @@ function ProjectListManager() {
     }
 
     
-
     this.OnClickChangeDescriptionPanel = function(event){ 
         clearLink()
+        if (isInitialized) { 
+            document.getElementsByClassName("rightbox")[0].style.animation = ``    
+            setTimeout(() => {
+                document.getElementsByClassName("rightbox")[0].style.animation = `Enlarge cubic-bezier(0.36, 0.04, 0, 1) 1.2s forwards`        
+            }, 200);
+        } else { 
+            isInitialized = true; 
+        }
+       
+        
         var descriptionPanel = document.getElementsByClassName("rightbox")[0];
         var projecttitle = event.currentTarget.getElementsByTagName("h2")[0].innerHTML; 
         var data = projectdata[projecttitle]; 
