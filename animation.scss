@@ -8,8 +8,7 @@
     height: 0;
 }
 
-
-.imageitem, div.page4 h2, div.page4 h3, #contactbutton, #hobbybutton, #projectbutton { 
+.imageitem, div.page4 h2, div.page4 h3, #contactbutton, #hobbybutton, #projectbutton{ 
     opacity: 0;
 }
 
@@ -31,11 +30,16 @@
     }
 }
 
+.character { 
+    display: inline-block;
+    transform: rotateX(90deg);
+    transform-origin: 50% bottom;
+}
+
 
 @keyframes SlideColor { 
     from {
         background-position: 100% 0%;
-        
     }
     to {
         background-position: 0% 100%;
@@ -84,7 +88,6 @@
     100% { 
         transform: rotateX(0deg);
     }
-
 }
 
 @keyframes zoomIn { 

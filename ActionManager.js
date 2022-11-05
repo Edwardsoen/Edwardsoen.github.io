@@ -191,20 +191,19 @@ var FirstPage = function() {
 
 var SecondPage = function() { 
     this.pageIndex = 2; 
+    let Page2CharacterContainer = document.getElementById("page2titlecontainer"); 
+    let characters = Page2CharacterContainer.getElementsByClassName('character'); 
+
     this.OnOpened = function() { 
-        // document.getElementsByClassName("titlebox")[0].style.animation = "Rotate 2s forwards"
-        let projecttitle = document.getElementsByClassName("projecttitlebox")
-        let interval = 0.75; 
-        for(let i =0; i < projecttitle.length; i ++ ){    
-            // projecttitle[i].style.animation = `SlideColor ease-in-out 0.75s forwards ${interval * (i)}s`    
+        let interval = 0.15; 
+        for(let i =1; i <= characters.length; i ++) { 
+            characters[i-1].style.animation = `Rotate ease-in-out 0.75s forwards ${interval * (i)}s`
         }
         document.getElementsByClassName("rightbox")[0].style.animation = `Enlarge cubic-bezier(0.36, 0.04, 0, 1) 1.2s forwards`    
     }
     this.OnClosed = function() { 
-        document.getElementsByClassName("titlebox")[0].style.animation = ""
-        let projecttitle = document.getElementsByClassName("projecttitlebox")
-        for(let i =0; i < projecttitle.length; i ++ ){    
-            projecttitle[i].style.animation = ``    
+        for(let i =1; i <= characters.length; i ++) { 
+            characters[i-1].style.animation = ``
         }
         document.getElementsByClassName("rightbox")[0].style.animation = ``
     }
@@ -212,15 +211,26 @@ var SecondPage = function() {
 
 var ThirdPage = function() { 
     this.pageIndex = 3; 
+    let Page3CharacterContainer = document.getElementById("page3titlecontainer"); 
+    let characters = Page3CharacterContainer.getElementsByClassName('character'); 
+
+
     this.OnOpened = function() { 
-        // document.getElementsByClassName("titlebox")[1].style.animation = "Rotate 2s forwards"
+        let CharInterval = 0.15; 
+        for(let i =1; i <= characters.length; i ++) { 
+            characters[i-1].style.animation = `Rotate ease-in-out 0.75s forwards ${CharInterval * (i)}s`
+        }
+
         var imageItems = document.getElementsByClassName("imageitem")
-        let interval = 0.1
+        let interval = 0.15
         for(let i =0; i < imageItems.length; i ++ ){    
             imageItems[i].style.animation = `FadeIn 1.5s forwards ${interval*(i+1)}s`    
         }
     }
     this.OnClosed = function() { 
+        for(let i =1; i <= characters.length; i ++) { 
+            characters[i-1].style.animation = ``
+        }
         document.getElementsByClassName("titlebox")[1].style.animation = ""
         var imageItems = document.getElementsByClassName("imageitem")
         for(let i =0; i < imageItems.length; i ++ ){    
@@ -290,6 +300,20 @@ function PageChangeActionManager () {
     AddPageObject(new FourthPage())
     new FirstPage().OnOpened()
 }
+
+function generateIndividualCharacters(GrandParent, string) {
+    parent = document.createElement('h1')
+    for(let i = 0; i <= string.length -1 ; i ++) {
+        let char = document.createElement('span')
+        let letter = document.createElement('h1')
+        letter.textContent = string[i]
+        char.innerHTML = string[i]
+        char.classList.add('character')
+        parent.appendChild(char)
+      }
+      GrandParent.appendChild(parent)
+  } 
+  
 
 export {createPlayAudioFunction,
     PageChangeActionManager,

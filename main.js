@@ -14,10 +14,27 @@ import {
 } from './ActionManager.js'
 
 
-
+function generateIndividualCharacters(GrandParent, string) {
+  parent = document.createElement('h1')
+  for(let i = 0; i <= string.length -1 ; i ++) {
+      let char = document.createElement('span')
+      let letter = document.createElement('h1')
+      letter.textContent = string[i]
+      char.innerHTML = string[i]
+      char.classList.add('character')
+      parent.appendChild(char)
+    }
+    GrandParent.appendChild(parent)
+} 
 
 
 function main(){ 
+
+  var ProjectTitleContainer = document.getElementById("page2titlecontainer"); 
+  var  HobbyTitleContainer = document.getElementById("page3titlecontainer"); 
+  generateIndividualCharacters(ProjectTitleContainer, "Projects");
+  generateIndividualCharacters(HobbyTitleContainer, "Hobby"); 
+
 
   var MainMenuClickAction = new MainMenuClickActionManager(); 
   var MainMenuList = document.getElementById("MainMenuItem"); 
@@ -54,8 +71,9 @@ function main(){
 }
 
 
-
 main();
+
+
 
 
 
