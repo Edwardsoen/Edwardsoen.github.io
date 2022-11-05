@@ -179,18 +179,20 @@ var FirstPage = function() {
     let characters = Page1CharacterContainer.getElementsByClassName('character'); 
 
     this.OnOpened = function() { 
-        let interval = 0.15; 
+        let interval = 0.1; 
         for(let i =1; i <= characters.length; i ++) { 
             characters[i-1].style.animation = `Rotate ease-in-out 0.75s forwards ${interval * (i)}s`
         }
+        document.getElementById("page1subtitle").style.animation = `FadeIn 1.5s ease-in-out forwards ${interval*1}s`
         document.getElementById("projectbutton").style.animation = `FadeIn 1.5s ease-in-out forwards ${interval*1}s`
         document.getElementById("contactbutton").style.animation = `FadeIn 1.5s ease-in-out forwards ${interval*2}s`
         document.getElementById("hobbybutton").style.animation =    `FadeIn 1.5s ease-in-out forwards ${interval*3}s`
     }
     this.OnClosed = function() { 
         for(let i =1; i <= characters.length; i ++) { 
-            characters[i-1].style.animation = `Rotate ease-in-out 0.75s forwards ${interval * (i)}s`
+            characters[i-1].style.animation = ``
         }
+        document.getElementById("page1subtitle").style.animation = ``
         document.getElementById("projectbutton").style.animation = ""
         document.getElementById("contactbutton").style.animation = ""
         document.getElementById("hobbybutton").style.animation =    ""

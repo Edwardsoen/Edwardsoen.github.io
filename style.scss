@@ -1,12 +1,10 @@
 $text-color: white; 
 $unselected-text-color: lighten($color: grey, $amount: 30);
-$page-title-font-size: 2em; 
-$title-font-size: 2em; 
+$title-font-size: 2.5em; 
 $subtitle-font-size: 1.5em; 
 $icons-font-size: 1em; 
 $page2-h3-font-size :1em; 
-$page2-h2-font-size : 1.5em;
-$page2-h1-font-size : 3em; 
+$page2-h2-font-size : 2em;
 $ui-color: white; 
 
 #background { 
@@ -79,6 +77,14 @@ div.page1 {
       margin: auto;
       margin-top: 3%;
     }
+    h2 { 
+      color: $text-color;
+      font-size: $subtitle-font-size;
+      text-align: center;
+      height:fit-content;
+      width: 50%;
+      margin: auto;
+    }
     ul{ 
       li{ 
         color: $unselected-text-color; 
@@ -150,7 +156,7 @@ div.page2{
     height: 20%;
     h1 { 
       color: $text-color; 
-      font-size: $page-title-font-size;
+      font-size: $title-font-size;
     }
     justify-content: center;
     align-items: center;
@@ -227,7 +233,7 @@ div.page3 {
     height: 20%;
     h1 { 
       color: $text-color; 
-      font-size: $page-title-font-size;
+      font-size: $title-font-size;
       
     }
     justify-content: center;
@@ -277,9 +283,6 @@ div.page4 {
   div { 
     margin-left: 5%;
     margin-right: 5%;
-  }
-  h1 { 
-    font-size: $page2-h1-font-size;
   }
   h2 { 
     justify-content: center;
