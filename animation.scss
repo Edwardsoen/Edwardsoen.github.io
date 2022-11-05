@@ -1,90 +1,93 @@
-
-#page4title{ 
-    transform: rotateX(90deg);
+#page4title {
+  transform: rotateX(90deg);
 }
 
-.rightbox { 
+.rightbox {
+  opacity: 0;
+  height: 0;
+}
+
+.imageitem,
+div.page4 h2,
+div.page4 h3,
+#contactbutton,
+#hobbybutton,
+#projectbutton,
+div.page1.h2,
+div.page1 div.mainbox h2,
+.leftbox {
+  opacity: 0;
+}
+
+.modal-content,
+#caption {
+  animation: zoomIn 0.5s ease-out;
+}
+
+.projecttitlebox:hover {
+  animation: SlideColor 0.5s forwards ease-in-out;
+}
+
+.innerimageitem:hover {
+  animation: zoom 0.2s cubic-bezier(0.36, 0.04, 0, 1) forwards;
+}
+
+.character {
+  display: inline-block;
+  transform: rotateX(90deg);
+  transform-origin: 50% bottom;
+}
+
+@keyframes SlideUp {
+  from {
+    transform: translateY(150px);
     opacity: 0;
-    height: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
 
-.imageitem, div.page4 h2, div.page4 h3, #contactbutton, #hobbybutton, #projectbutton, div.page1.h2, div.page1 div.mainbox h2, .leftbox{
-    opacity: 0;
-}
-
-.modal-content, #caption { 
-    animation: zoomIn 0.5s ease-out;
-}
-
-.projecttitlebox:hover { 
-    animation:  SlideColor 0.5s  forwards ease-in-out;
-} 
-
-.innerimageitem:hover { 
-    animation: zoom 0.2s cubic-bezier(0.36, 0.04, 0, 1) forwards;
-}
-
-
-
-.character { 
-    display: inline-block;
-    transform: rotateX(90deg);
-    transform-origin: 50% bottom;
-}
-
-@keyframes SlideUp { 
-    from { 
-        transform: translateY(150px);
-        opacity: 0;
-    }
-    to { 
-        transform: translateY(0px);
-        opacity: 1;
-    }
-}
-
-
-@keyframes SlideColor { 
-    from {
-        background-position: 100% 0%;
-    }
-    to {
-        background-position: 0% 100%;
-    }
+@keyframes SlideColor {
+  from {
+    background-position: 100% 0%;
+  }
+  to {
+    background-position: 0% 100%;
+  }
 }
 
 @keyframes FadeIn {
-    to { 
-        opacity: 1;
-    } 
+  to {
+    opacity: 1;
+  }
 }
 
-@keyframes SlideDown{
-    to { 
-        height: 100%;
-        opacity: 1;
-    }
+@keyframes SlideDown {
+  to {
+    height: 100%;
+    opacity: 1;
+  }
 }
 
 @keyframes zoom {
-    to { 
-        transform: scale(1.15) translateZ(30px)
-    }
+  to {
+    transform: scale(1.15) translateZ(30px);
+  }
 }
 
-@keyframes Rotate { 
-    100% { 
-        transform: rotateX(0deg);
-    }
+@keyframes Rotate {
+  100% {
+    transform: rotateX(0deg);
+  }
 }
 
-@keyframes zoomIn { 
-    from { 
-        transform: scale(0);
-    }
-    to { 
-        transform: scale(1);
-    }
+@keyframes zoomIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
-
-
