@@ -30,11 +30,18 @@ function generateIndividualCharacters(GrandParent, string) {
 
 function main(){ 
 
+
+
+  var  IntroTitleContainer = document.getElementById("page1titlecontainer"); 
   var ProjectTitleContainer = document.getElementById("page2titlecontainer"); 
-  var  HobbyTitleContainer = document.getElementById("page3titlecontainer"); 
+  var HobbyTitleContainer = document.getElementById("page3titlecontainer"); 
+  var  ContactTitleContainer = document.getElementById("page4titlecontainer"); 
+  
+  
+  // generateIndividualCharacters(IntroTitleContainer, "Hello, My name is Edward a Game Developer and Hobbiyist artist.");
   generateIndividualCharacters(ProjectTitleContainer, "Projects");
   generateIndividualCharacters(HobbyTitleContainer, "Hobby"); 
-
+  generateIndividualCharacters(ContactTitleContainer, "Contact");
 
   var MainMenuClickAction = new MainMenuClickActionManager(); 
   var MainMenuList = document.getElementById("MainMenuItem"); 

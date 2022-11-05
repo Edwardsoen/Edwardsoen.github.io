@@ -175,14 +175,22 @@ function MainMenuClickActionManager(){
 
 var FirstPage = function() { 
     this.pageIndex = 1; 
+    let Page1CharacterContainer = document.getElementById("page1titlecontainer"); 
+    let characters = Page1CharacterContainer.getElementsByClassName('character'); 
+
     this.OnOpened = function() { 
         let interval = 0.15; 
+        for(let i =1; i <= characters.length; i ++) { 
+            characters[i-1].style.animation = `Rotate ease-in-out 0.75s forwards ${interval * (i)}s`
+        }
         document.getElementById("projectbutton").style.animation = `FadeIn 1.5s ease-in-out forwards ${interval*1}s`
         document.getElementById("contactbutton").style.animation = `FadeIn 1.5s ease-in-out forwards ${interval*2}s`
         document.getElementById("hobbybutton").style.animation =    `FadeIn 1.5s ease-in-out forwards ${interval*3}s`
     }
     this.OnClosed = function() { 
-
+        for(let i =1; i <= characters.length; i ++) { 
+            characters[i-1].style.animation = `Rotate ease-in-out 0.75s forwards ${interval * (i)}s`
+        }
         document.getElementById("projectbutton").style.animation = ""
         document.getElementById("contactbutton").style.animation = ""
         document.getElementById("hobbybutton").style.animation =    ""
@@ -241,13 +249,23 @@ var ThirdPage = function() {
 
 var FourthPage = function() { 
     this.pageIndex = 4; 
+    let Page4CharacterContainer = document.getElementById("page4titlecontainer"); 
+    let characters = Page4CharacterContainer.getElementsByClassName('character'); 
+
     this.OnOpened = function() { 
-        document.getElementsByTagName("h1")[3].style.animation = "Rotate 1s forwards"
+        let CharInterval = 0.15; 
+        for(let i =1; i <= characters.length; i ++) { 
+            characters[i-1].style.animation = `Rotate ease-in-out 0.75s forwards ${CharInterval * (i)}s`
+        }
+        // document.getElementsByTagName("h1")[3].style.animation = "Rotate 1s forwards"
         document.getElementsByTagName("h2")[5].style.animation = "FadeIn 1s forwards 0.5s"
         document.getElementsByTagName("h3")[1].style.animation = "FadeIn 1s forwards 1s"
     }
     this.OnClosed = function() { 
-        document.getElementsByTagName("h1")[3].style.animation = ""
+        for(let i =0; i < imageItems.length; i ++ ){    
+            imageItems[i].style.animation = `FadeIn 1.5s forwards ${interval*(i+1)}s`    
+        }
+        // document.getElementsByTagName("h1")[3].style.animation = ""
         document.getElementsByTagName("h2")[5].style.animation = ""
         document.getElementsByTagName("h3")[1].style.animation = ""
     }
