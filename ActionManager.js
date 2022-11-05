@@ -65,7 +65,7 @@ function ProjectListManager() {
         if (isInitialized) { 
             document.getElementsByClassName("rightbox")[0].style.animation = ``    
             setTimeout(() => {
-                document.getElementsByClassName("rightbox")[0].style.animation = `Enlarge cubic-bezier(0.36, 0.04, 0, 1) 1.2s forwards`        
+                document.getElementsByClassName("rightbox")[0].style.animation = `SlideDown cubic-bezier(0.36, 0.04, 0, 1) 1.2s forwards`        
             }, 200);
         } else { 
             isInitialized = true; 
@@ -203,18 +203,31 @@ var SecondPage = function() {
     this.pageIndex = 2; 
     let Page2CharacterContainer = document.getElementById("page2titlecontainer"); 
     let characters = Page2CharacterContainer.getElementsByClassName('character'); 
+    let projectTitle = document.getElementsByClassName('leftbox'); 
+
+
 
     this.OnOpened = function() { 
         let interval = 0.15; 
         for(let i =1; i <= characters.length; i ++) { 
             characters[i-1].style.animation = `Rotate ease-in-out 0.75s forwards ${interval * (i)}s`
         }
-        document.getElementsByClassName("rightbox")[0].style.animation = `Enlarge cubic-bezier(0.36, 0.04, 0, 1) 1.2s forwards`    
+        let titleInterval = 0.25
+        for(let i =0; i <= projectTitle.length -1 ; i ++) { 
+            projectTitle[i].style.animation = `SlideUp ease-in-out 1s forwards ${1 + titleInterval * (i)}s`
+        }
+        
+
+        document.getElementsByClassName("rightbox")[0].style.animation = `SlideDown cubic-bezier(0.36, 0.04, 0, 1) 1.2s forwards`    
     }
     this.OnClosed = function() { 
         for(let i =1; i <= characters.length; i ++) { 
             characters[i-1].style.animation = ``
         }
+        for(let i =0; i <= projectTitle.length -1 ; i ++) { 
+            projectTitle[i].style.animation = ``
+        }
+        
         document.getElementsByClassName("rightbox")[0].style.animation = ``
     }
 } 
@@ -259,16 +272,14 @@ var FourthPage = function() {
         for(let i =1; i <= characters.length; i ++) { 
             characters[i-1].style.animation = `Rotate ease-in-out 0.75s forwards ${CharInterval * (i)}s`
         }
-        // document.getElementsByTagName("h1")[3].style.animation = "Rotate 1s forwards"
-        document.getElementsByTagName("h2")[5].style.animation = "FadeIn 1s forwards 0.5s"
+        document.getElementsByTagName("h2")[6].style.animation = "FadeIn 1s forwards 0.5s"
         document.getElementsByTagName("h3")[1].style.animation = "FadeIn 1s forwards 1s"
     }
     this.OnClosed = function() { 
-        for(let i =0; i < imageItems.length; i ++ ){    
-            imageItems[i].style.animation = `FadeIn 1.5s forwards ${interval*(i+1)}s`    
+        for(let i =1; i <= characters.length; i ++) { 
+            characters[i-1].style.animation = ``
         }
-        // document.getElementsByTagName("h1")[3].style.animation = ""
-        document.getElementsByTagName("h2")[5].style.animation = ""
+        document.getElementsByTagName("h2")[6].style.animation = ""
         document.getElementsByTagName("h3")[1].style.animation = ""
     }
 } 
@@ -320,20 +331,6 @@ function PageChangeActionManager () {
     AddPageObject(new FourthPage())
     new FirstPage().OnOpened()
 }
-
-function generateIndividualCharacters(GrandParent, string) {
-    parent = document.createElement('h1')
-    for(let i = 0; i <= string.length -1 ; i ++) {
-        let char = document.createElement('span')
-        let letter = document.createElement('h1')
-        letter.textContent = string[i]
-        char.innerHTML = string[i]
-        char.classList.add('character')
-        parent.appendChild(char)
-      }
-      GrandParent.appendChild(parent)
-  } 
-  
 
 export {createPlayAudioFunction,
     PageChangeActionManager,

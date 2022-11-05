@@ -8,7 +8,7 @@
     height: 0;
 }
 
-.imageitem, div.page4 h2, div.page4 h3, #contactbutton, #hobbybutton, #projectbutton, div.page1.h2, div.page1 div.mainbox h2{
+.imageitem, div.page4 h2, div.page4 h3, #contactbutton, #hobbybutton, #projectbutton, div.page1.h2, div.page1 div.mainbox h2, .leftbox{
     opacity: 0;
 }
 
@@ -24,16 +24,23 @@
     animation: zoom 0.2s cubic-bezier(0.36, 0.04, 0, 1) forwards;
 }
 
-@keyframes zoom {
-    to { 
-        transform: scale(1.15) translateZ(30px)
-    }
-}
+
 
 .character { 
     display: inline-block;
     transform: rotateX(90deg);
     transform-origin: 50% bottom;
+}
+
+@keyframes SlideUp { 
+    from { 
+        transform: translateY(150px);
+        opacity: 0;
+    }
+    to { 
+        transform: translateY(0px);
+        opacity: 1;
+    }
 }
 
 
@@ -46,43 +53,24 @@
     }
 }
 
-@keyframes FromLeft{ 
-    from { 
-        position: absolute;
-        left: 0;
-    }
-    to {
-        position: absolute;
-        left: 50%;
-        transform: translatex(-50%);
-    }
-}
-
-@keyframes FromRight{ 
-    from { 
-        position: absolute;
-        right: 0;
-    }
-    to {
-        position: absolute;
-        right: 50%;
-        transform: translatex(-50%);
-    }
-}
-
 @keyframes FadeIn {
     to { 
         opacity: 1;
     } 
 }
 
-@keyframes Enlarge{
+@keyframes SlideDown{
     to { 
         height: 100%;
         opacity: 1;
     }
 }
 
+@keyframes zoom {
+    to { 
+        transform: scale(1.15) translateZ(30px)
+    }
+}
 
 @keyframes Rotate { 
     100% { 
