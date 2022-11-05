@@ -33,7 +33,7 @@ function main(){
   var HobbyTitleContainer = document.getElementById("page3titlecontainer"); 
   var  ContactTitleContainer = document.getElementById("page4titlecontainer"); 
 
-  
+
   generateIndividualCharacters(ProjectTitleContainer, "Projects");
   generateIndividualCharacters(HobbyTitleContainer, "Hobby"); 
   generateIndividualCharacters(ContactTitleContainer, "Contact");
@@ -49,9 +49,11 @@ function main(){
   MainMenuNavigator.AddEventlistenerToList("mouseleave", Highlighter.DeHighlightOnDeselct)
   MainMenuNavigator.AddEventlistenerToList("click", MainMenuClickAction.OnClickNavigate); 
 
+  
+  var ProjectList = new ProjectListManager(); 
   var ProjectLists = document.getElementsByClassName("projecttitlebox"); 
   var ProjectListNavigator = new NavigationManager(ProjectLists, ProjectLists[0], false);
-  var ProjectList = new ProjectListManager(); 
+  
 
   ProjectListNavigator.AddEventlistenerToList("mouseenter", Highlighter.HighlightOnSelect)
   ProjectListNavigator.AddEventlistenerToList("mouseleave", Highlighter.DeHighlightOnDeselct)

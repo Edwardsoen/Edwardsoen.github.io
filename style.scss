@@ -1,46 +1,48 @@
-$text-color: white; 
-$unselected-text-color: lighten($color: grey, $amount: 30);
-$title-font-size: 2.5em; 
-$subtitle-font-size: 1.5em; 
-$icons-font-size: 1em; 
-$page2-h3-font-size :1em; 
-$page2-h2-font-size : 2em;
-$ui-color: white; 
+$text-color: white;
+$unselected-text-color: lighten(
+  $color: grey,
+  $amount: 30,
+);
+$title-font-size: 2.5em;
+$subtitle-font-size: 1.5em;
+$icons-font-size: 1em;
+$page2-h3-font-size: 1em;
+$page2-h2-font-size: 2em;
+$ui-color: white;
 
-#background { 
+#background {
   position: absolute;
-  top:0; 
+  top: 0;
   left: 0;
   overflow: hidden;
   display: block;
 }
 
-
-.rightouterbox { 
+.rightouterbox {
   height: 40%;
 }
 
 .triangle-right {
-	width: 0;
-	height: 0;
-	border-top: 1.5vh solid transparent;
-	border-left: 3vh solid $ui-color; 
-	border-bottom: 1.5vh solid transparent;
+  width: 0;
+  height: 0;
+  border-top: 1.5vh solid transparent;
+  border-left: 3vh solid $ui-color;
+  border-bottom: 1.5vh solid transparent;
   margin-right: 2vh;
   visibility: hidden;
 }
 
 .triangle-left {
-	width: 0;
-	height: 0;
-	border-top: 1.5vh solid transparent;
-	border-right: 3vh solid $ui-color; 
-	border-bottom: 1.5vh solid transparent;
+  width: 0;
+  height: 0;
+  border-top: 1.5vh solid transparent;
+  border-right: 3vh solid $ui-color;
+  border-bottom: 1.5vh solid transparent;
   margin-left: 2vh;
   visibility: hidden;
-} 
+}
 
-#app { 
+#app {
   margin: 0;
 }
 
@@ -48,10 +50,9 @@ body {
   margin: 0;
 }
 
-div
-.parent {
+div .parent {
   overflow-y: scroll;
-  overflow-x: hidden; 
+  overflow-x: hidden;
   height: 100vh;
   scroll-snap-type: y mandatory;
   background-image: url(/assets/bg.jpg);
@@ -63,31 +64,30 @@ div
   }
 }
 
-
-div.page1 { 
-  div.mainbox { 
-    h1 { 
+div.page1 {
+  div.mainbox {
+    h1 {
       margin: 0;
       margin-top: 10%;
       color: $text-color;
       font-size: $title-font-size;
       text-align: center;
-      height:fit-content;
+      height: fit-content;
       width: 50%;
       margin: auto;
       margin-top: 3%;
     }
-    h2 { 
+    h2 {
       color: $text-color;
       font-size: $subtitle-font-size;
       text-align: center;
-      height:fit-content;
+      height: fit-content;
       width: 50%;
       margin: auto;
     }
-    ul{ 
-      li{ 
-        color: $unselected-text-color; 
+    ul {
+      li {
+        color: $unselected-text-color;
         font-size: $subtitle-font-size;
         text-align: center;
         align-items: center;
@@ -106,147 +106,149 @@ div.page1 {
       height: inherit;
       list-style: none;
     }
-    position: relative; 
-    display:inline-block;
+    position: relative;
+    display: inline-block;
     height: 90%;
     width: 100%;
   }
 
-  height: inherit; 
+  height: inherit;
   div.icons {
-    a { 
+    a {
       text-decoration: none;
     }
-    div { 
+    div {
       display: flex;
       margin-left: 7%;
       margin-right: 7%;
       align-items: center;
     }
-    img { 
-      height: 50%;  
+    img {
+      height: 50%;
       padding-left: 5%;
       padding-right: 5%;
       width: auto;
       align-content: center;
       justify-content: center;
     }
-    h2
-      {
-        font-size: $icons-font-size;
-        padding-left: 2%;
-        padding-right: 2%;
-        color: $text-color;
-        align-items: center;
-        justify-content: center;
-      }
+    h2 {
+      font-size: $icons-font-size;
+      padding-left: 2%;
+      padding-right: 2%;
+      color: $text-color;
+      align-items: center;
+      justify-content: center;
+    }
     display: flex;
-    justify-content:space-between; 
+    justify-content: space-between;
     width: 100%;
     height: 10%;
   }
   overflow-y: hidden;
 }
 
-div.page2{ 
+div.page2 {
   height: 100%;
   width: 100%;
-  .titlebox { 
+  .titlebox {
     width: 100%;
     height: 20%;
-    h1 { 
-      color: $text-color; 
+    h1 {
+      color: $text-color;
       font-size: $title-font-size;
     }
     justify-content: center;
     align-items: center;
     display: flex;
   }
-  .contentbox { 
+  .contentbox {
     width: 100%;
     height: 80%;
     color: $text-color;
-    .leftbox{
-      color: $unselected-text-color; 
+    .leftbox {
+      color: $unselected-text-color;
       width: 100%;
       display: inline-flex;
       justify-content: center;
       .projecttitlebox {
-        h2 { 
+        h2 {
           font-size: $page2-h2-font-size;
           margin-left: auto;
           margin-right: auto;
         }
         width: 20%;
-        display:inline-flex;
+        display: inline-flex;
         border: 1px solid white;
 
         // for animations
         background-size: 100% 200%;
-        background-image: linear-gradient(to bottom, transparent 50%, rgba(66, 66, 66, 0.4) 50%);
+        background-image: linear-gradient(
+          to bottom,
+          transparent 50%,
+          rgba(66, 66, 66, 0.4) 50%
+        );
       }
-
     }
-    .rightbox{ 
+    .descriptioncontainer {
+      width: 80%;
+      height: 60%;
+      display: block;
+      margin: auto;
+      align-items: center;
+    }
+    .rightbox {
       justify-content: center;
       display: block;
       margin-left: 2%;
       // height: 40%;
       width: 50%;
-      border:1px solid;
+      border: 1px solid;
       border-right-color: transparent;
-      border-left-color:transparent; 
+      border-left-color: transparent;
       margin-left: auto;
       margin-right: auto;
       h3 {
         font-size: $page2-h3-font-size;
-        width: 80%; 
-        height: 60%;
-        display: flex;
-        margin: auto;
-        align-items: center;
       }
-      a { 
+      a {
         text-decoration: none;
         color: $text-color;
       }
-      .contentlink{
+      .contentlink {
         height: 20%;
         display: flex;
         justify-content: space-around;
         width: 80%;
         margin-right: auto;
         margin-left: auto;
-        h2{ 
+        h2 {
           font-size: $page2-h2-font-size;
           width: fit-content;
         }
       }
     }
   }
+}
 
-} 
-
-div.page3 { 
-  .titlebox { 
+div.page3 {
+  .titlebox {
     width: 100%;
     height: 20%;
-    h1 { 
-      color: $text-color; 
+    h1 {
+      color: $text-color;
       font-size: $title-font-size;
-      
     }
     justify-content: center;
     align-items: center;
     display: flex;
   }
-  
-  h3 { 
+
+  h3 {
     text-align: center;
     color: $text-color;
     font-size: $page2-h3-font-size;
   }
-  .imagecontainer { 
+  .imagecontainer {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -256,11 +258,11 @@ div.page3 {
     border-radius: 15px;
     height: 70%;
     flex-flow: wrap;
-    .imageitem { 
+    .imageitem {
       height: 10%;
       width: auto;
       margin: 1%;
-      img { 
+      img {
         border-radius: 15px;
         max-width: 250px;
         max-height: 150px;
@@ -269,10 +271,9 @@ div.page3 {
       }
     }
   }
-
 }
 
-div.page4 { 
+div.page4 {
   height: 100%;
   width: 100%;
   color: $text-color;
@@ -280,40 +281,35 @@ div.page4 {
   justify-content: center;
   align-items: center;
   text-align: center;
-  h1 { 
+  h1 {
     font-size: $title-font-size;
   }
-  div { 
+  div {
     margin-left: 5%;
     margin-right: 5%;
   }
-  h2 { 
+  h2 {
     justify-content: center;
     height: fit-content;
     width: 100%;
     font-size: 1.8em;
-    
   }
   h3 {
     justify-content: center;
     font-size: 1.3em;
     margin: auto;
   }
-
-
 }
 
-
-
-@media (min-height:100vw) {
+@media (min-height: 100vw) {
   div.page2 .contentbox {
-    flex-direction: column-reverse; 
+    flex-direction: column-reverse;
   }
-  div.page2 .contentbox .leftbox { 
-    display: block; 
+  div.page2 .contentbox .leftbox {
+    display: block;
   }
-  div.page2 .contentbox .leftbox .projecttitlebox { 
-    h2 { 
+  div.page2 .contentbox .leftbox .projecttitlebox {
+    h2 {
       text-align: center;
     }
     display: block;
@@ -322,33 +318,31 @@ div.page4 {
     width: 80%;
   }
 
-  div.page2 .contentbox .rightbox { 
-    width: 80%; 
+  div.page2 .contentbox .rightbox {
+    width: 80%;
   }
 
-  div.page2 .titlebox { 
+  div.page2 .titlebox {
     height: initial;
   }
 
-  div.page2 .contentbox .rightbox h3 { 
+  div.page2 .contentbox .rightbox h3 {
     text-align: center;
   }
 }
 
-
-
 .modal {
   display: none;
-  position: fixed; 
-  z-index: 1; 
-  padding-top: 5%; 
+  position: fixed;
+  z-index: 1;
+  padding-top: 5%;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto; 
-  background-color: rgb(0,0,0); 
-  background-color: rgba(0,0,0,0.9); 
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .modal-content {
@@ -356,9 +350,7 @@ div.page4 {
   display: block;
   width: 80%;
   max-width: 60vw;
-  
 }
-
 
 #caption {
   margin: auto;

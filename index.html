@@ -1,197 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edward's site</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Edward's site</title>
-</head>
-
-<body>
-  <div id="app">
-    <div class="parent">
-      <section>
-        <div class="page1">
-          <div class = "icons">  
-            <div>
-              <img src="./assets/icons/github.svg">
-              <a href = "https://github.com/Edwardsoen/"> 
-                <h2>Github </h2>
-              </a>
-            </div>  
-            <div>
-              <a href = "https://www.artstation.com/edwardss"> 
-                <h2>Artstation</h2>
-              </a>
-              <img src="./assets/icons/artstation.svg">
+  <body>
+    <div id="app">
+      <div class="parent">
+        <section>
+          <div class="page1">
+            <div class="icons">
+              <div>
+                <img src="./assets/icons/github.svg" />
+                <a href="https://github.com/Edwardsoen/">
+                  <h2>Github</h2>
+                </a>
+              </div>
+              <div>
+                <a href="https://www.artstation.com/edwardss">
+                  <h2>Artstation</h2>
+                </a>
+                <img src="./assets/icons/artstation.svg" />
+              </div>
+            </div>
+            <div class="mainbox">
+              <div id="page1titlecontainer">
+                <h1 id="page1title">
+                  <span class="character">Hello,</span>
+                  <span class="character">my</span>
+                  <span class="character">name</span>
+                  <span class="character">is</span>
+                  <span class="character">Edward</span>
+                </h1>
+                <h2 id="page1subtitle">
+                  an aspiring software developer and hobbiyist artist.
+                </h2>
+              </div>
+              <ul id="MainMenuItem">
+                <li>
+                  <div><span id="projectbutton">Project</span></div>
+                </li>
+                <li>
+                  <div><span id="hobbybutton">Hobby</span></div>
+                </li>
+                <li>
+                  <div><span id="contactbutton">Contact</span></div>
+                </li>
+              </ul>
             </div>
           </div>
-          <div class="mainbox">
-            <div id = "page1titlecontainer">
-              <h1 id = "page1title">
-                <span class = "character">Hello,</span> 
-                <span class = "character">my</span> 
-                <span class = "character">name</span> 
-                <span class = "character">is</span>
-                 <span class = "character">Edward</span> 
-              </h1>
-              <h2 id = "page1subtitle">
-                an aspiring software developer and hobbiyist artist.
+        </section>
+        <section>
+          <div class="page2">
+            <div class="titlebox" id="page2title">
+              <div id="page2titlecontainer"></div>
+            </div>
+            <div class="contentbox">
+              <div class="rightouterbox">
+                <div class="rightbox">
+                  <div class="descriptioncontainer">
+                    
+                  </div>
+
+                  <div class="contentlink" id="contentlinkbox"></div>
+                </div>
+              </div>
+              <div class="leftbox">
+                
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01" />
+            <div id="caption"></div>
+          </div>
+          <div class="page3">
+            <div class="titlebox" id="page3title">
+              <div id="page3titlecontainer"></div>
+            </div>
+
+            <div class="imagecontainer">
+              <div class="imageitem">
+                <div class="innerimageitem">
+                  <img src="./assets/HobbyImages/portrait study 1.jpg" />
+                </div>
+              </div>
+
+              <div class="imageitem">
+                <div class="innerimageitem">
+                  <img src="./assets/HobbyImages/portrait study 2.jpg" />
+                </div>
+              </div>
+
+              <div class="imageitem">
+                <div class="innerimageitem">
+                  <img src="./assets/HobbyImages/portrait study 3.jpg" />
+                </div>
+              </div>
+
+              <div class="imageitem">
+                <div class="innerimageitem">
+                  <img src="./assets/HobbyImages/portrait study 4.jpg" />
+                </div>
+              </div>
+
+              <div class="imageitem">
+                <div class="innerimageitem">
+                  <img src="./assets/HobbyImages/Sculpture study.jpg" />
+                </div>
+              </div>
+
+              <div class="imageitem">
+                <div class="innerimageitem">
+                  <img src="./assets/HobbyImages/Thumbnail sketch 2.jpg" />
+                </div>
+              </div>
+
+              <div class="imageitem">
+                <div class="innerimageitem">
+                  <img src="./assets/HobbyImages/Thumbnail sketch 3.jpg" />
+                </div>
+              </div>
+
+              <div class="imageitem">
+                <div class="innerimageitem">
+                  <img src="./assets/HobbyImages/Thumbnail sketch.jpg" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="page4">
+            <div>
+              <div id="page4titlecontainer"></div>
+              <h2>
+                Click <a href="mailto:edwardsoen@gmail.com">here</a> to write me
+                an email. Or you can find me on my
+                <a href="https://www.linkedin.com/in/edward-soen-80a31b161/"
+                  >Linkedin</a
+                >
               </h2>
-          </div>
-            <ul id = "MainMenuItem">
-              <li><div><span id = "projectbutton">Project</span></div></li>
-              <li><div><span id = "hobbybutton">Hobby</span></div></li>
-              <li><div><span id = "contactbutton">Contact</span></div></li>
-            </ul>
-          </div>
-        
-        </div>
-      </section>
-      <section>
-        <div class = "page2">
-          <div class = "titlebox" id = "page2title">
-            <div id = "page2titlecontainer">
-
-            </div>
-
-          </div>
-          <div class = "contentbox">
-
-            <div class = "rightouterbox">
-            <div class = "rightbox">
-              <h3>
-              </h3>
-              <div class = "contentlink" id = "contentlinkbox">
-              </div>
-
+              <h3>This website is made with Vite, Vanilla JS & Sass.</h3>
             </div>
           </div>
-            <div class = "leftbox">
-              <div class = "projecttitlebox">
-                <h2>Planes</h2>
-              </div>
-
-              <div class = "projecttitlebox">
-                <h2>Respark</h2>
-              </div>
-            </div> 
-            
-
-
-          </div>
-
-        </div>
-      </section>
-      <section>
-        <div id="myModal" class="modal">
-          <span class="close">&times;</span>
-          <img class="modal-content" id="img01">
-          <div id="caption"></div>
-        </div>
-        <div class = "page3">
-          <div class = "titlebox" id = "page3title">
-            <div id = "page3titlecontainer">
-            </div>
-            </div>
-
-
-        <div class = "imagecontainer">
-          <div class = "imageitem">
-            <div class = "innerimageitem"> 
-              <img src = "./assets/HobbyImages/portrait study 1.jpg">
-            </div>
-          </div>
-
-
-          <div class = "imageitem">
-            <div class = "innerimageitem"> 
-              <img src = "./assets/HobbyImages/portrait study 2.jpg">
-            </div>
-          </div>
-
-          <div class = "imageitem">
-            <div class = "innerimageitem"> 
-              <img src = "./assets/HobbyImages/portrait study 3.jpg">
-            </div>
-          </div>
-
-
-          <div class = "imageitem">
-            <div class = "innerimageitem"> 
-            <img src = "./assets/HobbyImages/portrait study 4.jpg">
-          </div>
-        </div>
-
-
-          <div class = "imageitem">
-            <div class = "innerimageitem"> 
-            <img src = "./assets/HobbyImages/Sculpture study.jpg">
-          </div>
-        </div>
-
-
-          <div class = "imageitem">
-            <div class = "innerimageitem"> 
-            <img src = "./assets/HobbyImages/Thumbnail sketch 2.jpg">
-          </div>
-        </div>
-
-          <div class = "imageitem">
-            <div class = "innerimageitem"> 
-            <img src = "./assets/HobbyImages/Thumbnail sketch 3.jpg">
-          </div>
-        </div>
-
-          <div class = "imageitem">
-            <div class = "innerimageitem"> 
-            <img src = "./assets/HobbyImages/Thumbnail sketch.jpg">
-          </div>
-        </div>
-
-        </div>
-        </div>
-      </section>
-      <section>
-        <div class = "page4">
-          <div>
-            <div id = "page4titlecontainer">
-          </div>
-            <h2>Click <a href="mailto:edwardsoen@gmail.com">here</a> to write me an email.
-              Or you can find me on my <a href = "https://www.linkedin.com/in/edward-soen-80a31b161/">Linkedin</a></h2>
-          <h3>This website is made with Vite, Vanilla JS & Sass.</h3>
-          </div>
-        </div>
-      </section> 
-
-
+        </section>
+      </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  </div> 
- 
-  <script type="module" src="/main.js"></script>
-</body>
-
+    <script type="module" src="/main.js"></script>
+  </body>
 </html>
