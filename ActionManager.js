@@ -354,17 +354,17 @@ var FourthPage = function () {
         CharInterval * i
       }s`;
     }
-    document.getElementsByTagName("h2")[6].style.animation =
+    document.getElementById("page4contactdesc").style.animation =
       "FadeIn 1s forwards 0.5s";
-    document.getElementsByTagName("h3")[1].style.animation =
+    document.getElementById("page4-h3-text").style.animation =
       "FadeIn 1s forwards 1s";
   };
   this.OnClosed = function () {
     for (let i = 1; i <= characters.length; i++) {
       characters[i - 1].style.animation = ``;
     }
-    document.getElementsByTagName("h2")[6].style.animation = "";
-    document.getElementsByTagName("h3")[1].style.animation = "";
+    document.getElementById("page4contactdesc").style.animation = "";
+    document.getElementById("page4-h3-text").style.animation = "";
   };
 };
 
