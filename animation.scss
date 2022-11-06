@@ -1,21 +1,21 @@
-#page4title {
+#fourth-pagetitle {
   transform: rotateX(90deg);
 }
 
-.rightbox {
+.second-page-description-inner-box {
   opacity: 0;
   height: 0;
 }
 
-.imageitem,
-div.page4 h2,
-div.page4 h3,
-#contactbutton,
-#hobbybutton,
-#projectbutton,
-div.page1.h2,
-div.page1 div.mainbox h2,
-.leftbox {
+.image-item,
+div.fourth-page h2,
+div.fourth-page h3,
+#main-menu-contact-item,
+#main-menu-hobby-item,
+#main-menu-project-item,
+div.first-page.h2,
+div.first-page div.first-page-main-content-box h2,
+.second-page-projects-box {
   opacity: 0;
 }
 
@@ -24,11 +24,11 @@ div.page1 div.mainbox h2,
   animation: zoomIn 0.5s ease-out;
 }
 
-.projecttitlebox:hover {
+.project-item:hover {
   animation: SlideColor 0.5s forwards ease-in-out;
 }
 
-.innerimageitem:hover {
+.image-item-inner-box:hover {
   animation: zoom 0.2s cubic-bezier(0.36, 0.04, 0, 1) forwards;
 }
 

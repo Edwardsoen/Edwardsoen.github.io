@@ -5,9 +5,9 @@ $unselected-text-color: lighten(
 );
 $title-font-size: 2.5em;
 $subtitle-font-size: 1.5em;
-$icons-font-size: 1em;
-$page2-h3-font-size: 1em;
-$page2-h2-font-size: 2em;
+$first-page-icons-font-size: 1em;
+$second-page-h3-font-size: 1em;
+$second-page-h2-font-size: 2em;
 $ui-color: white;
 
 #background {
@@ -18,7 +18,7 @@ $ui-color: white;
   display: block;
 }
 
-.rightouterbox {
+.second-page-description-box {
   height: 40%;
 }
 
@@ -64,8 +64,8 @@ div .parent {
   }
 }
 
-div.page1 {
-  div.mainbox {
+div.first-page {
+  div.first-page-main-content-box {
     h1 {
       margin: 0;
       margin-top: 10%;
@@ -113,7 +113,7 @@ div.page1 {
   }
 
   height: inherit;
-  div.icons {
+  div.first-page-icons {
     a {
       text-decoration: none;
     }
@@ -132,7 +132,7 @@ div.page1 {
       justify-content: center;
     }
     h2 {
-      font-size: $icons-font-size;
+      font-size: $first-page-icons-font-size;
       padding-left: 2%;
       padding-right: 2%;
       color: $text-color;
@@ -147,10 +147,10 @@ div.page1 {
   overflow-y: hidden;
 }
 
-div.page2 {
+div.second-page {
   height: 100%;
   width: 100%;
-  .titlebox {
+  .heading-box {
     width: 100%;
     height: 20%;
     h1 {
@@ -161,18 +161,18 @@ div.page2 {
     align-items: center;
     display: flex;
   }
-  .contentbox {
+  .content-box {
     width: 100%;
     height: 80%;
     color: $text-color;
-    .leftbox {
+    .second-page-projects-box {
       color: $unselected-text-color;
       width: 100%;
       display: inline-flex;
       justify-content: center;
-      .projecttitlebox {
+      .project-item {
         h2 {
-          font-size: $page2-h2-font-size;
+          font-size: $second-page-h2-font-size;
           margin-left: auto;
           margin-right: auto;
         }
@@ -189,14 +189,14 @@ div.page2 {
         );
       }
     }
-    .descriptioncontainer {
+    .second-page-description-container {
       width: 80%;
       height: 60%;
       display: block;
       margin: auto;
       align-items: center;
     }
-    .rightbox {
+    .second-page-description-inner-box {
       justify-content: center;
       display: block;
       margin-left: 2%;
@@ -208,13 +208,13 @@ div.page2 {
       margin-left: auto;
       margin-right: auto;
       h3 {
-        font-size: $page2-h3-font-size;
+        font-size: $second-page-h3-font-size;
       }
       a {
         text-decoration: none;
         color: $text-color;
       }
-      .contentlink {
+      .links-box {
         height: 20%;
         display: flex;
         justify-content: space-around;
@@ -222,7 +222,7 @@ div.page2 {
         margin-right: auto;
         margin-left: auto;
         h2 {
-          font-size: $page2-h2-font-size;
+          font-size: $second-page-h2-font-size;
           width: fit-content;
         }
       }
@@ -230,8 +230,8 @@ div.page2 {
   }
 }
 
-div.page3 {
-  .titlebox {
+div.third-page {
+  .heading-box {
     width: 100%;
     height: 20%;
     h1 {
@@ -246,9 +246,9 @@ div.page3 {
   h3 {
     text-align: center;
     color: $text-color;
-    font-size: $page2-h3-font-size;
+    font-size: $second-page-h3-font-size;
   }
-  .imagecontainer {
+  .image-container {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -258,7 +258,7 @@ div.page3 {
     border-radius: 15px;
     height: 70%;
     flex-flow: wrap;
-    .imageitem {
+    .image-item {
       height: 10%;
       width: auto;
       margin: 1%;
@@ -273,7 +273,7 @@ div.page3 {
   }
 }
 
-div.page4 {
+div.fourth-page {
   height: 100%;
   width: 100%;
   color: $text-color;
@@ -302,13 +302,13 @@ div.page4 {
 }
 
 @media (min-height: 100vw) {
-  div.page2 .contentbox {
+  div.second-page .content-box {
     flex-direction: column-reverse;
   }
-  div.page2 .contentbox .leftbox {
+  div.second-page .content-box .second-page-projects-box {
     display: block;
   }
-  div.page2 .contentbox .leftbox .projecttitlebox {
+  div.second-page .content-box .second-page-projects-box .project-item {
     h2 {
       text-align: center;
     }
@@ -318,15 +318,15 @@ div.page4 {
     width: 80%;
   }
 
-  div.page2 .contentbox .rightbox {
+  div.second-page .content-box .second-page-description-inner-box {
     width: 80%;
   }
 
-  div.page2 .titlebox {
+  div.second-page .heading-box {
     height: initial;
   }
 
-  div.page2 .contentbox .rightbox h3 {
+  div.second-page .content-box .second-page-description-inner-box h3 {
     text-align: center;
   }
 }
@@ -355,7 +355,7 @@ div.page4 {
 #caption {
   margin: auto;
   display: block;
-  font-size: $page2-h2-font-size;
+  font-size: $second-page-h2-font-size;
   width: 80%;
   max-width: 700px;
   text-align: center;

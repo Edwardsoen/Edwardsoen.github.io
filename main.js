@@ -27,16 +27,16 @@ function generateIndividualCharacters(GrandParent, string) {
 }
 
 function main() {
-  var ProjectTitleContainer = document.getElementById("page2titlecontainer");
-  var HobbyTitleContainer = document.getElementById("page3titlecontainer");
-  var ContactTitleContainer = document.getElementById("page4titlecontainer");
+  var ProjectTitleContainer = document.getElementById("second-page-heading-container");
+  var HobbyTitleContainer = document.getElementById("third-page-heading-container");
+  var ContactTitleContainer = document.getElementById("fourth-page-heading-container");
 
   generateIndividualCharacters(ProjectTitleContainer, "Projects");
   generateIndividualCharacters(HobbyTitleContainer, "Hobby");
   generateIndividualCharacters(ContactTitleContainer, "Contact");
 
   var MainMenuClickAction = new MainMenuClickActionManager();
-  var MainMenuList = document.getElementById("MainMenuItem");
+  var MainMenuList = document.getElementById("first-page-main-menu-list");
   var MainMenuNavigator = new NavigationManager(
     MainMenuList.children,
     MainMenuList.children[0]
@@ -58,7 +58,7 @@ function main() {
   );
 
   var ProjectList = new ProjectListManager();
-  var ProjectLists = document.getElementsByClassName("projecttitlebox");
+  var ProjectLists = document.getElementsByClassName("project-item");
   var ProjectListNavigator = new NavigationManager(
     ProjectLists,
     ProjectLists[0],
@@ -84,7 +84,7 @@ function main() {
 
   setCloseButtonAction();
 
-  var ImageList = document.getElementsByClassName("imageitem");
+  var ImageList = document.getElementsByClassName("image-item");
   var ImageListNavigator = new NavigationManager(ImageList, ImageList[0]);
   ImageListNavigator.AddEventlistenerToList(
     "mouseleave",

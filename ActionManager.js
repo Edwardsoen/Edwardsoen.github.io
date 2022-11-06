@@ -101,10 +101,10 @@ function ResparkProject() {
 function ProjectListManager() {
   let isInitialized = false;
   let descriptionContainer = document.getElementsByClassName(
-    "descriptioncontainer"
+    "second-page-description-container"
   )[0];
-  let contentLink = document.getElementById("contentlinkbox");
-  let buttonContainer = document.getElementsByClassName("leftbox")[0];
+  let contentLink = document.getElementById("links-box");
+  let buttonContainer = document.getElementsByClassName("second-page-projects-box")[0];
   let data = {};
 
   this.initialize = function () {
@@ -124,7 +124,7 @@ function ProjectListManager() {
     let projectTitle = document.createElement("h2");
     projectTitle.innerHTML = name;
     titlebox.appendChild(projectTitle);
-    titlebox.classList.add("projecttitlebox");
+    titlebox.classList.add("project-item");
     return titlebox;
   }
 
@@ -140,10 +140,10 @@ function ProjectListManager() {
   this.OnClickChangeDescriptionPanel = function (event) {
     clearComponent();
     if (isInitialized) {
-      document.getElementsByClassName("rightbox")[0].style.animation = ``;
+      document.getElementsByClassName("second-page-description-inner-box")[0].style.animation = ``;
       setTimeout(() => {
         document.getElementsByClassName(
-          "rightbox"
+          "second-page-description-inner-box"
         )[0].style.animation = `SlideDown cubic-bezier(0.36, 0.04, 0, 1) 1.2s forwards`;
       }, 200);
     } else {
@@ -191,7 +191,7 @@ function onDeSelectDecreaseSize(event) {
 
 function setCloseButtonAction() {
   function closeModal() {
-    document.getElementById("myModal").style.display = "none";
+    document.getElementById("hobby-modal").style.display = "none";
   }
   document
     .getElementsByClassName("close")[0]
@@ -199,7 +199,7 @@ function setCloseButtonAction() {
 }
 
 function onImageSelected(event) {
-  var modal = document.getElementById("myModal");
+  var modal = document.getElementById("hobby-modal");
   var imgpath = event.currentTarget.getElementsByTagName("img")[0].src;
   modal.style.display = "initial";
   modal.getElementsByTagName("img")[0].src = imgpath;
@@ -239,7 +239,7 @@ function MainMenuClickActionManager() {
 
 var FirstPage = function () {
   this.pageIndex = 1;
-  let Page1CharacterContainer = document.getElementById("page1titlecontainer");
+  let Page1CharacterContainer = document.getElementById("first-page-heading-container");
   let characters = Page1CharacterContainer.getElementsByClassName("character");
 
   this.OnOpened = function () {
@@ -250,34 +250,34 @@ var FirstPage = function () {
       }s`;
     }
     document.getElementById(
-      "page1subtitle"
+      "first-page-sub-heading"
     ).style.animation = `FadeIn 1.5s ease-in-out forwards ${interval * 1}s`;
     document.getElementById(
-      "projectbutton"
+      "main-menu-project-item"
     ).style.animation = `FadeIn 1.5s ease-in-out forwards ${interval * 1}s`;
     document.getElementById(
-      "contactbutton"
+      "main-menu-contact-item"
     ).style.animation = `FadeIn 1.5s ease-in-out forwards ${interval * 2}s`;
     document.getElementById(
-      "hobbybutton"
+      "main-menu-hobby-item"
     ).style.animation = `FadeIn 1.5s ease-in-out forwards ${interval * 3}s`;
   };
   this.OnClosed = function () {
     for (let i = 1; i <= characters.length; i++) {
       characters[i - 1].style.animation = ``;
     }
-    document.getElementById("page1subtitle").style.animation = ``;
-    document.getElementById("projectbutton").style.animation = "";
-    document.getElementById("contactbutton").style.animation = "";
-    document.getElementById("hobbybutton").style.animation = "";
+    document.getElementById("first-page-sub-heading").style.animation = ``;
+    document.getElementById("main-menu-project-item").style.animation = "";
+    document.getElementById("main-menu-contact-item").style.animation = "";
+    document.getElementById("main-menu-hobby-item").style.animation = "";
   };
 };
 
 var SecondPage = function () {
   this.pageIndex = 2;
-  let Page2CharacterContainer = document.getElementById("page2titlecontainer");
+  let Page2CharacterContainer = document.getElementById("second-page-heading-container");
   let characters = Page2CharacterContainer.getElementsByClassName("character");
-  let projectTitle = document.getElementsByClassName("leftbox");
+  let projectTitle = document.getElementsByClassName("second-page-projects-box");
 
   this.OnOpened = function () {
     let interval = 0.15;
@@ -294,7 +294,7 @@ var SecondPage = function () {
     }
 
     document.getElementsByClassName(
-      "rightbox"
+      "second-page-description-inner-box"
     )[0].style.animation = `SlideDown cubic-bezier(0.36, 0.04, 0, 1) 1.2s forwards`;
   };
   this.OnClosed = function () {
@@ -305,13 +305,13 @@ var SecondPage = function () {
       projectTitle[i].style.animation = ``;
     }
 
-    document.getElementsByClassName("rightbox")[0].style.animation = ``;
+    document.getElementsByClassName("second-page-description-inner-box")[0].style.animation = ``;
   };
 };
 
 var ThirdPage = function () {
   this.pageIndex = 3;
-  let Page3CharacterContainer = document.getElementById("page3titlecontainer");
+  let Page3CharacterContainer = document.getElementById("third-page-heading-container");
   let characters = Page3CharacterContainer.getElementsByClassName("character");
 
   this.OnOpened = function () {
@@ -322,7 +322,7 @@ var ThirdPage = function () {
       }s`;
     }
 
-    var imageItems = document.getElementsByClassName("imageitem");
+    var imageItems = document.getElementsByClassName("image-item");
     let interval = 0.15;
     for (let i = 0; i < imageItems.length; i++) {
       imageItems[i].style.animation = `FadeIn 1.5s forwards ${
@@ -334,8 +334,8 @@ var ThirdPage = function () {
     for (let i = 1; i <= characters.length; i++) {
       characters[i - 1].style.animation = ``;
     }
-    document.getElementsByClassName("titlebox")[1].style.animation = "";
-    var imageItems = document.getElementsByClassName("imageitem");
+    document.getElementsByClassName("heading-box")[1].style.animation = "";
+    var imageItems = document.getElementsByClassName("image-item");
     for (let i = 0; i < imageItems.length; i++) {
       imageItems[i].style.animation = ``;
     }
@@ -344,7 +344,7 @@ var ThirdPage = function () {
 
 var FourthPage = function () {
   this.pageIndex = 4;
-  let Page4CharacterContainer = document.getElementById("page4titlecontainer");
+  let Page4CharacterContainer = document.getElementById("fourth-page-heading-container");
   let characters = Page4CharacterContainer.getElementsByClassName("character");
 
   this.OnOpened = function () {
@@ -354,17 +354,17 @@ var FourthPage = function () {
         CharInterval * i
       }s`;
     }
-    document.getElementById("page4contactdesc").style.animation =
+    document.getElementById("fourth-page-sub-heading").style.animation =
       "FadeIn 1s forwards 0.5s";
-    document.getElementById("page4-h3-text").style.animation =
+    document.getElementById("fourth-page-sub-sub-heading").style.animation =
       "FadeIn 1s forwards 1s";
   };
   this.OnClosed = function () {
     for (let i = 1; i <= characters.length; i++) {
       characters[i - 1].style.animation = ``;
     }
-    document.getElementById("page4contactdesc").style.animation = "";
-    document.getElementById("page4-h3-text").style.animation = "";
+    document.getElementById("fourth-page-sub-heading").style.animation = "";
+    document.getElementById("fourth-page-sub-sub-heading").style.animation = "";
   };
 };
 
@@ -375,10 +375,10 @@ function imageLoader() {
       console.log(file);
     });
   });
-  let imageContainer = document.getElementsByClassName("imagecontainer")[0];
+  let imageContainer = document.getElementsByClassName("image-container")[0];
   for (let i = 0; i <= files.length; i++) {
     let imageItem = document.createElement("div");
-    imageItem.className = "imageitem";
+    imageItem.className = "image-item";
     let imageElement = document.createElement("img");
     imageItem.appendChild(imageElement);
     console.log(files[i]);
