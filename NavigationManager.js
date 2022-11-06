@@ -54,10 +54,6 @@ function NavigationManager(list, FirstSelectedItem, SelectoOHover = true) {
   init();
 }
 
-function setColor(color) {
-  document.getElementById("debugger").style.backgroundColor = color;
-}
-
 function PageNavigator(parentElement, totalPage) {
   this.parent = parentElement;
   this.totalPage = totalPage;

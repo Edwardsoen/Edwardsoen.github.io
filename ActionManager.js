@@ -44,7 +44,7 @@ function PlaneProject() {
     let websiteParent = document.createElement("h2");
     let websiteLink = document.createElement("a");
     websiteLink.href = "https://itervision.com/planes";
-    websiteLink.innerHTML = "Rogue Plane";
+    websiteLink.innerHTML = "Play here";
     websiteParent.appendChild(websiteLink);
     hrefElements.appendChild(websiteParent);
   };
@@ -54,7 +54,7 @@ function PlaneProject() {
   }
 
   this.getTitle = function () {
-    return "Plane";
+    return "Rogue Plane";
   };
 }
 
@@ -84,7 +84,7 @@ function ResparkProject() {
     let websiteParent = document.createElement("h2");
     let websiteLink = document.createElement("a");
     websiteLink.href = "https://playrespark.com/";
-    websiteLink.innerHTML = "Respark";
+    websiteLink.innerHTML = "Learn more here";
     websiteParent.appendChild(websiteLink);
     hrefElements.appendChild(websiteParent);
   };
