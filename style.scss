@@ -260,11 +260,11 @@ div#third-page {
     .image-item {
       height: 10%;
       width: auto;
-      margin: 1%;
+      margin: 2%;
       img {
         border-radius: 15px;
-        max-width: 250px;
-        max-height: 150px;
+        max-width: 150px;
+        max-height: 250px;
         height: auto;
         width: auto;
       }
@@ -301,6 +301,12 @@ div#fourth-page {
 }
 
 @media (min-height: 100vw) {
+  .image-item {
+    margin: 1%;
+  }
+  div#third-page .image-container .image-item img { 
+    max-width: 120px;
+  }
   div#second-page .content-box {
     flex-direction: column-reverse;
   }
@@ -352,8 +358,8 @@ div#fourth-page {
 .modal-content {
   margin: auto;
   display: block;
-  width: 80%;
-  max-width: 60vw;
+  max-width: 100vw;
+  max-height: 100vh;
 }
 
 #caption {
