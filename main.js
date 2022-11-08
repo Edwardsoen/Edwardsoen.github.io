@@ -6,7 +6,6 @@ import {
   OnBorderSelectAction,
   PageChangeActionManager,
   MainMenuClickActionManager,
-  OnSelectHighlighter,
   setCloseButtonAction,
   onImageSelected,
   ProjectListManager,
@@ -41,17 +40,9 @@ function main() {
     MainMenuList.children,
     MainMenuList.children[0]
   );
-  var Highlighter = new OnSelectHighlighter();
+  // var Highlighter = new OnSelectHighlighter();
 
   var BorderAction = new OnBorderSelectAction();
-  MainMenuNavigator.AddEventlistenerToList(
-    "mouseenter",
-    Highlighter.HighlightOnSelect
-  );
-  MainMenuNavigator.AddEventlistenerToList(
-    "mouseleave",
-    Highlighter.DeHighlightOnDeselct
-  );
   MainMenuNavigator.AddEventlistenerToList(
     "click",
     MainMenuClickAction.OnClickNavigate
@@ -65,14 +56,6 @@ function main() {
     false
   );
 
-  ProjectListNavigator.AddEventlistenerToList(
-    "mouseenter",
-    Highlighter.HighlightOnSelect
-  );
-  ProjectListNavigator.AddEventlistenerToList(
-    "mouseleave",
-    Highlighter.DeHighlightOnDeselct
-  );
   ProjectListNavigator.AddEventlistenerToList(
     "click",
     ProjectList.OnClickChangeDescriptionPanel

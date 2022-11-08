@@ -1,12 +1,39 @@
-function OnSelectHighlighter() {
-  var defaultColor;
-  var targetColor = "white";
-  this.HighlightOnSelect = function (event) {
-    defaultColor = event.currentTarget.style.color;
-    event.currentTarget.style.color = targetColor;
+function NewpipeSyncProject() {
+  this.setPage = function (parentDiv) {
+    let mainHeading = "An extension of an open source Youtube client with added functionality";
+    let description1 = "description1description1description1desc ription1description1";
+    let description2 = "description2description2description2desc ription2description2";
+
+    let mainDescriptionElement = document.createElement("h2");
+    let description1Element = document.createElement("h3");
+    let description2Element = document.createElement("h3");
+
+    mainDescriptionElement.innerHTML = mainHeading;
+    description1Element.innerHTML = description1;
+    description2Element.innerHTML = description2;
+
+    parentDiv.appendChild(mainDescriptionElement);
+    parentDiv.appendChild(description1Element);
+    parentDiv.appendChild(description2Element);
+  
+  
   };
-  this.DeHighlightOnDeselct = function (event) {
-    event.currentTarget.style.color = defaultColor;
+
+  this.setRedirects = function (hrefElements) {
+    let websiteParent = document.createElement("h2");
+    let websiteLink = document.createElement("a");
+    websiteLink.href = "https://github.com/Edwardsoen/NewPipe";
+    websiteLink.innerHTML = "Github";
+    websiteParent.appendChild(websiteLink);
+    hrefElements.appendChild(websiteParent);
+  };
+
+  this.getImage = function () {
+    return undefined;
+  };
+
+  this.getTitle = function () {
+    return "Newpipe Sync";
   };
 }
 
@@ -104,13 +131,16 @@ function ProjectListManager() {
     "second-page-description-container"
   )[0];
   let contentLink = document.getElementById("links-box");
-  let buttonContainer = document.getElementsByClassName("second-page-projects-box")[0];
+  let buttonContainer = document.getElementsByClassName(
+    "second-page-projects-box"
+  )[0];
   let data = {};
 
   this.initialize = function () {
     let projects = [];
     projects.push(new PlaneProject());
     projects.push(new ResparkProject());
+    projects.push(new NewpipeSyncProject());
 
     for (let i = 0; i <= projects.length - 1; i++) {
       let projectButton = generateButton(projects[i].getTitle());
@@ -140,7 +170,9 @@ function ProjectListManager() {
   this.OnClickChangeDescriptionPanel = function (event) {
     clearComponent();
     if (isInitialized) {
-      document.getElementsByClassName("second-page-description-inner-box")[0].style.animation = ``;
+      document.getElementsByClassName(
+        "second-page-description-inner-box"
+      )[0].style.animation = ``;
       setTimeout(() => {
         document.getElementsByClassName(
           "second-page-description-inner-box"
@@ -239,7 +271,9 @@ function MainMenuClickActionManager() {
 
 var FirstPage = function () {
   this.pageIndex = 1;
-  let Page1CharacterContainer = document.getElementById("first-page-heading-container");
+  let Page1CharacterContainer = document.getElementById(
+    "first-page-heading-container"
+  );
   let characters = Page1CharacterContainer.getElementsByClassName("character");
 
   this.OnOpened = function () {
@@ -275,9 +309,13 @@ var FirstPage = function () {
 
 var SecondPage = function () {
   this.pageIndex = 2;
-  let Page2CharacterContainer = document.getElementById("second-page-heading-container");
+  let Page2CharacterContainer = document.getElementById(
+    "second-page-heading-container"
+  );
   let characters = Page2CharacterContainer.getElementsByClassName("character");
-  let projectTitle = document.getElementsByClassName("second-page-projects-box");
+  let projectTitle = document.getElementsByClassName(
+    "second-page-projects-box"
+  );
 
   this.OnOpened = function () {
     let interval = 0.15;
@@ -305,13 +343,17 @@ var SecondPage = function () {
       projectTitle[i].style.animation = ``;
     }
 
-    document.getElementsByClassName("second-page-description-inner-box")[0].style.animation = ``;
+    document.getElementsByClassName(
+      "second-page-description-inner-box"
+    )[0].style.animation = ``;
   };
 };
 
 var ThirdPage = function () {
   this.pageIndex = 3;
-  let Page3CharacterContainer = document.getElementById("third-page-heading-container");
+  let Page3CharacterContainer = document.getElementById(
+    "third-page-heading-container"
+  );
   let characters = Page3CharacterContainer.getElementsByClassName("character");
 
   this.OnOpened = function () {
@@ -344,7 +386,9 @@ var ThirdPage = function () {
 
 var FourthPage = function () {
   this.pageIndex = 4;
-  let Page4CharacterContainer = document.getElementById("fourth-page-heading-container");
+  let Page4CharacterContainer = document.getElementById(
+    "fourth-page-heading-container"
+  );
   let characters = Page4CharacterContainer.getElementsByClassName("character");
 
   this.OnOpened = function () {
@@ -421,7 +465,6 @@ export {
   createPlayAudioFunction,
   PageChangeActionManager,
   MainMenuClickActionManager,
-  OnSelectHighlighter,
   OnBorderSelectAction,
   onDeSelectDecreaseSize,
   ProjectListManager,
