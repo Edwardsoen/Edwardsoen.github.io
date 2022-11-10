@@ -285,24 +285,12 @@ var FirstPage = function () {
     document.getElementById(
       "first-page-sub-heading"
     ).style.animation = `FadeIn 1.5s ease-in-out forwards ${interval * 1}s`;
-    document.getElementById(
-      "main-menu-project-item"
-    ).style.animation = `FadeIn 1.5s ease-in-out forwards ${interval * 1}s`;
-    document.getElementById(
-      "main-menu-contact-item"
-    ).style.animation = `FadeIn 1.5s ease-in-out forwards ${interval * 2}s`;
-    document.getElementById(
-      "main-menu-hobby-item"
-    ).style.animation = `FadeIn 1.5s ease-in-out forwards ${interval * 3}s`;
   };
   this.OnClosed = function () {
     for (let i = 1; i <= characters.length; i++) {
       characters[i - 1].style.animation = ``;
     }
     document.getElementById("first-page-sub-heading").style.animation = ``;
-    document.getElementById("main-menu-project-item").style.animation = "";
-    document.getElementById("main-menu-contact-item").style.animation = "";
-    document.getElementById("main-menu-hobby-item").style.animation = "";
   };
 };
 

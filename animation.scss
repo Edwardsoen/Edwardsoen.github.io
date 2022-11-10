@@ -9,9 +9,6 @@
 .image-item,
 #fourth-page-sub-heading,
 #fourth-page-sub-sub-heading,
-#main-menu-contact-item,
-#main-menu-hobby-item,
-#main-menu-project-item,
 div#first-page.h2,
 div#first-page div.first-page-main-content-box h2,
 .second-page-projects-box {
@@ -36,6 +33,7 @@ div#first-page div.first-page-main-content-box h2,
   transform: rotateX(90deg);
   transform-origin: 50% bottom;
 }
+
 
 @keyframes SlideUp {
   from {
