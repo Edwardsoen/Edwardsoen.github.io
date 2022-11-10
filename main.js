@@ -35,10 +35,14 @@ function main() {
   generateIndividualCharacters(ContactTitleContainer, "Contact");
 
   var MainMenuClickAction = new MainMenuClickActionManager();
-  var MainMenuList = document.getElementById("first-page-main-menu-list");
+  var MainMenuList = [];
+  MainMenuList.push(document.getElementById("main-menu-project-item"))
+  MainMenuList.push(document.getElementById("main-menu-hobby-item"))
+  MainMenuList.push(document.getElementById("main-menu-contact-item"))
+
   var MainMenuNavigator = new NavigationManager(
-    MainMenuList.children,
-    MainMenuList.children[0]
+    MainMenuList,
+    MainMenuList[0]
   );
   // var Highlighter = new OnSelectHighlighter();
 

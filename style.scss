@@ -3,7 +3,7 @@ $secondary-color: darken(
   $color: $primary-color,
   $amount: 30,
 );
-
+$main-title-font-size: 3.5em; 
 $title-font-size: 2.5em;
 $subtitle-font-size: 1.5em;
 $first-page-icons-font-size: 1em;
@@ -71,16 +71,15 @@ div .parent {
 
 div#first-page {
   div.first-page-main-content-box {
+    height: 80%;
     h1 {
-      margin: 0;
-      margin-top: 10%;
       color: $primary-color;
-      font-size: $title-font-size;
+      font-size: $main-title-font-size;
       text-align: center;
       height: fit-content;
       width: 50%;
       margin: auto;
-      margin-top: 3%;
+      margin-top: 20vh;
     }
     h2 {
       color: $primary-color;
@@ -89,6 +88,7 @@ div#first-page {
       height: fit-content;
       width: 50%;
       margin: auto;
+      margin-top:1%;
     }
     ul {
       li {
@@ -119,7 +119,9 @@ div#first-page {
 
   height: inherit;
   div.first-page-icons {
+    overflow-x: auto;
     div {
+      
       display: flex;
       margin-left: 7%;
       margin-right: 7%;

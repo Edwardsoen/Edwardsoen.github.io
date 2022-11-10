@@ -1,8 +1,8 @@
 function NewpipeSyncProject() {
   this.setPage = function (parentDiv) {
     let mainHeading = "An extension of an open source Youtube client with added functionality";
-    let description1 = "description1description1description1desc ription1description1";
-    let description2 = "description2description2description2desc ription2description2";
+    let description1 = "Used AppAuth library to do oauth authentication ";
+    let description2 = "Used RxJava to do asynchronous call to Youtube API to fetch data";
 
     let mainDescriptionElement = document.createElement("h2");
     let description1Element = document.createElement("h3");
@@ -15,8 +15,6 @@ function NewpipeSyncProject() {
     parentDiv.appendChild(mainDescriptionElement);
     parentDiv.appendChild(description1Element);
     parentDiv.appendChild(description2Element);
-  
-  
   };
 
   this.setRedirects = function (hrefElements) {
@@ -251,12 +249,13 @@ function MainMenuClickActionManager() {
   var parent = document.getElementsByClassName("parent")[0];
   var data = {
     Hobby: 3,
-    Project: 2,
+    Projects: 2,
     Contact: 4,
   };
 
   this.OnClickNavigate = function (event) {
-    var scrollTarget = data[event.currentTarget.children[0].textContent];
+    console.log(event.currentTarget.textContent)
+    var scrollTarget = data[event.currentTarget.textContent.trim()];
     OnClickScrollParentTo((scrollTarget - 1) * parent.clientHeight);
   };
 
