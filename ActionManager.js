@@ -26,9 +26,17 @@ function NewpipeSyncProject() {
     hrefElements.appendChild(websiteParent);
   };
 
-  this.getImage = function () {
-    return undefined;
-  };
+  this.setMedia = function(mediaBox) {
+    let imgElement = document.createElement('img'); 
+    imgElement.style = 
+    `width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    `
+    imgElement.src = 'assets/ProjectImages/newpipe-sync.jpg'
+    mediaBox.appendChild(imgElement)
+  }
 
   this.getTitle = function () {
     return "Newpipe Sync";
@@ -74,8 +82,16 @@ function PlaneProject() {
     hrefElements.appendChild(websiteParent);
   };
 
-  function getImage() {
-    return null;
+  this.setMedia = function(mediaBox) {
+    let imgElement = document.createElement('img'); 
+    imgElement.style = 
+    `width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    `
+    imgElement.src = 'assets/ProjectImages/planes.png'
+    mediaBox.appendChild(imgElement)
   }
 
   this.getTitle = function () {
@@ -114,10 +130,17 @@ function ResparkProject() {
     hrefElements.appendChild(websiteParent);
   };
 
-  function getImage() {
-    return null;
+  this.setMedia = function(mediaBox) {
+    let imgElement = document.createElement('img'); 
+    imgElement.style = 
+    `width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    `
+    imgElement.src = 'assets/ProjectImages/respark.png'
+    mediaBox.appendChild(imgElement)
   }
-
   this.getTitle = function () {
     return "Respark";
   };
@@ -132,6 +155,7 @@ function ProjectListManager() {
   let buttonContainer = document.getElementsByClassName(
     "second-page-projects-box"
   )[0];
+  let mediaContainer = document.getElementById("project-media-box"); 
   let data = {};
 
   this.initialize = function () {
@@ -163,6 +187,9 @@ function ProjectListManager() {
     while (descriptionContainer.childElementCount > 0) {
       descriptionContainer.removeChild(descriptionContainer.firstChild);
     }
+    while (mediaContainer.childElementCount > 0) {
+      mediaContainer.removeChild(mediaContainer.firstChild);
+    }
   }
 
   this.OnClickChangeDescriptionPanel = function (event) {
@@ -182,6 +209,7 @@ function ProjectListManager() {
     let projectSelected = data[event.target.textContent];
     projectSelected.setPage(descriptionContainer);
     projectSelected.setRedirects(contentLink);
+    projectSelected.setMedia(mediaContainer);
   };
 
   this.initialize();
