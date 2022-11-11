@@ -31,8 +31,8 @@ function NewpipeSyncProject() {
     imgElement.style = 
     `width: auto;
     height: auto;
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 50%;
+    max-height: 50%;
     `
     imgElement.src = 'assets/ProjectImages/newpipe-sync.jpg'
     mediaBox.appendChild(imgElement)
@@ -87,8 +87,8 @@ function PlaneProject() {
     imgElement.style = 
     `width: auto;
     height: auto;
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 50%;
+    max-height: 50%;
     `
     imgElement.src = 'assets/ProjectImages/planes.png'
     mediaBox.appendChild(imgElement)
@@ -135,8 +135,8 @@ function ResparkProject() {
     imgElement.style = 
     `width: auto;
     height: auto;
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 50%;
+    max-height: 50%;
     `
     imgElement.src = 'assets/ProjectImages/respark.png'
     mediaBox.appendChild(imgElement)
@@ -152,11 +152,13 @@ function ProjectListManager() {
     "second-page-description-container"
   )[0];
   let contentLink = document.getElementById("links-box");
-  let buttonContainer = document.getElementsByClassName(
-    "second-page-projects-box"
-  )[0];
   let mediaContainer = document.getElementById("project-media-box"); 
-  let data = {};
+  let contentBox = document.getElementsByClassName('second-page-description-box')[0]
+
+
+  let section = document.getElementsByClassName("project-section")[0]
+  let sectionParent = section.parentElement; 
+
 
   this.initialize = function () {
     let projects = [];
@@ -164,10 +166,19 @@ function ProjectListManager() {
     projects.push(new ResparkProject());
     projects.push(new NewpipeSyncProject());
 
-    for (let i = 0; i <= projects.length - 1; i++) {
-      let projectButton = generateButton(projects[i].getTitle());
-      buttonContainer.appendChild(projectButton);
-      data[projects[i].getTitle()] = projects[i];
+    let sections = document.getElementsByClassName('project-section')
+
+    for (let i =0; i <= (projects.length - sections.length); i++) {
+      let newSection = section.cloneNode(true)  
+      sectionParent.appendChild(newSection); 
+    }
+    sections = document.getElementsByClassName('project-section')
+
+
+    for (let i = 0; i <= sections.length - 1; i++) {
+      projects[i].setMedia(sections[i].getElementsByClassName("project-media-box")[0])
+      projects[i].setRedirects(sections[i].getElementsByClassName("links-box")[0])
+      projects[i].setPage(sections[i].getElementsByClassName("second-page-description-container")[0]) 
     }
   };
 

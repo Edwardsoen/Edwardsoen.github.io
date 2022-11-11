@@ -60,14 +60,14 @@ function main() {
     false
   );
 
-  ProjectListNavigator.AddEventlistenerToList(
-    "click",
-    ProjectList.OnClickChangeDescriptionPanel
-  );
-  ProjectListNavigator.AddEventlistenerToList(
-    "Selected",
-    ProjectList.OnClickChangeDescriptionPanel
-  );
+  // ProjectListNavigator.AddEventlistenerToList(
+  //   "click",
+  //   ProjectList.OnClickChangeDescriptionPanel
+  // );
+  // ProjectListNavigator.AddEventlistenerToList(
+  //   "Selected",
+  //   ProjectList.OnClickChangeDescriptionPanel
+  // );
 
   setCloseButtonAction();
 

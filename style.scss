@@ -18,10 +18,31 @@ $second-page-h2-font-size: 2em;
   display: block;
 }
 
-.second-page-description-box { 
-  height: 45%;
+.project-media-box {
+  width: 50%;
+  display: flex;
+  justify-content: center; 
+  height: 50%;
 }
 
+.second-page-description-box::-webkit-scrollbar {
+  display: none;
+}
+
+.second-page-description-box { 
+  overflow-x: scroll;
+  display: flex;
+  scroll-snap-type: x mandatory;
+  border-right-color: transparent; 
+  border-left-color: transparent;
+  border: 1px solid;
+  .project-section { 
+    height: 100%;
+    width: 100vw;
+    scroll-snap-align: start;
+    position: relative;
+  }
+}
 
 a {
   color: $primary-color;
@@ -198,7 +219,6 @@ div#second-page {
         }
         width: 20%;
         display: inline-flex;
-        border: 1px solid $primary-color;
 
         
         background-size: 100% 200%;
@@ -217,14 +237,11 @@ div#second-page {
     }
 
     .second-page-description-inner-box {
+      width: 100vw;
       justify-content: center;
       display: block;
       margin-left: 2%;
       overflow: hidden;
-      width: 80%;
-      border: 1px solid;
-      border-right-color: transparent;
-      border-left-color: transparent;
       margin-left: auto;
       margin-right: auto;
       display: flex;
@@ -324,38 +341,38 @@ div#fourth-page {
   div#third-page .image-container .image-item img { 
     max-width: 120px;
   }
-  div#second-page .content-box {
-    flex-direction: column-reverse;
-  }
-  div#second-page .content-box .second-page-projects-box {
-    display: block;
-  }
-  div#second-page .content-box .second-page-projects-box .project-item {
-    h2 {
-      text-align: center;
-      font-size:large;
-    }
-    max-height: 7vh;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
-  }
+  // div#second-page .content-box {
+  //   flex-direction: column-reverse;
+  // }
+  // div#second-page .content-box .second-page-projects-box {
+  //   display: block;
+  // }
+  // div#second-page .content-box .second-page-projects-box .project-item {
+  //   h2 {
+  //     text-align: center;
+  //     font-size:large;
+  //   }
+  //   max-height: 7vh;
+  //   display: block;
+  //   margin-left: auto;
+  //   margin-right: auto;
+  //   width: 80%;
+  // }
 
-  div#second-page .content-box .second-page-description-inner-box {
-    width: 80%;
-  }
+  // div#second-page .content-box {
+  //   width: 80%;
+  // }
 
-  div#second-page .heading-box {
-    height: initial;
-  }
+  // div#second-page .heading-box {
+  //   height: initial;
+  // }
 
-  div#second-page .content-box .second-page-description-inner-box h3 {
-    text-align: center;
-  }
-  .second-page-description-box { 
-    height: 50vh;
-  }
+  // div#second-page .content-box .second-page-description-inner-box h3 {
+  //   text-align: center;
+  // }
+  // .second-page-description-box { 
+  //   height: 50vh;
+  // }
 }
 
 .modal {
