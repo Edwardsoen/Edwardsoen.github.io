@@ -182,6 +182,7 @@ function ProjectListManager() {
         )[0]
       );
       let div = generateIndicator();
+      div.addEventListener("click", OnClickNavigate);
       data[i + 1] = div;
     }
 
@@ -213,6 +214,23 @@ function ProjectListManager() {
     return div;
   }
 
+  function OnClickNavigate(event) {
+    var scrollTarget = data[event.currentTarget];
+    Object.keys(data).forEach(function (key) {
+      if (data[key] == event.currentTarget) {
+        OnClickScrollParentTo((key - 1) * sectionParent.clientWidth);
+      }
+    });
+  }
+
+  function OnClickScrollParentTo(x) {
+    sectionParent.scroll({
+      top: 0,
+      left: x,
+      behavior: "smooth",
+    });
+  }
+
   this.initialize();
 }
 
@@ -220,9 +238,14 @@ function setCloseButtonAction() {
   function closeModal() {
     document.getElementById("hobby-modal").style.display = "none";
   }
-  document
-    .getElementsByClassName("close")[0]
-    .addEventListener("click", closeModal);
+  let closeButton = document.getElementsByClassName("close")[0];
+
+  closeButton.addEventListener("click", closeModal);
+  document.addEventListener("keydown", (event) => {
+    if (event.key == "Escape") {
+      closeModal();
+    }
+  });
 }
 
 function onImageSelected(event) {
