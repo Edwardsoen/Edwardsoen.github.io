@@ -3,7 +3,7 @@ $secondary-color: darken(
   $color: $primary-color,
   $amount: 30,
 );
-$main-title-font-size: 3.5em; 
+$main-title-font-size: 3.5em;
 $title-font-size: 2.5em;
 $subtitle-font-size: 1.5em;
 $first-page-icons-font-size: 1em;
@@ -20,30 +20,30 @@ $second-page-h2-font-size: 2em;
 
 .indicator {
   background-color: white;
-  width:10px;
-  height:10px;
+  width: 10px;
+  height: 10px;
   border-radius: 5px;
   margin: 10px;
   cursor: pointer;
 }
 
-.indicator-active{
+.indicator-active {
   transform: scale(1.6);
 }
 
-#scroll-indicator-box { 
+#scroll-indicator-box {
   display: flex;
   justify-content: center;
 }
 
 .project-media-box {
   width: 80vw;
-  margin:auto;
+  margin: auto;
   height: 50%;
   display: flex;
   justify-content: center;
 }
-.project-description{ 
+.project-description {
   width: 80%;
   margin: auto;
 }
@@ -52,11 +52,11 @@ $second-page-h2-font-size: 2em;
   display: none;
 }
 
-.second-page-description-box { 
+.second-page-description-box {
   overflow-x: scroll;
   display: flex;
   scroll-snap-type: x mandatory;
-  .project-section { 
+  .project-section {
     height: 100%;
     width: 100vw;
     scroll-snap-align: start;
@@ -92,7 +92,7 @@ a {
   margin: 0;
 }
 
-#first-page-heading-container { 
+#first-page-heading-container {
   margin-top: 20%;
 }
 
@@ -104,14 +104,13 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index:1
+  z-index: 1;
 }
 
 .heading-box {
   width: 100%;
   padding-top: 5vh;
 }
-
 
 div .parent {
   overflow-y: scroll;
@@ -146,7 +145,7 @@ div#first-page {
       height: fit-content;
       width: 50%;
       margin: auto;
-      margin-top:1%;
+      margin-top: 1%;
     }
     ul {
       li {
@@ -178,9 +177,8 @@ div#first-page {
   height: inherit;
   div.first-page-icons {
     div {
-      
       display: flex;
-      margin-left: auto; 
+      margin-left: auto;
       margin-right: auto;
       align-items: center;
     }
@@ -238,7 +236,6 @@ div#second-page {
         width: 20%;
         display: inline-flex;
 
-        
         background-size: 100% 200%;
         background-image: linear-gradient(
           to bottom,
@@ -256,7 +253,7 @@ div#second-page {
     }
 
     .second-page-description-inner-box {
-      background: linear-gradient(white,white) bottom no-repeat;
+      background: linear-gradient(white, white) bottom no-repeat;
       background-size: 50% 1px;
 
       width: 100vw;
@@ -267,7 +264,7 @@ div#second-page {
       h3 {
         font-size: $second-page-h3-font-size;
       }
-      
+
       .links-box {
         height: 20%;
         display: flex;
@@ -357,7 +354,7 @@ div#fourth-page {
   .image-item {
     margin: 1%;
   }
-  div#third-page .image-container .image-item img { 
+  div#third-page .image-container .image-item img {
     max-width: 120px;
   }
 }

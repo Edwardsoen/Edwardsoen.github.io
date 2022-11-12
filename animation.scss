@@ -2,7 +2,6 @@
   transform: rotateX(90deg);
 }
 
-
 .image-item,
 #fourth-page-sub-heading,
 #fourth-page-sub-sub-heading,
@@ -17,7 +16,7 @@ div#first-page div.first-page-main-content-box h2,
   animation: zoomIn 0.5s ease-out;
 }
 
-.second-page-description-box { 
+.second-page-description-box {
   height: 0;
 }
 
@@ -34,7 +33,6 @@ div#first-page div.first-page-main-content-box h2,
   transform: rotateX(90deg);
   transform-origin: 50% bottom;
 }
-
 
 @keyframes SlideUp {
   from {
