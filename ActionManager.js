@@ -37,7 +37,7 @@ function NewpipeSyncProject() {
     max-height: 30vh;
     max-width: 80vw;
     `;
-    imgElement.src = "assets/HobbyImages/newpipe-sync.jpg";
+    imgElement.src = "public/HobbyImages/newpipe-sync.jpg";
     mediaBox.appendChild(imgElement);
   };
 
@@ -92,7 +92,7 @@ function PlaneProject() {
     max-height: 30vh;
     max-width: 80vw;
     `;
-    imgElement.src = "assets/HobbyImages/planes.png";
+    imgElement.src = "public/HobbyImages/planes.png";
     mediaBox.appendChild(imgElement);
   };
 
@@ -139,7 +139,7 @@ function ResparkProject() {
     max-height: 30vh;
     max-width: 80vw;
     `;
-    imgElement.src = "assets/HobbyImages/respark.png";
+    imgElement.src = "public/HobbyImages/respark.png";
     mediaBox.appendChild(imgElement);
   };
   this.getTitle = function () {
