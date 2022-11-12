@@ -12,7 +12,7 @@ import {
   ProjectListManager,
 } from "./ActionManager.js";
 
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-SERVICE.js';
 import { getAnalytics, logEvent } from "firebase/analytics";
 
 function generateIndividualCharacters(GrandParent, string) {
