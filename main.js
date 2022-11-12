@@ -12,6 +12,9 @@ import {
   ProjectListManager,
 } from "./ActionManager.js";
 
+import { initializeApp } from "firebase/app";
+import { getAnalytics, logEvent } from "firebase/analytics";
+
 function generateIndividualCharacters(GrandParent, string) {
   parent = document.createElement("h1");
   for (let i = 0; i <= string.length - 1; i++) {
@@ -36,6 +39,19 @@ function main() {
     "fourth-page-heading-container"
   );
 
+  const firebaseConfig = {
+    apiKey: "AIzaSyCVs2rwJLr5Wv5geSMIOwlTKS42Ztfn9Do",
+    authDomain: "portfolio-site-f6637.firebaseapp.com",
+    projectId: "portfolio-site-f6637",
+    storageBucket: "portfolio-site-f6637.appspot.com",
+    messagingSenderId: "854501461887",
+    appId: "1:854501461887:web:d17b4c4192f05984cd544a",
+    measurementId: "G-K6VY6F5V56",
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
   generateIndividualCharacters(ProjectTitleContainer, "Projects");
   generateIndividualCharacters(HobbyTitleContainer, "Hobby");
   generateIndividualCharacters(ContactTitleContainer, "Contact");
@@ -57,12 +73,29 @@ function main() {
 
   var ImageList = document.getElementsByClassName("image-item");
   AddEventlistenerToList(ImageList, "click", onImageSelected);
-
+  AddEventlistenerToList(ImageList, "click", (event) => {
+    logEvent(analytics, "image_clicked");
+  });
   var PageAction = new PageChangeActionManager();
   var parentPage = document.getElementsByClassName("parent")[0];
   var pagenavigator = new VerticalPageNavigator(parentPage, 4);
   parentPage.addEventListener("PageOpened", PageAction.onPageOpened);
+  parentPage.addEventListener("PageOpened", (event) => {
+    logEvent(analytics, "page_opened", { page: event.detail });
+  });
   parentPage.addEventListener("PageClosed", PageAction.onPageClosed);
+
+  var projectContainer = document.getElementsByClassName(
+    "second-page-description-box"
+  )[0];
+  projectContainer.addEventListener("PageOpened", (event) => {
+    logEvent(analytics, "project_opened", { page: event.detail });
+  });
+
+  var links = document.getElementsByTagName("a");
+  AddEventlistenerToList(links, "click", (event) => {
+    logEvent(analytics, "link_clicked", { link: event.currentTarget.href });
+  });
 }
 
 main();

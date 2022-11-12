@@ -53,6 +53,7 @@ $second-page-h2-font-size: 2em;
 }
 
 .second-page-description-box {
+  scrollbar-width: none;
   overflow-x: scroll;
   display: flex;
   scroll-snap-type: x mandatory;
