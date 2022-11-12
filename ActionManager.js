@@ -2,9 +2,11 @@ import { HorizontalPageNavigator } from "./NavigationManager";
 
 function NewpipeSyncProject() {
   this.setPage = function (parentDiv) {
-    let mainHeading = "An extension of an open source Youtube client with added functionality";
+    let mainHeading =
+      "An extension of an open source Youtube client with added functionality";
     let description1 = "Used AppAuth library to do oauth authentication ";
-    let description2 = "Used RxJava to do asynchronous call to Youtube API to fetch data";
+    let description2 =
+      "Used RxJava to do asynchronous call to Youtube API to fetch data";
 
     let mainDescriptionElement = document.createElement("h2");
     let description1Element = document.createElement("h3");
@@ -28,17 +30,16 @@ function NewpipeSyncProject() {
     hrefElements.appendChild(websiteParent);
   };
 
-  this.setMedia = function(mediaBox) {
-    let imgElement = document.createElement('img'); 
-    imgElement.style = 
-    `width: auto;
+  this.setMedia = function (mediaBox) {
+    let imgElement = document.createElement("img");
+    imgElement.style = `width: auto;
     height: auto;
     max-height: 30vh;
     max-width: 80vw;
-    `
-    imgElement.src = 'assets/ProjectImages/newpipe-sync.jpg'
-    mediaBox.appendChild(imgElement)
-  }
+    `;
+    imgElement.src = "assets/ProjectImages/newpipe-sync.jpg";
+    mediaBox.appendChild(imgElement);
+  };
 
   this.getTitle = function () {
     return "Newpipe Sync";
@@ -84,17 +85,16 @@ function PlaneProject() {
     hrefElements.appendChild(websiteParent);
   };
 
-  this.setMedia = function(mediaBox) {
-    let imgElement = document.createElement('img'); 
-    imgElement.style = 
-    `width: auto;
+  this.setMedia = function (mediaBox) {
+    let imgElement = document.createElement("img");
+    imgElement.style = `width: auto;
     height: auto;
     max-height: 30vh;
     max-width: 80vw;
-    `
-    imgElement.src = 'assets/ProjectImages/planes.png'
-    mediaBox.appendChild(imgElement)
-  }
+    `;
+    imgElement.src = "assets/ProjectImages/planes.png";
+    mediaBox.appendChild(imgElement);
+  };
 
   this.getTitle = function () {
     return "Rogue Plane";
@@ -132,152 +132,88 @@ function ResparkProject() {
     hrefElements.appendChild(websiteParent);
   };
 
-  this.setMedia = function(mediaBox) {
-    let imgElement = document.createElement('img'); 
-    imgElement.style = 
-    `width: auto;
+  this.setMedia = function (mediaBox) {
+    let imgElement = document.createElement("img");
+    imgElement.style = `width: auto;
     height: auto;
     max-height: 30vh;
     max-width: 80vw;
-    `
-    imgElement.src = 'assets/ProjectImages/respark.png'
-    mediaBox.appendChild(imgElement)
-  }
+    `;
+    imgElement.src = "assets/ProjectImages/respark.png";
+    mediaBox.appendChild(imgElement);
+  };
   this.getTitle = function () {
     return "Respark";
   };
 }
 
 function ProjectListManager() {
-  let isInitialized = false;
-  let descriptionContainer = document.getElementsByClassName(
-    "second-page-description-container"
-  )[0];
-  let contentLink = document.getElementById("links-box");
-  let mediaContainer = document.getElementById("project-media-box"); 
-  let indicatorBox = document.getElementById('scroll-indicator-box')
-  let indicatorClassName = "indicator"
-  let indicatorActiveClassName = "indicator-active"
-
-  
-  let section = document.getElementsByClassName("project-section")[0]
-  let sectionParent = section.parentElement; 
-  let data = {
-
-  }
-
+  let indicatorBox = document.getElementById("scroll-indicator-box");
+  let indicatorClassName = "indicator";
+  let indicatorActiveClassName = "indicator-active";
+  let section = document.getElementsByClassName("project-section")[0];
+  let sectionParent = section.parentElement;
+  let data = {};
 
   this.initialize = function () {
     let projects = [];
     projects.push(new PlaneProject());
     projects.push(new ResparkProject());
     projects.push(new NewpipeSyncProject());
- 
-    let sections = document.getElementsByClassName('project-section')
 
-    for (let i =0; i <= (projects.length - sections.length); i++) {
-      let newSection = section.cloneNode(true)  
-      sectionParent.appendChild(newSection); 
+    let sections = document.getElementsByClassName("project-section");
+
+    for (let i = 0; i <= projects.length - sections.length; i++) {
+      let newSection = section.cloneNode(true);
+      sectionParent.appendChild(newSection);
     }
-    sections = document.getElementsByClassName('project-section')
+    sections = document.getElementsByClassName("project-section");
 
     for (let i = 0; i <= sections.length - 1; i++) {
-      projects[i].setMedia(sections[i].getElementsByClassName("project-media-box")[0])
-      projects[i].setRedirects(sections[i].getElementsByClassName("links-box")[0])
-      projects[i].setPage(sections[i].getElementsByClassName("second-page-description-container")[0])
-      let div = generateIndicator() 
-      data[i + 1] = div
+      projects[i].setMedia(
+        sections[i].getElementsByClassName("project-media-box")[0]
+      );
+      projects[i].setRedirects(
+        sections[i].getElementsByClassName("links-box")[0]
+      );
+      projects[i].setPage(
+        sections[i].getElementsByClassName(
+          "second-page-description-container"
+        )[0]
+      );
+      let div = generateIndicator();
+      data[i + 1] = div;
     }
 
     data[1].classList.add(indicatorActiveClassName);
-    
-    var parent = document.getElementsByClassName('second-page-description-box')[0]
-    var horizontalPageNavigator = new HorizontalPageNavigator(sectionParent,projects.length );
+
+    var parent = document.getElementsByClassName(
+      "second-page-description-box"
+    )[0];
+    var horizontalPageNavigator = new HorizontalPageNavigator(
+      sectionParent,
+      projects.length
+    );
     sectionParent.addEventListener("PageOpened", onPageOpened);
     sectionParent.addEventListener("PageClosed", onPageClosed);
   };
 
-  function onPageClosed(event) { 
-    data[event.detail].classList.remove(indicatorActiveClassName)
+  function onPageClosed(event) {
+    data[event.detail].classList.remove(indicatorActiveClassName);
   }
 
-  function onPageOpened(event) { 
+  function onPageOpened(event) {
     data[event.detail].classList.add(indicatorActiveClassName);
   }
 
-  function generateIndicator(){ 
-    let div = document.createElement('div')
-    div.classList.add(indicatorClassName)
-    indicatorBox.appendChild(div); 
-    return div; 
+  function generateIndicator() {
+    let div = document.createElement("div");
+    div.classList.add(indicatorClassName);
+    indicatorBox.appendChild(div);
+    return div;
   }
-
-
-  function clearComponent() {
-    while (contentLink.childElementCount > 0) {
-      contentLink.removeChild(contentLink.firstChild);
-    }
-    while (descriptionContainer.childElementCount > 0) {
-      descriptionContainer.removeChild(descriptionContainer.firstChild);
-    }
-    while (mediaContainer.childElementCount > 0) {
-      mediaContainer.removeChild(mediaContainer.firstChild);
-    }
-  }
-
-  this.OnClickChangeDescriptionPanel = function (event) {
-    clearComponent();
-    if (isInitialized) {
-      document.getElementsByClassName(
-        "second-page-description-inner-box"
-      )[0].style.animation = ``;
-      setTimeout(() => {
-        document.getElementsByClassName(
-          "second-page-description-inner-box"
-        )[0].style.animation = `SlideDown cubic-bezier(0.36, 0.04, 0, 1) 1.2s forwards`;
-      }, 200);
-    } else {
-      isInitialized = true;
-    }
-    let projectSelected = data[event.target.textContent];
-    projectSelected.setPage(descriptionContainer);
-    projectSelected.setRedirects(contentLink);
-    projectSelected.setMedia(mediaContainer);
-  };
 
   this.initialize();
-}
-
-function OnBorderSelectAction() {
-  function getElementToBeChanged(targetElem) {
-    if (
-      targetElem.getElementsByClassName("triangle-right") == undefined ||
-      targetElem.getElementsByClassName("triangle-left") == undefined
-    )
-      return;
-    var Elementlist = [];
-    Elementlist.push(targetElem.getElementsByClassName("triangle-right")[0]);
-    Elementlist.push(targetElem.getElementsByClassName("triangle-left")[0]);
-    return Elementlist;
-  }
-
-  this.onSelectSetBorderVisible = function (event) {
-    var ElementList = getElementToBeChanged(event.detail);
-    for (let i = 0; i < ElementList.length; i++) {
-      ElementList[i].style.visibility = "visible";
-    }
-  };
-
-  this.onDeselectSetBorderIndvisible = function (event) {
-    var ElementList = getElementToBeChanged(event.detail);
-    for (let i = 0; i < ElementList.length; i++) {
-      ElementList[i].style.visibility = "hidden";
-    }
-  };
-}
-
-function onDeSelectDecreaseSize(event) {
-  event.currentTarget.style.transform = "initial";
 }
 
 function setCloseButtonAction() {
@@ -298,12 +234,6 @@ function onImageSelected(event) {
     .split("/")
     [String(imgpath).split("/").length - 1].split(".")[0]; //image file name as caption
   modal.getElementsByTagName("div")[0].innerHTML = fileName;
-}
-
-function createPlayAudioFunction(path) {
-  return () => {
-    new Audio(path).play();
-  };
 }
 
 function MainMenuClickActionManager() {
@@ -398,6 +328,7 @@ var SecondPage = function () {
 };
 
 var ThirdPage = function () {
+  setCloseButtonAction();
   this.pageIndex = 3;
   let Page3CharacterContainer = document.getElementById(
     "third-page-heading-container"
@@ -510,11 +441,8 @@ function PageChangeActionManager() {
 }
 
 export {
-  createPlayAudioFunction,
   PageChangeActionManager,
   MainMenuClickActionManager,
-  OnBorderSelectAction,
-  onDeSelectDecreaseSize,
   ProjectListManager,
   setCloseButtonAction,
   onImageSelected,

@@ -1,15 +1,15 @@
 import "./style.scss";
 import "./animation.scss";
-import { PageNavigator, NavigationManager, HorizontalPageNavigator } from "./NavigationManager.js";
+import {
+  VerticalPageNavigator,
+  AddEventlistenerToList,
+} from "./NavigationManager.js";
 
 import {
-  OnBorderSelectAction,
   PageChangeActionManager,
   MainMenuClickActionManager,
-  setCloseButtonAction,
   onImageSelected,
   ProjectListManager,
-  onDeSelectDecreaseSize,
 } from "./ActionManager.js";
 
 function generateIndividualCharacters(GrandParent, string) {
@@ -26,9 +26,15 @@ function generateIndividualCharacters(GrandParent, string) {
 }
 
 function main() {
-  var ProjectTitleContainer = document.getElementById("second-page-heading-container");
-  var HobbyTitleContainer = document.getElementById("third-page-heading-container");
-  var ContactTitleContainer = document.getElementById("fourth-page-heading-container");
+  var ProjectTitleContainer = document.getElementById(
+    "second-page-heading-container"
+  );
+  var HobbyTitleContainer = document.getElementById(
+    "third-page-heading-container"
+  );
+  var ContactTitleContainer = document.getElementById(
+    "fourth-page-heading-container"
+  );
 
   generateIndividualCharacters(ProjectTitleContainer, "Projects");
   generateIndividualCharacters(HobbyTitleContainer, "Hobby");
@@ -36,52 +42,27 @@ function main() {
 
   var MainMenuClickAction = new MainMenuClickActionManager();
   var MainMenuList = [];
-  
-  MainMenuList.push(document.getElementById("main-menu-home-item"))
-  MainMenuList.push(document.getElementById("main-menu-project-item"))
-  MainMenuList.push(document.getElementById("main-menu-hobby-item"))
-  MainMenuList.push(document.getElementById("main-menu-contact-item"))
 
-  var MainMenuNavigator = new NavigationManager(
+  MainMenuList.push(document.getElementById("main-menu-home-item"));
+  MainMenuList.push(document.getElementById("main-menu-project-item"));
+  MainMenuList.push(document.getElementById("main-menu-hobby-item"));
+  MainMenuList.push(document.getElementById("main-menu-contact-item"));
+
+  AddEventlistenerToList(
     MainMenuList,
-    MainMenuList[0]
-  );
-  // var Highlighter = new OnSelectHighlighter();
-
-  var BorderAction = new OnBorderSelectAction();
-  MainMenuNavigator.AddEventlistenerToList(
     "click",
     MainMenuClickAction.OnClickNavigate
   );
-
-  var ProjectList = new ProjectListManager();
-  var ProjectLists = document.getElementsByClassName("project-item");
-  var ProjectListNavigator = new NavigationManager(
-    ProjectLists,
-    ProjectLists[0]
-  );
-
-  // ProjectListNavigator.AddEventlistenerToList(
-  //   "click",
-  //   ProjectList.OnClickChangeDescriptionPanel
-  // );
-  // ProjectListNavigator.AddEventlistenerToList(
-  //   "Selected",
-  //   ProjectList.OnClickChangeDescriptionPanel
-  // );
-
-  setCloseButtonAction();
+  new ProjectListManager();
 
   var ImageList = document.getElementsByClassName("image-item");
-  var ImageListNavigator = new NavigationManager(ImageList, ImageList[0]);
-  ImageListNavigator.AddEventlistenerToList("click", onImageSelected);
+  AddEventlistenerToList(ImageList, "click", onImageSelected);
 
   var PageAction = new PageChangeActionManager();
   var parentPage = document.getElementsByClassName("parent")[0];
-  var pagenavigator = new PageNavigator(parentPage, 4);
+  var pagenavigator = new VerticalPageNavigator(parentPage, 4);
   parentPage.addEventListener("PageOpened", PageAction.onPageOpened);
   parentPage.addEventListener("PageClosed", PageAction.onPageClosed);
 }
 
 main();
-
