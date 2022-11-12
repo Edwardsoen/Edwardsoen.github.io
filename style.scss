@@ -53,7 +53,6 @@ $second-page-h2-font-size: 2em;
 }
 
 .second-page-description-box { 
-
   overflow-x: scroll;
   display: flex;
   scroll-snap-type: x mandatory;
@@ -361,38 +360,6 @@ div#fourth-page {
   div#third-page .image-container .image-item img { 
     max-width: 120px;
   }
-  // div#second-page .content-box {
-  //   flex-direction: column-reverse;
-  // }
-  // div#second-page .content-box .second-page-projects-box {
-  //   display: block;
-  // }
-  // div#second-page .content-box .second-page-projects-box .project-item {
-  //   h2 {
-  //     text-align: center;
-  //     font-size:large;
-  //   }
-  //   max-height: 7vh;
-  //   display: block;
-  //   margin-left: auto;
-  //   margin-right: auto;
-  //   width: 80%;
-  // }
-
-  // div#second-page .content-box {
-  //   width: 80%;
-  // }
-
-  // div#second-page .heading-box {
-  //   height: initial;
-  // }
-
-  // div#second-page .content-box .second-page-description-inner-box h3 {
-  //   text-align: center;
-  // }
-  // .second-page-description-box { 
-  //   height: 50vh;
-  // }
 }
 
 .modal {

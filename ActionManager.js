@@ -380,7 +380,7 @@ var SecondPage = function () {
     }
 
     document.getElementsByClassName(
-      "second-page-description-inner-box"
+      "second-page-description-box"
     )[0].style.animation = `SlideDown cubic-bezier(0.36, 0.04, 0, 1) 1.2s forwards`;
   };
   this.OnClosed = function () {
@@ -392,7 +392,7 @@ var SecondPage = function () {
     }
 
     document.getElementsByClassName(
-      "second-page-description-inner-box"
+      "second-page-description-box"
     )[0].style.animation = ``;
   };
 };
