@@ -1,3 +1,5 @@
+import { HorizontalPageNavigator } from "./NavigationManager";
+
 function NewpipeSyncProject() {
   this.setPage = function (parentDiv) {
     let mainHeading = "An extension of an open source Youtube client with added functionality";
@@ -31,8 +33,8 @@ function NewpipeSyncProject() {
     imgElement.style = 
     `width: auto;
     height: auto;
-    max-width: 50%;
-    max-height: 50%;
+    max-height: 30vh;
+    max-width: 80vw;
     `
     imgElement.src = 'assets/ProjectImages/newpipe-sync.jpg'
     mediaBox.appendChild(imgElement)
@@ -87,8 +89,8 @@ function PlaneProject() {
     imgElement.style = 
     `width: auto;
     height: auto;
-    max-width: 50%;
-    max-height: 50%;
+    max-height: 30vh;
+    max-width: 80vw;
     `
     imgElement.src = 'assets/ProjectImages/planes.png'
     mediaBox.appendChild(imgElement)
@@ -135,8 +137,8 @@ function ResparkProject() {
     imgElement.style = 
     `width: auto;
     height: auto;
-    max-width: 50%;
-    max-height: 50%;
+    max-height: 30vh;
+    max-width: 80vw;
     `
     imgElement.src = 'assets/ProjectImages/respark.png'
     mediaBox.appendChild(imgElement)
@@ -153,11 +155,16 @@ function ProjectListManager() {
   )[0];
   let contentLink = document.getElementById("links-box");
   let mediaContainer = document.getElementById("project-media-box"); 
-  let contentBox = document.getElementsByClassName('second-page-description-box')[0]
+  let indicatorBox = document.getElementById('scroll-indicator-box')
+  let indicatorClassName = "indicator"
+  let indicatorActiveClassName = "indicator-active"
 
-
+  
   let section = document.getElementsByClassName("project-section")[0]
   let sectionParent = section.parentElement; 
+  let data = {
+
+  }
 
 
   this.initialize = function () {
@@ -165,7 +172,7 @@ function ProjectListManager() {
     projects.push(new PlaneProject());
     projects.push(new ResparkProject());
     projects.push(new NewpipeSyncProject());
-
+ 
     let sections = document.getElementsByClassName('project-section')
 
     for (let i =0; i <= (projects.length - sections.length); i++) {
@@ -174,22 +181,37 @@ function ProjectListManager() {
     }
     sections = document.getElementsByClassName('project-section')
 
-
     for (let i = 0; i <= sections.length - 1; i++) {
       projects[i].setMedia(sections[i].getElementsByClassName("project-media-box")[0])
       projects[i].setRedirects(sections[i].getElementsByClassName("links-box")[0])
-      projects[i].setPage(sections[i].getElementsByClassName("second-page-description-container")[0]) 
+      projects[i].setPage(sections[i].getElementsByClassName("second-page-description-container")[0])
+      let div = generateIndicator() 
+      data[i + 1] = div
     }
+
+    data[1].classList.add(indicatorActiveClassName);
+    
+    var parent = document.getElementsByClassName('second-page-description-box')[0]
+    var horizontalPageNavigator = new HorizontalPageNavigator(sectionParent,projects.length );
+    sectionParent.addEventListener("PageOpened", onPageOpened);
+    sectionParent.addEventListener("PageClosed", onPageClosed);
   };
 
-  function generateButton(name) {
-    let titlebox = document.createElement("div");
-    let projectTitle = document.createElement("h2");
-    projectTitle.innerHTML = name;
-    titlebox.appendChild(projectTitle);
-    titlebox.classList.add("project-item");
-    return titlebox;
+  function onPageClosed(event) { 
+    data[event.detail].classList.remove(indicatorActiveClassName)
   }
+
+  function onPageOpened(event) { 
+    data[event.detail].classList.add(indicatorActiveClassName);
+  }
+
+  function generateIndicator(){ 
+    let div = document.createElement('div')
+    div.classList.add(indicatorClassName)
+    indicatorBox.appendChild(div); 
+    return div; 
+  }
+
 
   function clearComponent() {
     while (contentLink.childElementCount > 0) {
@@ -287,13 +309,13 @@ function createPlayAudioFunction(path) {
 function MainMenuClickActionManager() {
   var parent = document.getElementsByClassName("parent")[0];
   var data = {
+    Home: 1,
     Hobby: 3,
     Projects: 2,
     Contact: 4,
   };
 
   this.OnClickNavigate = function (event) {
-    console.log(event.currentTarget.textContent)
     var scrollTarget = data[event.currentTarget.textContent.trim()];
     OnClickScrollParentTo((scrollTarget - 1) * parent.clientHeight);
   };

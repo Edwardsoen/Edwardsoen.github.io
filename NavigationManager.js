@@ -1,16 +1,10 @@
-function NavigationManager(list, FirstSelectedItem, SelectoOHover = true) {
+function NavigationManager(list, FirstSelectedItem) {
   this.list = list;
   var selectedItem = FirstSelectedItem;
 
   var InitalizeEvents = function () {
     const SelectedEvent = new CustomEvent("Selected", { detail: selectedItem });
     selectedItem.dispatchEvent(SelectedEvent);
-  };
-
-  var init = function () {
-    if (SelectoOHover) {
-      SetSelectedOnEachChildElementHover();
-    }
   };
 
   this.setSelectedItemByIndex = function (index) {
@@ -44,15 +38,8 @@ function NavigationManager(list, FirstSelectedItem, SelectoOHover = true) {
     selectedItem = list[event.currentTarget.index];
     event.currentTarget.dispatchEvent(SelectedEvent);
   };
-
-  var SetSelectedOnEachChildElementHover = function () {
-    for (var i = 0; i < list.length; i++) {
-      list[i].addEventListener("mouseenter", setSelectedItemOnHover);
-    }
-  };
-
-  init();
 }
+
 
 function PageNavigator(parentElement, totalPage) {
   this.parent = parentElement;
@@ -104,4 +91,61 @@ function PageNavigator(parentElement, totalPage) {
   this.parent.addEventListener("scroll", FunctionOnScroll);
 }
 
-export { NavigationManager, PageNavigator };
+
+
+
+function HorizontalPageNavigator(parentElement, totalPage) {
+  this.parent = parentElement;
+  this.totalPage = totalPage;
+
+  var parentwidth = this.parent.scrollWidth;
+  var widthPerPage = parentwidth / this.totalPage;
+  var currentPage = 1;
+  var currentX = 0;
+
+  var reCalculatewidth = function () {
+    widthPerPage = parentElement.scrollWidth / totalPage;
+  };
+
+  var FunctionOnScroll = function (event) {
+    reCalculatewidth();
+    if (currentX > event.currentTarget.scrollLeft) {
+      if ((event.currentTarget.scrollLeft / widthPerPage) % 1 < 0.1) {
+        let pageClosedEvent = new CustomEvent("PageClosed", {
+          detail: currentPage,
+        });
+        event.currentTarget.dispatchEvent(pageClosedEvent);
+        currentPage =
+          Math.round(event.currentTarget.scrollLeft / widthPerPage) + 1;
+        let pageOpenEvent = new CustomEvent("PageOpened", {
+          detail: currentPage,
+        });
+        event.currentTarget.dispatchEvent(pageOpenEvent);
+      }
+    } else {
+      if (
+        currentPage !=
+        Math.round(event.currentTarget.scrollLeft / widthPerPage) + 1
+      ) {
+        let pageClosedEvent = new CustomEvent("PageClosed", {
+          detail: currentPage,
+        });
+        event.currentTarget.dispatchEvent(pageClosedEvent);
+        currentPage =
+          Math.round(event.currentTarget.scrollLeft / widthPerPage) + 1;
+        let pageOpenEvent = new CustomEvent("PageOpened", {
+          detail: currentPage,
+        });
+        event.currentTarget.dispatchEvent(pageOpenEvent);
+      }
+    }
+    currentX = event.currentTarget.scrollLeft;
+  };
+  this.parent.addEventListener("scroll", FunctionOnScroll);
+}
+
+
+
+
+
+export { NavigationManager, PageNavigator,HorizontalPageNavigator };

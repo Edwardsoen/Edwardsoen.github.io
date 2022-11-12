@@ -1,6 +1,6 @@
 import "./style.scss";
 import "./animation.scss";
-import { PageNavigator, NavigationManager } from "./NavigationManager.js";
+import { PageNavigator, NavigationManager, HorizontalPageNavigator } from "./NavigationManager.js";
 
 import {
   OnBorderSelectAction,
@@ -36,6 +36,8 @@ function main() {
 
   var MainMenuClickAction = new MainMenuClickActionManager();
   var MainMenuList = [];
+  
+  MainMenuList.push(document.getElementById("main-menu-home-item"))
   MainMenuList.push(document.getElementById("main-menu-project-item"))
   MainMenuList.push(document.getElementById("main-menu-hobby-item"))
   MainMenuList.push(document.getElementById("main-menu-contact-item"))
@@ -56,8 +58,7 @@ function main() {
   var ProjectLists = document.getElementsByClassName("project-item");
   var ProjectListNavigator = new NavigationManager(
     ProjectLists,
-    ProjectLists[0],
-    false
+    ProjectLists[0]
   );
 
   // ProjectListNavigator.AddEventlistenerToList(
@@ -73,10 +74,6 @@ function main() {
 
   var ImageList = document.getElementsByClassName("image-item");
   var ImageListNavigator = new NavigationManager(ImageList, ImageList[0]);
-  ImageListNavigator.AddEventlistenerToList(
-    "mouseleave",
-    onDeSelectDecreaseSize
-  );
   ImageListNavigator.AddEventlistenerToList("click", onImageSelected);
 
   var PageAction = new PageChangeActionManager();
