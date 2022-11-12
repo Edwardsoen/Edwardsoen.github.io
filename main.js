@@ -12,8 +12,8 @@ import {
   ProjectListManager,
 } from "./ActionManager.js";
 
-import { initializeApp } from "firebase/app";
-import { getAnalytics, logEvent } from "firebase/analytics";
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js';
+import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
 
 function generateIndividualCharacters(GrandParent, string) {
   parent = document.createElement("h1");
