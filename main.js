@@ -1,5 +1,4 @@
 import "./style.scss";
-import "./animation.scss";
 import {
   VerticalPageNavigator,
   AddEventlistenerToList,

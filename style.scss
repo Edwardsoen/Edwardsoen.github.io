@@ -44,18 +44,8 @@ a {
 // ---------------- END -----------------------//
 //#endregion
 
-
 //#region global style
 
-
-#app {
-  margin: 0;
-}
-
-
-body {
-  margin: 0;
-}
 
 .heading-box {
   width: 100%;
@@ -79,11 +69,18 @@ body {
   }
 }
 
+#app {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+}
+
+
 //#endregion
 
-
 //#region Page 1 stylessss
-
 
 #first-page-heading-container {
   margin-top: 20%;
@@ -95,7 +92,6 @@ body {
   width: 100%;
   z-index: 1;
 }
-
 
 div#first-page {
   height: inherit;
@@ -175,7 +171,6 @@ div.first-page-main-content-box {
 }
 
 //#endregion
-
 
 //#region Page 2 styling
 
@@ -288,12 +283,9 @@ div.first-page-main-content-box {
   width: 100%;
 }
 
-
-
 //#endregion
 
-
-//#region Page 3 style 
+//#region Page 3 style
 .image-container {
   width: 80%;
   margin-left: auto;
@@ -339,7 +331,6 @@ div.first-page-main-content-box {
   max-height: 100vh;
 }
 
-
 .close {
   cursor: pointer;
   position: absolute;
@@ -351,11 +342,9 @@ div.first-page-main-content-box {
   transition: 0.3s;
 }
 
+//#endregion
 
-//#endregion 
-
-
-//#region Page 4 
+//#region Page 4
 div#fourth-page {
   height: 100%;
   width: 100%;
@@ -379,8 +368,48 @@ div#fourth-page {
   }
 }
 
+//#endregion
+
+//#region Animation before after state 
+
+.zero-opacity { 
+  opacity: 0;
+}
+
+.max-opacity { 
+  opacity: 1;
+}
+
+.zero-height { 
+  height: 0;
+}
+
+.max-height { 
+  height: 80%;
+}
+
+.modal-content,
+#caption {
+  animation: zoomIn 0.5s ease-out;
+}
+
+.project-item:hover {
+  animation: SlideColor 0.5s forwards ease-in-out;
+}
+
+.image-item-inner-box:hover {
+  animation: zoom 0.2s cubic-bezier(0.36, 0.04, 0, 1) forwards;
+}
+
+.character {
+  display: inline-block;
+  transform: rotateX(90deg);
+  transform-origin: 50% bottom;
+}
+
 //#endregion 
 
+//#region ANIMATION + MEDIA QUEREIS 
 @media (min-height: 100vw) {
   .image-item {
     margin: 1%;
@@ -390,3 +419,59 @@ div#fourth-page {
   }
 }
 
+
+@keyframes SlideUp {
+  from {
+    transform: translateY(150px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes SlideColor {
+  from {
+    background-position: 100% 0%;
+  }
+  to {
+    background-position: 0% 100%;
+  }
+}
+
+@keyframes FadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes SlideDown {
+  100% {
+    height: 80%;
+    opacity: 1;
+  }
+}
+
+@keyframes zoom {
+  to {
+    transform: scale(1.15) translateZ(30px);
+  }
+}
+
+@keyframes Rotate {
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+//#endregion 
