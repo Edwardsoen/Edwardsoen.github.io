@@ -57,12 +57,7 @@ function main() {
   generateIndividualCharacters(ContactTitleContainer, "Contact");
 
   var MainMenuClickAction = new MainMenuClickActionManager();
-  var MainMenuList = [];
-
-  MainMenuList.push(document.getElementById("main-menu-home-item"));
-  MainMenuList.push(document.getElementById("main-menu-project-item"));
-  MainMenuList.push(document.getElementById("main-menu-hobby-item"));
-  MainMenuList.push(document.getElementById("main-menu-contact-item"));
+  var MainMenuList = document.getElementsByClassName('navbar-non-redirect-button'); 
 
   AddEventlistenerToList(
     MainMenuList,

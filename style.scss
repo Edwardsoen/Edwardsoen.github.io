@@ -3,20 +3,181 @@ $secondary-color: darken(
   $color: $primary-color,
   $amount: 30,
 );
-$main-title-font-size: 3.5em;
-$title-font-size: 2.5em;
-$subtitle-font-size: 1.5em;
-$first-page-icons-font-size: 1em;
-$second-page-h3-font-size: 1em;
-$second-page-h2-font-size: 2em;
 
-#background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  display: block;
+$main-title-font-size: 3.5em; // Main title (my name is blbablablalbalba)
+$heading-font-size: 2.5em; // h1 headings
+$subtitle-font-size: 1.5em; //icon font size + sub heading
+
+//#region texts
+// ------------- TEXT STYLING ---------------------//
+h1 {
+  color: $primary-color;
+  font-size: $heading-font-size;
 }
+
+h2 {
+  color: $primary-color;
+  font-size: $subtitle-font-size;
+}
+
+h3 {
+  font-size: $subtitle-font-size;
+  color: $primary-color;
+}
+
+a {
+  color: $primary-color;
+}
+
+#caption {
+  margin: auto;
+  display: block;
+  font-size: $heading-font-size;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: $primary-color;
+  padding: 10px 0;
+  height: 150px;
+}
+
+// ---------------- END -----------------------//
+//#endregion
+
+
+//#region global style
+
+
+#app {
+  margin: 0;
+}
+
+
+body {
+  margin: 0;
+}
+
+.heading-box {
+  width: 100%;
+  padding-top: 5vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.parent {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  background-image: url(/assets/bg.jpg);
+  background-size: cover;
+  section {
+    height: 100vh;
+    scroll-snap-align: start;
+    position: relative;
+  }
+}
+
+//#endregion
+
+
+//#region Page 1 stylessss
+
+
+#first-page-heading-container {
+  margin-top: 20%;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+
+div#first-page {
+  height: inherit;
+  overflow-y: hidden;
+}
+
+div.first-page-icons {
+  // navbar parent element
+  div {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+  }
+  img {
+    height: 50%;
+    padding-left: 5%;
+    padding-right: 5%;
+    width: auto;
+    align-content: center;
+    justify-content: center;
+  }
+  h2 {
+    padding-left: 2%;
+    padding-right: 2%;
+    align-items: center;
+    justify-content: center;
+  }
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 5%;
+}
+
+div.first-page-main-content-box {
+  //Main heading parent element
+  height: 80%;
+  h1 {
+    text-align: center;
+    height: fit-content;
+    width: 50%;
+    margin: auto;
+    margin-top: 20vh;
+  }
+  h2 {
+    text-align: center;
+    height: fit-content;
+    width: 50%;
+    margin: auto;
+    margin-top: 1%;
+  }
+  ul {
+    li {
+      color: $secondary-color;
+      font-size: $subtitle-font-size;
+      text-align: center;
+      align-items: center;
+      height: 15%;
+      width: fit-content;
+      margin: auto;
+      div {
+        width: inherit;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+      }
+    }
+    margin-top: 10vh;
+    padding: 0;
+    height: inherit;
+    list-style: none;
+  }
+  position: relative;
+  display: inline-block;
+  height: 90%;
+  width: 100%;
+}
+
+//#endregion
+
+
+//#region Page 2 styling
 
 .indicator {
   background-color: white;
@@ -48,10 +209,6 @@ $second-page-h2-font-size: 2em;
   margin: auto;
 }
 
-.second-page-description-box::-webkit-scrollbar {
-  display: none;
-}
-
 .second-page-description-box {
   scrollbar-width: none;
   overflow-x: scroll;
@@ -65,298 +222,99 @@ $second-page-h2-font-size: 2em;
   }
 }
 
-a {
-  color: $primary-color;
+.second-page-description-box::-webkit-scrollbar {
+  display: none;
 }
 
-.triangle-right {
-  width: 0;
-  height: 0;
-  border-top: 1.5vh solid transparent;
-  border-left: 3vh solid $primary-color;
-  border-bottom: 1.5vh solid transparent;
-  margin-right: 2vh;
-  visibility: hidden;
-}
-
-.triangle-left {
-  width: 0;
-  height: 0;
-  border-top: 1.5vh solid transparent;
-  border-right: 3vh solid $primary-color;
-  border-bottom: 1.5vh solid transparent;
-  margin-left: 2vh;
-  visibility: hidden;
-}
-
-#app {
-  margin: 0;
-}
-
-#first-page-heading-container {
-  margin-top: 20%;
-}
-
-body {
-  margin: 0;
-}
-
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-}
-
-.heading-box {
-  width: 100%;
-  padding-top: 5vh;
-}
-
-div .parent {
-  overflow-y: scroll;
-  overflow-x: hidden;
-  height: 100vh;
-  scroll-snap-type: y mandatory;
-  background-image: url(/assets/bg.jpg);
-  background-size: cover;
-  section {
-    height: 100vh;
-    scroll-snap-align: start;
-    position: relative;
-  }
-}
-
-div#first-page {
-  div.first-page-main-content-box {
-    height: 80%;
-    h1 {
-      color: $primary-color;
-      font-size: $main-title-font-size;
-      text-align: center;
-      height: fit-content;
-      width: 50%;
-      margin: auto;
-      margin-top: 20vh;
-    }
-    h2 {
-      color: $primary-color;
-      font-size: $subtitle-font-size;
-      text-align: center;
-      height: fit-content;
-      width: 50%;
-      margin: auto;
-      margin-top: 1%;
-    }
-    ul {
-      li {
-        color: $secondary-color;
-        font-size: $subtitle-font-size;
-        text-align: center;
-        align-items: center;
-        height: 15%;
-        width: fit-content;
-        margin: auto;
-        div {
-          width: inherit;
-          justify-content: center;
-          align-items: center;
-          display: flex;
-        }
-      }
-      margin-top: 10vh;
-      padding: 0;
-      height: inherit;
-      list-style: none;
-    }
-    position: relative;
-    display: inline-block;
-    height: 90%;
-    width: 100%;
-  }
-
-  height: inherit;
-  div.first-page-icons {
-    div {
-      display: flex;
-      margin-left: auto;
-      margin-right: auto;
-      align-items: center;
-    }
-    img {
-      height: 50%;
-      padding-left: 5%;
-      padding-right: 5%;
-      width: auto;
-      align-content: center;
-      justify-content: center;
-    }
-    h2 {
-      font-size: $first-page-icons-font-size;
-      padding-left: 2%;
-      padding-right: 2%;
-      color: $primary-color;
-      align-items: center;
-      justify-content: center;
-    }
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    height: 5%;
-  }
-  overflow-y: hidden;
-}
-
-div#second-page {
-  height: 100%;
-  width: 100%;
-  .heading-box {
-    h1 {
-      color: $primary-color;
-      font-size: $title-font-size;
-    }
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-  .content-box {
-    width: 100%;
-    height: 80%;
-    color: $primary-color;
-    .second-page-projects-box {
-      color: $secondary-color;
-      width: 100%;
-      display: inline-flex;
-      justify-content: center;
-      .project-item {
-        h2 {
-          font-size: $second-page-h2-font-size;
-          margin-left: auto;
-          margin-right: auto;
-        }
-        width: 20%;
-        display: inline-flex;
-
-        background-size: 100% 200%;
-        background-image: linear-gradient(
-          to bottom,
-          transparent 50%,
-          rgba(66, 66, 66, 0.4) 50%
-        );
-      }
-    }
-    .second-page-description-container {
-      width: 90%;
-      display: block;
-      margin: auto;
-      align-items: center;
-      text-align: center;
-    }
-
-    .second-page-description-inner-box {
-      background: linear-gradient(white, white) bottom no-repeat;
-      background-size: 50% 1px;
-
-      width: 100vw;
-      display: block;
-      overflow: hidden;
-      margin-left: auto;
-      margin-right: auto;
-      h3 {
-        font-size: $second-page-h3-font-size;
-      }
-
-      .links-box {
-        height: 20%;
-        display: flex;
-        justify-content: space-around;
-        width: 80%;
-        margin-right: auto;
-        margin-left: auto;
-        h2 {
-          font-size: $second-page-h2-font-size;
-          width: fit-content;
-        }
-      }
-    }
-  }
-}
-
-div#third-page {
-  .heading-box {
-    h1 {
-      color: $primary-color;
-      font-size: $title-font-size;
-    }
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-
-  h3 {
-    text-align: center;
-    color: $primary-color;
-    font-size: $second-page-h3-font-size;
-  }
-  .image-container {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    overflow-y: auto;
-    max-height: 80vh;
-    border-radius: 15px;
-    height: 70%;
-    flex-flow: wrap;
-    .image-item {
-      height: 10%;
-      width: auto;
-      margin: 2%;
-      img {
-        border-radius: 15px;
-        max-width: 150px;
-        max-height: 250px;
-        height: auto;
-        width: auto;
-      }
-    }
-  }
-}
-
-div#fourth-page {
-  height: 100%;
-  width: 100%;
-  color: $primary-color;
-  display: inline-flex;
-  justify-content: center;
+.second-page-description-container {
+  width: 90%;
+  display: block;
+  margin: auto;
   align-items: center;
   text-align: center;
-  h1 {
-    font-size: $title-font-size;
-  }
-  div {
-    margin-left: 5%;
-    margin-right: 5%;
-  }
+}
+
+.second-page-description-inner-box {
+  background: linear-gradient(white, white) bottom no-repeat;
+  background-size: 50% 1px;
+  width: 100vw;
+  display: block;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.links-box {
+  height: 20%;
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+
   h2 {
-    justify-content: center;
-    height: fit-content;
-    width: 100%;
-    font-size: 1.8em;
-  }
-  h3 {
-    justify-content: center;
-    font-size: 1.3em;
-    margin: auto;
+    width: fit-content;
   }
 }
 
-@media (min-height: 100vw) {
-  .image-item {
-    margin: 1%;
-  }
-  div#third-page .image-container .image-item img {
-    max-width: 120px;
+.project-item h2 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.second-page-projects-box {
+  color: $secondary-color;
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  width: 20%;
+  display: inline-flex;
+  background-size: 100% 200%;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(66, 66, 66, 0.4) 50%
+  );
+}
+
+.content-box {
+  width: 100%;
+  height: 80%;
+  color: $primary-color;
+}
+
+#second-page {
+  height: 100%;
+  width: 100%;
+}
+
+
+
+//#endregion
+
+
+//#region Page 3 style 
+.image-container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  overflow-y: auto;
+  max-height: 80vh;
+  border-radius: 15px;
+  height: 70%;
+  flex-flow: wrap;
+}
+.image-item {
+  height: 10%;
+  width: auto;
+  margin: 2%;
+  img {
+    border-radius: 15px;
+    max-width: 150px;
+    max-height: 250px;
+    height: auto;
+    width: auto;
   }
 }
 
@@ -381,17 +339,6 @@ div#fourth-page {
   max-height: 100vh;
 }
 
-#caption {
-  margin: auto;
-  display: block;
-  font-size: $second-page-h2-font-size;
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
-  color: $primary-color;
-  padding: 10px 0;
-  height: 150px;
-}
 
 .close {
   cursor: pointer;
@@ -403,3 +350,43 @@ div#fourth-page {
   font-weight: bold;
   transition: 0.3s;
 }
+
+
+//#endregion 
+
+
+//#region Page 4 
+div#fourth-page {
+  height: 100%;
+  width: 100%;
+  color: $primary-color;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  div {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  h2 {
+    justify-content: center;
+    height: fit-content;
+    width: 100%;
+  }
+  h3 {
+    justify-content: center;
+    margin: auto;
+  }
+}
+
+//#endregion 
+
+@media (min-height: 100vw) {
+  .image-item {
+    margin: 1%;
+  }
+  div#third-page .image-container .image-item img {
+    max-width: 120px;
+  }
+}
+
