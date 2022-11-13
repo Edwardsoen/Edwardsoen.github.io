@@ -432,6 +432,32 @@ div#fourth-page {
 
 //#region ANIMATION + MEDIA QUEREIS 
 @media (min-height: 100vw) {
+  #first-page-heading{
+    font-size: $heading-font-size;
+  }
+
+  div.first-page-icons a { 
+    font-size: 1em;
+  }
+  div.first-page-icons a.active { 
+    font-size: 1.5em;
+  }
+
+  h1 {
+    font-size: calc($heading-font-size  /1.5);
+  }
+  
+  h2 {
+    font-size: calc($subtitle-font-size /1.5) ;
+  }
+  
+  h3 {
+    font-size: calc($sub-subtitle-font-size / 1.5) ; 
+  }
+  .first-page-icons a { 
+    font-size: 1em;
+  }
+  
   .image-item {
     margin: 1%;
   }
