@@ -1,13 +1,12 @@
-$primary-color: white;
-$secondary-color: darken(
-  $color: $primary-color,
-  $amount: 30,
-);
+$primary-color: rgba(248, 240, 170, 0.753);
+$secondary-color:  hsl(104, 35%, 65%); 
+$tritiary-color:   #739278; 
 
-$main-title-font-size: 3.5em; // Main title (my name is blbablablalbalba)
-$heading-font-size: 2.5em; // h1 headings
-$subtitle-font-size: 1.5em; //icon font size + sub heading
+$accent-color: #42b19c; 
 
+$heading-font-size: 3em; // h1 headings
+$subtitle-font-size: 2em; //icon font size + sub heading
+$sub-subtitle-font-size: 1.2em; 
 //#region texts
 // ------------- TEXT STYLING ---------------------//
 h1 {
@@ -16,17 +15,22 @@ h1 {
 }
 
 h2 {
-  color: $primary-color;
+  color: $secondary-color;
   font-size: $subtitle-font-size;
 }
 
 h3 {
-  font-size: $subtitle-font-size;
-  color: $primary-color;
+  font-size: $sub-subtitle-font-size; 
+  color: $tritiary-color;
 }
 
 a {
-  color: $primary-color;
+  color: $accent-color;
+  text-decoration-thickness:2px; 
+}
+
+a:hover { 
+  filter: drop-shadow(16px 16px 20px $accent-color);
 }
 
 #caption {
@@ -60,7 +64,7 @@ a {
   overflow-x: hidden;
   height: 100vh;
   scroll-snap-type: y mandatory;
-  background-image: url(/assets/bg.jpg);
+  background-image: linear-gradient(to right top, #0d273e, #0d273e, #0d273e, #0d273e, #0d273e);
   background-size: cover;
   section {
     height: 100vh;
@@ -99,6 +103,7 @@ div#first-page {
 }
 
 div.first-page-icons {
+  background-color: rgba(248, 240, 170, 0.15);
   // navbar parent element
   div {
     display: flex;
@@ -114,7 +119,8 @@ div.first-page-icons {
     align-content: center;
     justify-content: center;
   }
-  h2 {
+  a {
+    font-size: $sub-subtitle-font-size;
     padding-left: 2%;
     padding-right: 2%;
     align-items: center;
@@ -175,7 +181,7 @@ div.first-page-main-content-box {
 //#region Page 2 styling
 
 .indicator {
-  background-color: white;
+  background-color: $secondary-color;
   width: 10px;
   height: 10px;
   border-radius: 5px;
@@ -184,6 +190,7 @@ div.first-page-main-content-box {
 }
 
 .indicator-active {
+  background-color: $primary-color;
   transform: scale(1.6);
 }
 
@@ -230,7 +237,7 @@ div.first-page-main-content-box {
 }
 
 .second-page-description-inner-box {
-  background: linear-gradient(white, white) bottom no-repeat;
+  background: linear-gradient($secondary-color, $tritiary-color) bottom no-repeat;
   background-size: 50% 1px;
   width: 100vw;
   display: block;

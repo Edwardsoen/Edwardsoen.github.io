@@ -54,26 +54,22 @@ function PlaneProject() {
       "Collaborated with 2 other developers to design and implement feature based on game design specifications";
     let description2 =
       "Designed and implemented AI's targetting and path-finding algorithms";
-    let description3 = "Added Gameanalytics to track game's metrics";
-    let description4 = "Worked on the android version of the game";
+    let description3 = "Added Gameanalytics to track game's metrics & Worked on the android version of the game";
 
     let mainDescriptionElement = document.createElement("h2");
     let description1Element = document.createElement("h3");
     let description2Element = document.createElement("h3");
     let description3Element = document.createElement("h3");
-    let description4Element = document.createElement("h3");
 
     mainDescriptionElement.innerHTML = mainDescription;
     description1Element.innerHTML = description1;
     description2Element.innerHTML = description2;
     description3Element.innerHTML = description3;
-    description4Element.innerHTML = description4;
 
     parentDiv.appendChild(mainDescriptionElement);
     parentDiv.appendChild(description1Element);
     parentDiv.appendChild(description2Element);
     parentDiv.appendChild(description3Element);
-    parentDiv.appendChild(description4Element);
   };
 
   this.setRedirects = function (hrefElements) {
