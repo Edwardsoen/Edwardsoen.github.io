@@ -30,6 +30,13 @@ a {
 }
 
 a:hover { 
+  color: $primary-color; 
+  filter: drop-shadow(16px 16px 20px $accent-color);
+}
+
+div.first-page-icons a.active { 
+  font-size:$subtitle-font-size;
+  color: $primary-color; 
   filter: drop-shadow(16px 16px 20px $accent-color);
 }
 
@@ -64,7 +71,7 @@ a:hover {
   overflow-x: hidden;
   height: 100vh;
   scroll-snap-type: y mandatory;
-  background-image: linear-gradient(to right top, #0d273e, #0d273e, #0d273e, #0d273e, #0d273e);
+  background-image:  linear-gradient(to right top, #0d273e, #103248, #133d52, #18485c, #1f5465);
   background-size: cover;
   section {
     height: 100vh;
@@ -141,6 +148,7 @@ div.first-page-main-content-box {
     width: 50%;
     margin: auto;
     margin-top: 20vh;
+    font-size: $heading-font-size + 1em;
   }
   h2 {
     text-align: center;
@@ -205,6 +213,12 @@ div.first-page-main-content-box {
   height: 50%;
   display: flex;
   justify-content: center;
+  img:hover {
+    animation: zoom 0.5s cubic-bezier(0.36, 0.04, 0, 1) forwards;
+  }
+  img { 
+    border-radius: 5px;
+  }
 }
 .project-description {
   width: 80%;

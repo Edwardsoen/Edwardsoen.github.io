@@ -255,6 +255,27 @@ function onImageSelected(event) {
   modal.getElementsByTagName("div")[0].innerHTML = fileName;
 }
 
+function NavbarManager(navbarButton){
+  let activeClassStyleName = "active"
+  let data = { 
+    
+  }
+  function init() { 
+    for(let i =0; i <= navbarButton.length -1; i ++){ 
+      data[i +1] = navbarButton[i].getElementsByTagName('a')[0]
+    }
+  }
+  this.onPageOpened = function (event) { 
+     data[event.detail].classList.add(activeClassStyleName)
+  }
+  this.onPageClosed= function (event){ 
+    data[event.detail].classList.remove(activeClassStyleName)
+  }
+  init()
+  data[1].classList.add(activeClassStyleName)
+}
+
+
 function MainMenuClickActionManager() {
   var parent = document.getElementsByClassName("parent")[0];
   var data = {
@@ -311,35 +332,22 @@ var SecondPage = function () {
     "second-page-heading-container"
   );
   let characters = Page2CharacterContainer.getElementsByClassName("character");
-  let projectTitle = document.getElementsByClassName(
-    "second-page-projects-box"
-  );
   let descriptionBox = document.getElementsByClassName(
     "second-page-description-box"
   )[0];
 
   this.OnOpened = function () {
-    let interval = 0.15;
+    let interval = 0.05;
     for (let i = 1; i <= characters.length; i++) {
-      characters[i - 1].style.animation = `Rotate ease-in-out 0.75s forwards ${
+      characters[i - 1].style.animation = `Rotate ease-in-out 0.2s forwards ${
         interval * i
       }s`;
     }
-    let titleInterval = 0.25;
-    for (let i = 0; i <= projectTitle.length - 1; i++) {
-      projectTitle[i].style.animation = `SlideUp ease-in-out 1s forwards ${
-        1 + titleInterval * i
-      }s`;
-    }
-
-    descriptionBox.style.animation = `SlideDown cubic-bezier(0.36, 0.04, 0, 1) 1.2s forwards`;
+    descriptionBox.style.animation = `SlideDown cubic-bezier(0.36, 0.04, 0, 1) 1s forwards ${interval*characters.length + 0.2}s`;
   };
   this.OnClosed = function () {
     for (let i = 1; i <= characters.length; i++) {
       characters[i - 1].style.animation = ``;
-    }
-    for (let i = 0; i <= projectTitle.length - 1; i++) {
-      projectTitle[i].style.animation = ``;
     }
     descriptionBox.style.animation = ``;
   };
@@ -392,12 +400,12 @@ var FourthPage = function () {
   this.OnOpened = function () {
     let CharInterval = 0.15;
     for (let i = 1; i <= characters.length; i++) {
-      characters[i - 1].style.animation = `Rotate ease-in-out 0.75s forwards ${
+      characters[i - 1].style.animation = `Rotate ease-in-out 0.55s forwards ${
         CharInterval * i
       }s`;
     }
-    subHeading.style.animation = "FadeIn 1s forwards 0.5s";
-    subSubHeading.style.animation = "FadeIn 1s forwards 1s";
+    subHeading.style.animation = "FadeIn 1s forwards 1s";
+    subSubHeading.style.animation = "FadeIn 1s forwards 1.5s";
   };
   this.OnClosed = function () {
     for (let i = 1; i <= characters.length; i++) {
@@ -458,6 +466,7 @@ function PageChangeActionManager() {
 }
 
 export {
+  NavbarManager,
   PageChangeActionManager,
   MainMenuClickActionManager,
   ProjectListManager,

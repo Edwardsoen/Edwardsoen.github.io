@@ -9,6 +9,7 @@ import {
   MainMenuClickActionManager,
   onImageSelected,
   ProjectListManager,
+  NavbarManager, 
 } from "./ActionManager.js";
 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js';
@@ -90,6 +91,10 @@ function main() {
   AddEventlistenerToList(links, "click", (event) => {
     logEvent(analytics, "link_clicked", { link: event.currentTarget.href });
   });
+
+  let navbarManager = new NavbarManager(MainMenuList)
+  parentPage.addEventListener("PageOpened", navbarManager.onPageOpened);
+  parentPage.addEventListener("PageClosed", navbarManager.onPageClosed);
 }
 
 main();
