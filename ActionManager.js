@@ -288,6 +288,7 @@ var FirstPage = function () {
     "first-page-heading-container"
   );
   let characters = Page1CharacterContainer.getElementsByClassName("character");
+  let subHeading = document.getElementById("first-page-sub-heading");
 
   this.OnOpened = function () {
     let interval = 0.1;
@@ -296,15 +297,15 @@ var FirstPage = function () {
         interval * i
       }s`;
     }
-    document.getElementById(
-      "first-page-sub-heading"
-    ).style.animation = `FadeIn 1.5s ease-in-out forwards ${interval * 1}s`;
+    subHeading.style.animation = `FadeIn 1.5s ease-in-out forwards ${
+      interval * 1
+    }s`;
   };
   this.OnClosed = function () {
     for (let i = 1; i <= characters.length; i++) {
       characters[i - 1].style.animation = ``;
     }
-    document.getElementById("first-page-sub-heading").style.animation = ``;
+    subHeading.style.animation = ``;
   };
 };
 
@@ -317,6 +318,9 @@ var SecondPage = function () {
   let projectTitle = document.getElementsByClassName(
     "second-page-projects-box"
   );
+  let descriptionBox = document.getElementsByClassName(
+    "second-page-description-box"
+  )[0];
 
   this.OnOpened = function () {
     let interval = 0.15;
@@ -332,9 +336,7 @@ var SecondPage = function () {
       }s`;
     }
 
-    document.getElementsByClassName(
-      "second-page-description-box"
-    )[0].style.animation = `SlideDown cubic-bezier(0.36, 0.04, 0, 1) 1.2s forwards`;
+    descriptionBox.style.animation = `SlideDown cubic-bezier(0.36, 0.04, 0, 1) 1.2s forwards`;
   };
   this.OnClosed = function () {
     for (let i = 1; i <= characters.length; i++) {
@@ -343,10 +345,7 @@ var SecondPage = function () {
     for (let i = 0; i <= projectTitle.length - 1; i++) {
       projectTitle[i].style.animation = ``;
     }
-
-    document.getElementsByClassName(
-      "second-page-description-box"
-    )[0].style.animation = ``;
+    descriptionBox.style.animation = ``;
   };
 };
 
@@ -357,6 +356,7 @@ var ThirdPage = function () {
     "third-page-heading-container"
   );
   let characters = Page3CharacterContainer.getElementsByClassName("character");
+  let imageItems = document.getElementsByClassName("image-item");
 
   this.OnOpened = function () {
     let CharInterval = 0.15;
@@ -366,7 +366,6 @@ var ThirdPage = function () {
       }s`;
     }
 
-    var imageItems = document.getElementsByClassName("image-item");
     let interval = 0.15;
     for (let i = 0; i < imageItems.length; i++) {
       imageItems[i].style.animation = `FadeIn 1.5s forwards ${
@@ -374,12 +373,12 @@ var ThirdPage = function () {
       }s`;
     }
   };
+
   this.OnClosed = function () {
     for (let i = 1; i <= characters.length; i++) {
       characters[i - 1].style.animation = ``;
     }
-    document.getElementsByClassName("heading-box")[1].style.animation = "";
-    var imageItems = document.getElementsByClassName("image-item");
+
     for (let i = 0; i < imageItems.length; i++) {
       imageItems[i].style.animation = ``;
     }
@@ -392,7 +391,8 @@ var FourthPage = function () {
     "fourth-page-heading-container"
   );
   let characters = Page4CharacterContainer.getElementsByClassName("character");
-
+  let subHeading = document.getElementById("fourth-page-sub-heading");
+  let subSubHeading = document.getElementById("fourth-page-sub-sub-heading");
   this.OnOpened = function () {
     let CharInterval = 0.15;
     for (let i = 1; i <= characters.length; i++) {
@@ -400,17 +400,15 @@ var FourthPage = function () {
         CharInterval * i
       }s`;
     }
-    document.getElementById("fourth-page-sub-heading").style.animation =
-      "FadeIn 1s forwards 0.5s";
-    document.getElementById("fourth-page-sub-sub-heading").style.animation =
-      "FadeIn 1s forwards 1s";
+    subHeading.style.animation = "FadeIn 1s forwards 0.5s";
+    subSubHeading.style.animation = "FadeIn 1s forwards 1s";
   };
   this.OnClosed = function () {
     for (let i = 1; i <= characters.length; i++) {
       characters[i - 1].style.animation = ``;
     }
-    document.getElementById("fourth-page-sub-heading").style.animation = "";
-    document.getElementById("fourth-page-sub-sub-heading").style.animation = "";
+    subHeading.style.animation = "";
+    subSubHeading.style.animation = "";
   };
 };
 
