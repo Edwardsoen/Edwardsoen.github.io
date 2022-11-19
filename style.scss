@@ -260,7 +260,10 @@ div.first-page-main-content-box {
   margin-right: auto;
 }
 
-.links-box {
+.lower-box.tags-box { 
+  justify-content: center;
+}
+.lower-box {
   height: 20%;
   display: flex;
   justify-content: space-around;
@@ -307,6 +310,12 @@ div.first-page-main-content-box {
 //#endregion
 
 //#region Page 3 style
+.tag {
+  color: $secondary-color; 
+  margin: 5px;
+}
+
+
 .image-container {
   margin-left: auto;
   margin-right: auto;

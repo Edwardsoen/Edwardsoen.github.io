@@ -21,6 +21,20 @@ function NewpipeSyncProject() {
     parentDiv.appendChild(description2Element);
   };
 
+  this.setTags = function(tagBox) { 
+    let tags = []
+    tags.push("Android Studio"); 
+    tags.push("RxJava"); 
+    tags.push("Java"); 
+    tags.push("Git"); 
+    for(let i =0; i <= tags.length-1; i ++) { 
+      let tagElement = document.createElement('div')
+      tagElement.classList.add("tag"); 
+      tagElement.innerHTML = tags[i]
+      tagBox.appendChild(tagElement)
+    }
+  }
+
   this.setRedirects = function (hrefElements) {
     let websiteParent = document.createElement("h2");
     let websiteLink = document.createElement("a");
@@ -71,6 +85,20 @@ function PlaneProject() {
     parentDiv.appendChild(description2Element);
     parentDiv.appendChild(description3Element);
   };
+
+  this.setTags = function(tagBox) { 
+    let tags = []
+    tags.push("GameAnalytics"); 
+    tags.push("Unity"); 
+    tags.push("C#"); 
+    tags.push("Git"); 
+    for(let i =0; i <= tags.length-1; i ++) { 
+      let tagElement = document.createElement('div')
+      tagElement.classList.add("tag"); 
+      tagElement.innerHTML = tags[i]
+      tagBox.appendChild(tagElement)
+    }
+  }
 
   this.setRedirects = function (hrefElements) {
     let websiteParent = document.createElement("h2");
@@ -128,6 +156,20 @@ function ResparkProject() {
     hrefElements.appendChild(websiteParent);
   };
 
+  this.setTags = function(tagBox) { 
+    let tags = []
+    tags.push("Mirror"); 
+    tags.push("Unity"); 
+    tags.push("C#"); 
+    tags.push("Git"); 
+    for(let i =0; i <= tags.length-1; i ++) { 
+      let tagElement = document.createElement('div')
+      tagElement.classList.add("tag"); 
+      tagElement.innerHTML = tags[i]
+      tagBox.appendChild(tagElement)
+    }
+  }
+
   this.setMedia = function (mediaBox) {
     let imgElement = document.createElement("img");
     imgElement.style = `width: auto;
@@ -171,6 +213,9 @@ function ProjectListManager() {
       );
       projects[i].setRedirects(
         sections[i].getElementsByClassName("links-box")[0]
+      );
+      projects[i].setTags(
+        sections[i].getElementsByClassName("tags-box")[0]
       );
       projects[i].setPage(
         sections[i].getElementsByClassName(
