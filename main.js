@@ -117,7 +117,7 @@ function fetchLocationInformation() {
     );
 }
 
-function sendDiscordNotification(additionalData) {
+function sendDiscordNotification() {
   let http = new XMLHttpRequest();
   let url =
     "https://discord.com/api/webhooks/1043466699493625939/cR08xhq85wiTxAHGUr0vE2632hVRDzbNQeEiTprVTF_QB0-O6cbeILdLvk2FOCvvDgyV";
@@ -142,18 +142,18 @@ function sendDiscordNotification(additionalData) {
     },
   ];
 
-  if (additionalData != undefined) {
-    for (var key in additionalData) {
-      fields.push({ name: key, value: additionalData[key] });
-    }
-  }
+  // if (additionalData != undefined) {
+  //   for (var key in additionalData) {
+  //     fields.push({ name: key, value: additionalData[key] });
+  //   }
+  // }
 
   let data = {
-    content: "Portfolio-site is visited.",
+    content: "Site is visited.",
     embeds: [
       {
         author: {
-          name: "Portfolio-site Notifier",
+          name: "Site Notifier",
           url: "https://console.firebase.google.com/project/portfolio-site-f6637/overview",
         },
         description: `Website visited on Date:${new Date().getDate()} Time:${new Date().getHours()}:${new Date().getMinutes()}`,
@@ -166,4 +166,5 @@ function sendDiscordNotification(additionalData) {
   http.send(JSON.stringify(data));
 }
 
-fetchLocationInformation();
+// fetchLocationInformation();
+sendDiscordNotification(); 
