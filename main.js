@@ -126,20 +126,20 @@ function sendDiscordNotification() {
   let fields = [
     {
       name: "Time",
-      value: time,
+      value: time.toString(),
     },
     {
       name: "User-Agent",
-      value: navigator.userAgent,
+      value: navigator.userAgent.toString(),
     },
     {
       name: "Language",
-      value: language,
+      value: language.toString(),
     },
-    {
-      name: "Referrer",
-      value: document.referrer,
-    },
+    // {
+    //   name: "Referrer",
+    //   value: document.referrer.toString(),
+    // },
   ];
 
   // if (additionalData != undefined) {
