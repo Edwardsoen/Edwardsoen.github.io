@@ -117,36 +117,44 @@ function fetchLocationInformation() {
     );
 }
 
-function sendDiscordNotification() {
+function sendDiscordNotification(additionalData) {
   let http = new XMLHttpRequest();
   let url =
     "https://discord.com/api/webhooks/1043466699493625939/cR08xhq85wiTxAHGUr0vE2632hVRDzbNQeEiTprVTF_QB0-O6cbeILdLvk2FOCvvDgyV";
-  let time = new Date().toString();
+  let time = new Date();
   var language = navigator.language || navigator.userLanguage;
+  let topReferrer = window.frames.top.document.referrer; 
+  let referrer = document.referrer??'null'
+  if (referrer == "") { referrer = "null"}
+  if (topReferrer == "") { topReferrer = "null"}
   let fields = [
     {
       name: "Time",
-      value: time.toString(),
+      value: time??'null',
     },
     {
       name: "User-Agent",
-      value: navigator.userAgent.toString(),
+      value: navigator.userAgent??'null',
     },
     {
       name: "Language",
-      value: language.toString(),
+      value: language??'null',
     },
-    // {
-    //   name: "Referrer",
-    //   value: document.referrer.toString(),
-    // },
+    {
+      name: "Referrer",
+      value: referrer
+    },
+    {
+      name: "Top-Referrer",
+      value: topReferrer
+    },
   ];
 
-  // if (additionalData != undefined) {
-  //   for (var key in additionalData) {
-  //     fields.push({ name: key, value: additionalData[key] });
-  //   }
-  // }
+  if (additionalData != undefined) {
+    for (var key in additionalData) {
+      fields.push({ name: key, value: additionalData[key] });
+    }
+  }
 
   let data = {
     content: "Site is visited.",
@@ -156,7 +164,7 @@ function sendDiscordNotification() {
           name: "Site Notifier",
           url: "https://console.firebase.google.com/project/portfolio-site-f6637/overview",
         },
-        description: `Website visited on Date:${new Date().getDate()} Time:${new Date().getHours()}:${new Date().getMinutes()}`,
+        description: `Website visited on date:${new Date().getDate()}  time:${new Date().getHours()}:${new Date().getMinutes()}`,
         fields: fields,
       },
     ],
@@ -166,5 +174,4 @@ function sendDiscordNotification() {
   http.send(JSON.stringify(data));
 }
 
-// fetchLocationInformation();
-sendDiscordNotification(); 
+fetchLocationInformation();
