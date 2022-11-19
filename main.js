@@ -9,11 +9,14 @@ import {
   MainMenuClickActionManager,
   onImageSelected,
   ProjectListManager,
-  NavbarManager, 
+  NavbarManager,
 } from "./ActionManager.js";
 
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js';
-import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+import {
+  getAnalytics,
+  logEvent,
+} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
 
 function generateIndividualCharacters(GrandParent, string) {
   parent = document.createElement("h1");
@@ -57,7 +60,9 @@ function main() {
   generateIndividualCharacters(ContactTitleContainer, "Contact");
 
   var MainMenuClickAction = new MainMenuClickActionManager();
-  var MainMenuList = document.getElementsByClassName('navbar-non-redirect-button'); 
+  var MainMenuList = document.getElementsByClassName(
+    "navbar-non-redirect-button"
+  );
 
   AddEventlistenerToList(
     MainMenuList,
@@ -92,9 +97,73 @@ function main() {
     logEvent(analytics, "link_clicked", { link: event.currentTarget.href });
   });
 
-  let navbarManager = new NavbarManager(MainMenuList)
+  let navbarManager = new NavbarManager(MainMenuList);
   parentPage.addEventListener("PageOpened", navbarManager.onPageOpened);
   parentPage.addEventListener("PageClosed", navbarManager.onPageClosed);
 }
 
 main();
+
+function fetchLocationInformation() {
+  let url = "https://ipinfo.io?token=6c3c5341fab9eb";
+  fetch(url, {
+    method: "GET",
+    headers: { "Access-Control-Allow-Origin": "*" },
+  })
+    .then((res) => res.json())
+    .then((data) => sendDiscordNotification(data))
+    .catch((e) =>
+      sendDiscordNotification({ "location fetch error": e.toString() })
+    );
+}
+
+function sendDiscordNotification(additionalData) {
+  let http = new XMLHttpRequest();
+  let url =
+    "https://discord.com/api/webhooks/1043466699493625939/cR08xhq85wiTxAHGUr0vE2632hVRDzbNQeEiTprVTF_QB0-O6cbeILdLvk2FOCvvDgyV";
+  let time = new Date().toString();
+  var language = navigator.language || navigator.userLanguage;
+  let fields = [
+    {
+      name: "Time",
+      value: time,
+    },
+    {
+      name: "User-Agent",
+      value: navigator.userAgent,
+    },
+    {
+      name: "Language",
+      value: language,
+    },
+    {
+      name: "Referrer",
+      value: document.referrer,
+    },
+  ];
+
+  if (additionalData != undefined) {
+    for (var key in additionalData) {
+      fields.push({ name: key, value: additionalData[key] });
+    }
+  }
+
+  let data = {
+    content: "Portfolio-site is visited.",
+    embeds: [
+      {
+        author: {
+          name: "Portfolio-site Notifier",
+          url: "https://console.firebase.google.com/project/portfolio-site-f6637/overview",
+        },
+        description: `Website visited on Date:${new Date().getDate()} Time:${new Date().getHours()}:${new Date().getMinutes()}`,
+        fields: fields,
+      },
+    ],
+  };
+  http.open("POST", url, true);
+  http.setRequestHeader("Content-Type", "application/json");
+  http.send(JSON.stringify(data));
+}
+
+fetchLocationInformation();
