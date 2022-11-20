@@ -302,8 +302,9 @@ function onImageSelected(event) {
 
 function NavbarManager(navbarButton){
   let activeClassStyleName = "active"
+  let nonActiveParentClassStyleName = "navbar-not-active"
+  let activeParentClassStyleName = "navbar-active"
   let data = { 
-    
   }
   function init() { 
     for(let i =0; i <= navbarButton.length -1; i ++){ 
@@ -311,13 +312,19 @@ function NavbarManager(navbarButton){
     }
   }
   this.onPageOpened = function (event) { 
-     data[event.detail].classList.add(activeClassStyleName)
+    data[event.detail].parentElement.classList.add(activeParentClassStyleName)
+    data[event.detail].parentElement.classList.remove(nonActiveParentClassStyleName)
+    data[event.detail].classList.add(activeClassStyleName)
   }
   this.onPageClosed= function (event){ 
+    data[event.detail].parentElement.classList.remove(activeParentClassStyleName)
+    data[event.detail].parentElement.classList.add(nonActiveParentClassStyleName)
     data[event.detail].classList.remove(activeClassStyleName)
   }
   init()
   data[1].classList.add(activeClassStyleName)
+  data[1].parentElement.classList.add(activeParentClassStyleName)
+  data[1].parentElement.classList.remove(nonActiveParentClassStyleName)
 }
 
 

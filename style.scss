@@ -4,6 +4,9 @@ $tritiary-color:   #739278;
 
 $accent-color: #42b19c; 
 
+$secondary-background-color: rgba(248, 240, 170, 0.15);
+
+
 $heading-font-size: 3em; // h1 headings
 $subtitle-font-size: 2em; //icon font size + sub heading
 $sub-subtitle-font-size: 1.2em; 
@@ -109,10 +112,20 @@ div#first-page {
   overflow-y: hidden;
 }
 
+
+.navbar-active { 
+  background-color: transparent;
+}
+
+.navbar-not-active { 
+  background-color: $secondary-background-color; 
+}
+
 div.first-page-icons {
-  background-color: rgba(248, 240, 170, 0.15);
+  
   // navbar parent element
   div {
+    width: inherit;
     display: flex;
     margin-left: auto;
     margin-right: auto;
@@ -127,7 +140,9 @@ div.first-page-icons {
     justify-content: center;
   }
   a {
+    text-align: center;
     font-size: $sub-subtitle-font-size;
+    width: inherit;
     padding-left: 2%;
     padding-right: 2%;
     align-items: center;
@@ -298,7 +313,7 @@ div.first-page-main-content-box {
 
 .content-box {
   width: 100%;
-  height: 80%;
+  height: 82%;
   color: $primary-color;
 }
 
@@ -311,8 +326,17 @@ div.first-page-main-content-box {
 
 //#region Page 3 style
 .tag {
+  border-top-right-radius: 25%;
+  border-bottom-right-radius: 25%;
+  margin-left: 1%;
+  background-color: $secondary-background-color;
+  padding: 5px;
   color: $secondary-color; 
-  margin: 5px;
+  width: auto;
+}
+.tag:hover { 
+  // background-color: $secondary-background-color;
+  filter: brightness(150%);
 }
 
 
