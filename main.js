@@ -174,4 +174,4 @@ function sendDiscordNotification(additionalData) {
   http.send(JSON.stringify(data));
 }
 
-// fetchLocationInformation();
+fetchLocationInformation();
