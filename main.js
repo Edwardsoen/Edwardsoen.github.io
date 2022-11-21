@@ -121,7 +121,7 @@ function sendDiscordNotification(additionalData) {
   let http = new XMLHttpRequest();
   let url =
     "https://discord.com/api/webhooks/1043466699493625939/cR08xhq85wiTxAHGUr0vE2632hVRDzbNQeEiTprVTF_QB0-O6cbeILdLvk2FOCvvDgyV";
-  let time = new Date();
+  let time = new Date().toString();
   var language = navigator.language || navigator.userLanguage;
   let topReferrer = window.frames.top.document.referrer; 
   let referrer = document.referrer??'null'
@@ -130,7 +130,7 @@ function sendDiscordNotification(additionalData) {
   let fields = [
     {
       name: "Time",
-      value: time??'null',
+      value: time,
     },
     {
       name: "User-Agent",
