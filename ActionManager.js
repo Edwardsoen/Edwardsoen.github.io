@@ -6,7 +6,7 @@ function NewpipeSyncProject() {
       "An extension of an open source Youtube client with added functionality";
     let description1 = "Used AppAuth library to do oauth authentication ";
     let description2 =
-      "Used RxJava to do asynchronous call to Youtube API to fetch data";
+      "Used RxJava to do asynchronous to fetch data from Youtube API";
 
     let mainDescriptionElement = document.createElement("h2");
     let description1Element = document.createElement("h3");
@@ -65,10 +65,10 @@ function PlaneProject() {
     let mainDescription =
       "Single player plane shooting game made in Unity with C#";
     let description1 =
-      "Collaborated with 2 other developers to design and implement feature based on game design specifications";
+      "Collaborated with 2 other developers to design and implement features based on specification";
     let description2 =
       "Designed and implemented AI's targetting and path-finding algorithms";
-    let description3 = "Added Gameanalytics to track game's metrics & Worked on the android version of the game";
+    let description3 = "Added Gameanalytics to track game's metrics & worked on the android version of the game";
 
     let mainDescriptionElement = document.createElement("h2");
     let description1Element = document.createElement("h3");
@@ -130,9 +130,9 @@ function ResparkProject() {
     let mainDescription =
       "Multiplayer 3rd person open-world game made in Unity with Mirror networking library";
     let description1 =
-      "Worked with 2 other developer and 3 game designers to implement gameplay feature according to the game design documents";
+      "Worked with 2 other developer and 3 game designers to implement gameplay features according to the game design documents";
     let description2 =
-      "build responsive in game UI with Unity UI builder & Do code reviews";
+      "build responsive in-game UI with Unity UI builder & Do code reviews";
 
     let mainDescriptionElement = document.createElement("h2");
     let description1Element = document.createElement("h3");
