@@ -4,9 +4,9 @@ $tritiary-color:   #739278;
 
 $accent-color: #42b19c; 
 
-$heading-font-size: 3em; // h1 headings
-$subtitle-font-size: 2em; //icon font size + sub heading
-$sub-subtitle-font-size: 1.2em; 
+$heading-font-size: 2em; // h1 headings
+$subtitle-font-size: 1.2em; //icon font size + sub heading
+$sub-subtitle-font-size: 1em; 
 //#region texts
 // ------------- TEXT STYLING ---------------------//
 h1 {
@@ -214,7 +214,7 @@ div.first-page-main-content-box {
   display: flex;
   justify-content: center;
   img:hover {
-    animation: zoom 0.5s cubic-bezier(0.36, 0.04, 0, 1) forwards;
+    //  animation: zoom2 0.5s cubic-bezier(0.36, 0.04, 0, 1) forwards;
   }
   img { 
     border-radius: 5px;
@@ -230,6 +230,7 @@ div.first-page-main-content-box {
   overflow-x: scroll;
   display: flex;
   scroll-snap-type: x mandatory;
+  height: 100%;
   .project-section {
     height: 100%;
     width: 100vw;
