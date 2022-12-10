@@ -1,7 +1,7 @@
 import { HorizontalPageNavigator } from "./NavigationManager";
 
 function getYoutubeLink(videoId) {
-  return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&enablejsapi=1&showinfo=0&controls=0&loop=1`;
+  return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&enablejsapi=1&showinfo=0&controls=0&loop=1&playlist=${videoId}`;
 }
 
 function NewpipeSyncProject() {
