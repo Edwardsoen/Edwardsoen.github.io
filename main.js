@@ -9,11 +9,14 @@ import {
   MainMenuClickActionManager,
   onImageSelected,
   ProjectListManager,
-  NavbarManager, 
+  NavbarManager,
 } from "./ActionManager.js";
 
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js';
-import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+import {
+  getAnalytics,
+  logEvent,
+} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
 
 function generateIndividualCharacters(GrandParent, string) {
   parent = document.createElement("h1");
@@ -57,7 +60,9 @@ function main() {
   generateIndividualCharacters(ContactTitleContainer, "Contact");
 
   var MainMenuClickAction = new MainMenuClickActionManager();
-  var MainMenuList = document.getElementsByClassName('navbar-non-redirect-button'); 
+  var MainMenuList = document.getElementsByClassName(
+    "navbar-non-redirect-button"
+  );
 
   AddEventlistenerToList(
     MainMenuList,
@@ -92,7 +97,7 @@ function main() {
     logEvent(analytics, "link_clicked", { link: event.currentTarget.href });
   });
 
-  let navbarManager = new NavbarManager(MainMenuList)
+  let navbarManager = new NavbarManager(MainMenuList);
   parentPage.addEventListener("PageOpened", navbarManager.onPageOpened);
   parentPage.addEventListener("PageClosed", navbarManager.onPageClosed);
 }

@@ -44,6 +44,12 @@ function NewpipeSyncProject() {
   this.getTitle = function () {
     return "Newpipe Sync";
   };
+
+  this.setVideoPreviewComponent = function (parent) {
+    // let videoId = "MbId3aPHaE0" //REPLACE THIS
+    let src = getYoutubeLink(videoId);
+    parent.src = src;
+  };
 }
 
 function PlaneProject() {
@@ -54,7 +60,8 @@ function PlaneProject() {
       "Collaborated with 2 other developers to design and implement feature based on game design specifications";
     let description2 =
       "Designed and implemented AI's targetting and path-finding algorithms";
-    let description3 = "Added Gameanalytics to track game's metrics & Worked on the android version of the game";
+    let description3 =
+      "Added Gameanalytics to track game's metrics & Worked on the android version of the game";
 
     let mainDescriptionElement = document.createElement("h2");
     let description1Element = document.createElement("h3");
@@ -94,6 +101,11 @@ function PlaneProject() {
 
   this.getTitle = function () {
     return "Rogue Plane";
+  };
+  this.setVideoPreviewComponent = function (parent) {
+    let videoId = "MbId3aPHaE0"; //REPLACE THIS
+    let src = getYoutubeLink(videoId);
+    parent.src = src;
   };
 }
 
@@ -141,13 +153,22 @@ function ResparkProject() {
   this.getTitle = function () {
     return "Respark";
   };
+
+  this.setVideoPreviewComponent = function (parent) {
+    let videoId = "MbId3aPHaE0"; //REPLACE THIS
+    let src = getYoutubeLink(videoId);
+    parent.src = src;
+  };
 }
 
 function ProjectListManager() {
   let indicatorBox = document.getElementById("scroll-indicator-box");
   let indicatorClassName = "indicator";
   let indicatorActiveClassName = "indicator-active";
+  let leftArrowClassName = "left";
+  let rightArrowClassName = "right";
   let section = document.getElementsByClassName("project-section")[0];
+  let iframe = document.getElementById("video-I-Frame");
   let sectionParent = section.parentElement;
   let data = {};
 
@@ -164,6 +185,8 @@ function ProjectListManager() {
       sectionParent.appendChild(newSection);
     }
     sections = document.getElementsByClassName("project-section");
+    let leftArrow = generateArrowButton(leftArrowClassName);
+    leftArrow.addEventListener("click", onArrowClickNavigate);
 
     for (let i = 0; i <= sections.length - 1; i++) {
       projects[i].setMedia(
@@ -177,10 +200,13 @@ function ProjectListManager() {
           "second-page-description-container"
         )[0]
       );
-      let div = generateIndicator();
+      let div = addToIndicatorBar(indicatorClassName);
       div.addEventListener("click", OnClickNavigate);
       data[i + 1] = div;
     }
+
+    let rightArrow = generateArrowButton(rightArrowClassName);
+    rightArrow.addEventListener("click", onArrowClickNavigate);
 
     data[1].classList.add(indicatorActiveClassName);
 
@@ -203,20 +229,52 @@ function ProjectListManager() {
     data[event.detail].classList.add(indicatorActiveClassName);
   }
 
-  function generateIndicator() {
+  function addToIndicatorBar(className) {
     let div = document.createElement("div");
-    div.classList.add(indicatorClassName);
+    div.classList.add(className);
     indicatorBox.appendChild(div);
     return div;
   }
 
+  function generateArrowButton(arrowClassName) {
+    let parentDiv = document.createElement("div");
+    let arrow = document.createElement("div");
+    arrow.classList.add("arrow");
+    arrow.classList.add(arrowClassName);
+    parentDiv.appendChild(arrow);
+    indicatorBox.appendChild(parentDiv);
+    return arrow;
+  }
+
   function OnClickNavigate(event) {
-    var scrollTarget = data[event.currentTarget];
     Object.keys(data).forEach(function (key) {
       if (data[key] == event.currentTarget) {
         OnClickScrollParentTo((key - 1) * sectionParent.clientWidth);
       }
     });
+  }
+
+  function onArrowClickNavigate(event) {
+    let isLeft = event.currentTarget.classList.contains("left");
+    let activePage = getCurrentActivePage();
+    switch (isLeft) {
+      case true:
+        OnClickScrollParentTo((activePage - 2) * sectionParent.clientWidth);
+        break;
+      case false:
+        OnClickScrollParentTo(activePage * sectionParent.clientWidth);
+        break;
+    }
+  }
+
+  function getCurrentActivePage() {
+    var returnKey;
+    Object.keys(data).forEach(function (key) {
+      if (data[key].classList.contains(indicatorActiveClassName)) {
+        returnKey = key;
+      }
+    });
+    return returnKey;
   }
 
   function OnClickScrollParentTo(x) {
@@ -255,26 +313,27 @@ function onImageSelected(event) {
   modal.getElementsByTagName("div")[0].innerHTML = fileName;
 }
 
-function NavbarManager(navbarButton){
-  let activeClassStyleName = "active"
-  let data = { 
-    
-  }
-  function init() { 
-    for(let i =0; i <= navbarButton.length -1; i ++){ 
-      data[i +1] = navbarButton[i].getElementsByTagName('a')[0]
-    }
-  }
-  this.onPageOpened = function (event) { 
-     data[event.detail].classList.add(activeClassStyleName)
-  }
-  this.onPageClosed= function (event){ 
-    data[event.detail].classList.remove(activeClassStyleName)
-  }
-  init()
-  data[1].classList.add(activeClassStyleName)
+function getYoutubeLink(videoId) {
+  return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&enablejsapi=1&showinfo=0&controls=0`;
 }
 
+function NavbarManager(navbarButton) {
+  let activeClassStyleName = "active";
+  let data = {};
+  function init() {
+    for (let i = 0; i <= navbarButton.length - 1; i++) {
+      data[i + 1] = navbarButton[i].getElementsByTagName("a")[0];
+    }
+  }
+  this.onPageOpened = function (event) {
+    data[event.detail].classList.add(activeClassStyleName);
+  };
+  this.onPageClosed = function (event) {
+    data[event.detail].classList.remove(activeClassStyleName);
+  };
+  init();
+  data[1].classList.add(activeClassStyleName);
+}
 
 function MainMenuClickActionManager() {
   var parent = document.getElementsByClassName("parent")[0];
@@ -343,7 +402,9 @@ var SecondPage = function () {
         interval * i
       }s`;
     }
-    descriptionBox.style.animation = `SlideDown cubic-bezier(0.36, 0.04, 0, 1) 1s forwards ${interval*characters.length + 0.2}s`;
+    descriptionBox.style.animation = `SlideDown cubic-bezier(0.36, 0.04, 0, 1) 1s forwards ${
+      interval * characters.length + 0.2
+    }s`;
   };
   this.OnClosed = function () {
     for (let i = 1; i <= characters.length; i++) {

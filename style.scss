@@ -1,12 +1,12 @@
 $primary-color: rgba(248, 240, 170, 0.753);
-$secondary-color:  hsl(104, 35%, 65%); 
-$tritiary-color:   #739278; 
+$secondary-color: hsl(104, 35%, 65%);
+$tritiary-color: #739278;
 
-$accent-color: #42b19c; 
+$accent-color: #42b19c;
 
 $heading-font-size: 2em; // h1 headings
 $subtitle-font-size: 1.2em; //icon font size + sub heading
-$sub-subtitle-font-size: 1em; 
+$sub-subtitle-font-size: 1em;
 //#region texts
 // ------------- TEXT STYLING ---------------------//
 h1 {
@@ -20,23 +20,23 @@ h2 {
 }
 
 h3 {
-  font-size: $sub-subtitle-font-size; 
+  font-size: $sub-subtitle-font-size;
   color: $tritiary-color;
 }
 
 a {
   color: $accent-color;
-  text-decoration-thickness:2px; 
+  text-decoration-thickness: 2px;
 }
 
-a:hover { 
-  color: $primary-color; 
+a:hover {
+  color: $primary-color;
   filter: drop-shadow(16px 16px 20px $accent-color);
 }
 
-div.first-page-icons a.active { 
-  font-size:$subtitle-font-size;
-  color: $primary-color; 
+div.first-page-icons a.active {
+  font-size: $subtitle-font-size;
+  color: $primary-color;
   filter: drop-shadow(16px 16px 20px $accent-color);
 }
 
@@ -57,7 +57,6 @@ div.first-page-icons a.active {
 
 //#region global style
 
-
 .heading-box {
   width: 100%;
   padding-top: 5vh;
@@ -71,7 +70,15 @@ div.first-page-icons a.active {
   overflow-x: hidden;
   height: 100vh;
   scroll-snap-type: y mandatory;
-  background-image:  linear-gradient(to right top, #0d273e, #103248, #133d52, #18485c, #1f5465);
+  z-index: -2;
+  background-image: linear-gradient(
+    to right top,
+    #0d273e,
+    #103248,
+    #133d52,
+    #18485c,
+    #1f5465
+  );
   background-size: cover;
   section {
     height: 100vh;
@@ -87,7 +94,6 @@ div.first-page-icons a.active {
 body {
   margin: 0;
 }
-
 
 //#endregion
 
@@ -188,6 +194,49 @@ div.first-page-main-content-box {
 
 //#region Page 2 styling
 
+.video-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.video-component {
+}
+
+.arrow:hover {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 5px;
+  opacity: 0.5;
+  cursor: pointer;
+  margin: 7.5px;
+}
+
+.arrow {
+  border: solid $secondary-color;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 5px;
+  opacity: 0.5;
+  cursor: pointer;
+  margin: 7.5px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
 .indicator {
   background-color: $secondary-color;
   width: 10px;
@@ -216,7 +265,7 @@ div.first-page-main-content-box {
   img:hover {
     //  animation: zoom2 0.5s cubic-bezier(0.36, 0.04, 0, 1) forwards;
   }
-  img { 
+  img {
     border-radius: 5px;
   }
 }
@@ -252,7 +301,8 @@ div.first-page-main-content-box {
 }
 
 .second-page-description-inner-box {
-  background: linear-gradient($secondary-color, $tritiary-color) bottom no-repeat;
+  background: linear-gradient($secondary-color, $tritiary-color) bottom
+    no-repeat;
   background-size: 50% 1px;
   width: 100vw;
   display: block;
@@ -392,21 +442,21 @@ div#fourth-page {
 
 //#endregion
 
-//#region Animation before after state 
+//#region Animation before after state
 
-.zero-opacity { 
+.zero-opacity {
   opacity: 0;
 }
 
-.max-opacity { 
+.max-opacity {
   opacity: 1;
 }
 
-.zero-height { 
+.zero-height {
   height: 0;
 }
 
-.max-height { 
+.max-height {
   height: 80%;
 }
 
@@ -429,9 +479,9 @@ div#fourth-page {
   transform-origin: 50% bottom;
 }
 
-//#endregion 
+//#endregion
 
-//#region ANIMATION + MEDIA QUEREIS 
+//#region ANIMATION + MEDIA QUEREIS
 @media (min-height: 100vw) {
   .image-item {
     margin: 1%;
@@ -440,7 +490,6 @@ div#fourth-page {
     max-width: 120px;
   }
 }
-
 
 @keyframes SlideUp {
   from {
@@ -496,4 +545,4 @@ div#fourth-page {
   }
 }
 
-//#endregion 
+//#endregion
