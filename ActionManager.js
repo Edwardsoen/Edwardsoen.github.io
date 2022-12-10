@@ -50,19 +50,6 @@ function NewpipeSyncProject() {
   };
 
   this.setVideoPreviewComponent = function (parent) {
-    let videoId = "MbId3aPHaE0" //REPLACE THIS
-    let src = getYoutubeLink(videoId);
-    let iframe = document.createElement('iframe')
-    iframe.setAttribute("src", src)
-    iframe.setAttribute("frameborder", 0)
-    iframe.setAttribute("allow", "autoplay")
-    iframe.setAttribute("mozallowfullscreen", "mozallowfullscreen")
-    iframe.setAttribute("allowfullscreen", "allowfullscreen")
-    iframe.setAttribute("autoplay", "autoplay")
-    iframe.setAttribute("webkitallowfullscreen", "webkitallowfullscreen")
-    iframe.style.width = "100%"
-    iframe.style.height = "100%"
-    parent.appendChild(iframe)
   };
 }
 
@@ -127,8 +114,8 @@ function PlaneProject() {
     iframe.setAttribute("allowfullscreen", "allowfullscreen")
     iframe.setAttribute("autoplay", "autoplay")
     iframe.setAttribute("webkitallowfullscreen", "webkitallowfullscreen")
-    iframe.style.width = "100%"
-    iframe.style.height = "100%"
+    iframe.style.width = "100vw"
+    iframe.style.height = "100vh"
     parent.appendChild(iframe)
   };
 }
@@ -189,8 +176,8 @@ function ResparkProject() {
     iframe.setAttribute("allowfullscreen", "allowfullscreen")
     iframe.setAttribute("autoplay", "autoplay")
     iframe.setAttribute("webkitallowfullscreen", "webkitallowfullscreen")
-    iframe.style.width = "100%"
-    iframe.style.height = "100%"
+    iframe.style.width = "100vw"
+    iframe.style.height = "100vh"
     parent.appendChild(iframe)
   };
 }
