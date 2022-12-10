@@ -1,5 +1,9 @@
 import { HorizontalPageNavigator } from "./NavigationManager";
 
+function getYoutubeLink(videoId) {
+  return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&enablejsapi=1&showinfo=0&controls=0`;
+}
+
 function NewpipeSyncProject() {
   this.setPage = function (parentDiv) {
     let mainHeading =
@@ -46,9 +50,19 @@ function NewpipeSyncProject() {
   };
 
   this.setVideoPreviewComponent = function (parent) {
-    // let videoId = "MbId3aPHaE0" //REPLACE THIS
+    let videoId = "MbId3aPHaE0" //REPLACE THIS
     let src = getYoutubeLink(videoId);
-    parent.src = src;
+    let iframe = document.createElement('iframe')
+    iframe.setAttribute("src", src)
+    iframe.setAttribute("frameborder", 0)
+    iframe.setAttribute("allow", "autoplay")
+    iframe.setAttribute("mozallowfullscreen", "mozallowfullscreen")
+    iframe.setAttribute("allowfullscreen", "allowfullscreen")
+    iframe.setAttribute("autoplay", "autoplay")
+    iframe.setAttribute("webkitallowfullscreen", "webkitallowfullscreen")
+    iframe.style.width = "100%"
+    iframe.style.height = "100%"
+    parent.appendChild(iframe)
   };
 }
 
@@ -103,9 +117,19 @@ function PlaneProject() {
     return "Rogue Plane";
   };
   this.setVideoPreviewComponent = function (parent) {
-    let videoId = "MbId3aPHaE0"; //REPLACE THIS
+    let videoId = "MbId3aPHaE0" //REPLACE THIS
     let src = getYoutubeLink(videoId);
-    parent.src = src;
+    let iframe = document.createElement('iframe')
+    iframe.setAttribute("src", src)
+    iframe.setAttribute("frameborder", 0)
+    iframe.setAttribute("allow", "autoplay")
+    iframe.setAttribute("mozallowfullscreen", "mozallowfullscreen")
+    iframe.setAttribute("allowfullscreen", "allowfullscreen")
+    iframe.setAttribute("autoplay", "autoplay")
+    iframe.setAttribute("webkitallowfullscreen", "webkitallowfullscreen")
+    iframe.style.width = "100%"
+    iframe.style.height = "100%"
+    parent.appendChild(iframe)
   };
 }
 
@@ -155,9 +179,19 @@ function ResparkProject() {
   };
 
   this.setVideoPreviewComponent = function (parent) {
-    let videoId = "MbId3aPHaE0"; //REPLACE THIS
+    let videoId = "MbId3aPHaE0" //REPLACE THIS
     let src = getYoutubeLink(videoId);
-    parent.src = src;
+    let iframe = document.createElement('iframe')
+    iframe.setAttribute("src", src)
+    iframe.setAttribute("frameborder", 0)
+    iframe.setAttribute("allow", "autoplay")
+    iframe.setAttribute("mozallowfullscreen", "mozallowfullscreen")
+    iframe.setAttribute("allowfullscreen", "allowfullscreen")
+    iframe.setAttribute("autoplay", "autoplay")
+    iframe.setAttribute("webkitallowfullscreen", "webkitallowfullscreen")
+    iframe.style.width = "100%"
+    iframe.style.height = "100%"
+    parent.appendChild(iframe)
   };
 }
 
@@ -168,12 +202,12 @@ function ProjectListManager() {
   let leftArrowClassName = "left";
   let rightArrowClassName = "right";
   let section = document.getElementsByClassName("project-section")[0];
-  let iframe = document.getElementById("video-I-Frame");
+  let videoBox = document.getElementById("video-box");
   let sectionParent = section.parentElement;
   let data = {};
+  let projects = []
 
   this.initialize = function () {
-    let projects = [];
     projects.push(new PlaneProject());
     projects.push(new ResparkProject());
     projects.push(new NewpipeSyncProject());
@@ -219,6 +253,7 @@ function ProjectListManager() {
     );
     sectionParent.addEventListener("PageOpened", onPageOpened);
     sectionParent.addEventListener("PageClosed", onPageClosed);
+    projects[0].setVideoPreviewComponent(videoBox)
   };
 
   function onPageClosed(event) {
@@ -226,7 +261,16 @@ function ProjectListManager() {
   }
 
   function onPageOpened(event) {
+    removeChildComponent(videoBox); 
+    projects[event.detail-1].setVideoPreviewComponent(videoBox)
+
     data[event.detail].classList.add(indicatorActiveClassName);
+  }
+
+  function removeChildComponent(parent) {
+    while (parent.firstChild) {
+    parent.removeChild(parent.lastChild);
+    }
   }
 
   function addToIndicatorBar(className) {
@@ -313,9 +357,7 @@ function onImageSelected(event) {
   modal.getElementsByTagName("div")[0].innerHTML = fileName;
 }
 
-function getYoutubeLink(videoId) {
-  return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&enablejsapi=1&showinfo=0&controls=0`;
-}
+
 
 function NavbarManager(navbarButton) {
   let activeClassStyleName = "active";
