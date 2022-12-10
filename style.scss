@@ -5,9 +5,9 @@ $accent-color: #42b19c;
 
 $secondary-background-color: rgba(248, 240, 170, 0.15);
 
-$heading-font-size: 3em; // h1 headings
-$subtitle-font-size: 2em; //icon font size + sub heading
-$sub-subtitle-font-size: 1.2em; 
+$heading-font-size: 2em; // h1 headings
+$subtitle-font-size: 1.8em; //icon font size + sub heading
+$sub-subtitle-font-size: 1em; 
 
 //#region texts
 // ------------- TEXT STYLING ---------------------//
@@ -279,6 +279,13 @@ div.first-page-main-content-box {
 .project-description {
   width: 80%;
   margin: auto;
+}
+
+.second-page-description-container { 
+  h1, h2, h3, links-box.h2 { 
+    margin-top: 1.2%;
+    margin-bottom: 1.2%;
+  } 
 }
 
 .second-page-description-box {
