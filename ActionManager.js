@@ -1,12 +1,16 @@
 import { HorizontalPageNavigator } from "./NavigationManager";
 
+function getYoutubeLink(videoId) {
+  return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&enablejsapi=1&showinfo=0&controls=0&loop=1`;
+}
+
 function NewpipeSyncProject() {
   this.setPage = function (parentDiv) {
     let mainHeading =
       "An extension of an open source Youtube client with added functionality";
     let description1 = "Used AppAuth library to do oauth authentication ";
     let description2 =
-      "Used RxJava to do asynchronous to fetch data from Youtube API";
+      "Used RxJava to do asynchronous call to Youtube API to fetch data";
 
     let mainDescriptionElement = document.createElement("h2");
     let description1Element = document.createElement("h3");
@@ -58,6 +62,9 @@ function NewpipeSyncProject() {
   this.getTitle = function () {
     return "Newpipe Sync";
   };
+
+  this.setVideoPreviewComponent = function (parent) {
+  };
 }
 
 function PlaneProject() {
@@ -85,8 +92,7 @@ function PlaneProject() {
     parentDiv.appendChild(description2Element);
     parentDiv.appendChild(description3Element);
   };
-
-  this.setTags = function(tagBox) { 
+this.setTags = function(tagBox) { 
     let tags = []
     tags.push("GameAnalytics"); 
     tags.push("Unity"); 
@@ -99,7 +105,6 @@ function PlaneProject() {
       tagBox.appendChild(tagElement)
     }
   }
-
   this.setRedirects = function (hrefElements) {
     let websiteParent = document.createElement("h2");
     let websiteLink = document.createElement("a");
@@ -123,6 +128,21 @@ function PlaneProject() {
   this.getTitle = function () {
     return "Rogue Plane";
   };
+  this.setVideoPreviewComponent = function (parent) {
+    let videoId = "ft6JrK6IU5U" //REPLACE THIS
+    let src = getYoutubeLink(videoId);
+    let iframe = document.createElement('iframe')
+    iframe.setAttribute("src", src)
+    iframe.setAttribute("frameborder", 0)
+    iframe.setAttribute("allow", "autoplay")
+    iframe.setAttribute("mozallowfullscreen", "mozallowfullscreen")
+    iframe.setAttribute("allowfullscreen", "allowfullscreen")
+    iframe.setAttribute("autoplay", "autoplay")
+    iframe.setAttribute("webkitallowfullscreen", "webkitallowfullscreen")
+    iframe.style.width = "100vw"
+    iframe.style.height = "100vh"
+    parent.appendChild(iframe)
+  };
 }
 
 function ResparkProject() {
@@ -130,9 +150,9 @@ function ResparkProject() {
     let mainDescription =
       "Multiplayer 3rd person open-world game made in Unity with Mirror networking library";
     let description1 =
-      "Worked with 2 other developer and 3 game designers to implement gameplay features according to the game design documents";
+      "Worked with 2 other developer and 3 game designers to implement gameplay feature according to the game design documents";
     let description2 =
-      "build responsive in-game UI with Unity UI builder & Do code reviews";
+      "build responsive in game UI with Unity UI builder & Do code reviews";
 
     let mainDescriptionElement = document.createElement("h2");
     let description1Element = document.createElement("h3");
@@ -155,8 +175,7 @@ function ResparkProject() {
     websiteParent.appendChild(websiteLink);
     hrefElements.appendChild(websiteParent);
   };
-
-  this.setTags = function(tagBox) { 
+ this.setTags = function(tagBox) { 
     let tags = []
     tags.push("Mirror"); 
     tags.push("Unity"); 
@@ -169,7 +188,6 @@ function ResparkProject() {
       tagBox.appendChild(tagElement)
     }
   }
-
   this.setMedia = function (mediaBox) {
     let imgElement = document.createElement("img");
     imgElement.style = `width: auto;
@@ -183,18 +201,37 @@ function ResparkProject() {
   this.getTitle = function () {
     return "Respark";
   };
+
+  this.setVideoPreviewComponent = function (parent) {
+    let videoId = "-A0kJyBm9Pw" //REPLACE THIS
+    let src = getYoutubeLink(videoId);
+    let iframe = document.createElement('iframe')
+    iframe.setAttribute("src", src)
+    iframe.setAttribute("frameborder", 0)
+    iframe.setAttribute("allow", "autoplay")
+    iframe.setAttribute("mozallowfullscreen", "mozallowfullscreen")
+    iframe.setAttribute("allowfullscreen", "allowfullscreen")
+    iframe.setAttribute("autoplay", "autoplay")
+    iframe.setAttribute("webkitallowfullscreen", "webkitallowfullscreen")
+    iframe.style.width = "100vw"
+    iframe.style.height = "100vh"
+    parent.appendChild(iframe)
+  };
 }
 
 function ProjectListManager() {
   let indicatorBox = document.getElementById("scroll-indicator-box");
   let indicatorClassName = "indicator";
   let indicatorActiveClassName = "indicator-active";
+  let leftArrowClassName = "left";
+  let rightArrowClassName = "right";
   let section = document.getElementsByClassName("project-section")[0];
+  let videoBox = document.getElementById("video-box");
   let sectionParent = section.parentElement;
   let data = {};
+  let projects = []
 
   this.initialize = function () {
-    let projects = [];
     projects.push(new PlaneProject());
     projects.push(new ResparkProject());
     projects.push(new NewpipeSyncProject());
@@ -206,6 +243,8 @@ function ProjectListManager() {
       sectionParent.appendChild(newSection);
     }
     sections = document.getElementsByClassName("project-section");
+    let leftArrow = generateArrowButton(leftArrowClassName);
+    leftArrow.addEventListener("click", onArrowClickNavigate);
 
     for (let i = 0; i <= sections.length - 1; i++) {
       projects[i].setMedia(
@@ -214,7 +253,7 @@ function ProjectListManager() {
       projects[i].setRedirects(
         sections[i].getElementsByClassName("links-box")[0]
       );
-      projects[i].setTags(
+       projects[i].setTags(
         sections[i].getElementsByClassName("tags-box")[0]
       );
       projects[i].setPage(
@@ -222,10 +261,13 @@ function ProjectListManager() {
           "second-page-description-container"
         )[0]
       );
-      let div = generateIndicator();
+      let div = addToIndicatorBar(indicatorClassName);
       div.addEventListener("click", OnClickNavigate);
       data[i + 1] = div;
     }
+
+    let rightArrow = generateArrowButton(rightArrowClassName);
+    rightArrow.addEventListener("click", onArrowClickNavigate);
 
     data[1].classList.add(indicatorActiveClassName);
 
@@ -238,6 +280,7 @@ function ProjectListManager() {
     );
     sectionParent.addEventListener("PageOpened", onPageOpened);
     sectionParent.addEventListener("PageClosed", onPageClosed);
+    projects[0].setVideoPreviewComponent(videoBox)
   };
 
   function onPageClosed(event) {
@@ -245,23 +288,65 @@ function ProjectListManager() {
   }
 
   function onPageOpened(event) {
+    removeChildComponent(videoBox); 
+    projects[event.detail-1].setVideoPreviewComponent(videoBox)
+
     data[event.detail].classList.add(indicatorActiveClassName);
   }
 
-  function generateIndicator() {
+  function removeChildComponent(parent) {
+    while (parent.firstChild) {
+    parent.removeChild(parent.lastChild);
+    }
+  }
+
+  function addToIndicatorBar(className) {
     let div = document.createElement("div");
-    div.classList.add(indicatorClassName);
+    div.classList.add(className);
     indicatorBox.appendChild(div);
     return div;
   }
 
+  function generateArrowButton(arrowClassName) {
+    let parentDiv = document.createElement("div");
+    let arrow = document.createElement("div");
+    arrow.classList.add("arrow");
+    arrow.classList.add(arrowClassName);
+    parentDiv.appendChild(arrow);
+    indicatorBox.appendChild(parentDiv);
+    return arrow;
+  }
+  
+
   function OnClickNavigate(event) {
-    var scrollTarget = data[event.currentTarget];
     Object.keys(data).forEach(function (key) {
       if (data[key] == event.currentTarget) {
         OnClickScrollParentTo((key - 1) * sectionParent.clientWidth);
       }
     });
+  }
+
+  function onArrowClickNavigate(event) {
+    let isLeft = event.currentTarget.classList.contains("left");
+    let activePage = getCurrentActivePage();
+    switch (isLeft) {
+      case true:
+        OnClickScrollParentTo((activePage - 2) * sectionParent.clientWidth);
+        break;
+      case false:
+        OnClickScrollParentTo(activePage * sectionParent.clientWidth);
+        break;
+    }
+  }
+
+  function getCurrentActivePage() {
+    var returnKey;
+    Object.keys(data).forEach(function (key) {
+      if (data[key].classList.contains(indicatorActiveClassName)) {
+        returnKey = key;
+      }
+    });
+    return returnKey;
   }
 
   function OnClickScrollParentTo(x) {
@@ -300,6 +385,8 @@ function onImageSelected(event) {
   modal.getElementsByTagName("div")[0].innerHTML = fileName;
 }
 
+
+
 function NavbarManager(navbarButton){
   let activeClassStyleName = "active"
   let nonActiveParentClassStyleName = "navbar-not-active"
@@ -326,7 +413,6 @@ function NavbarManager(navbarButton){
   data[1].parentElement.classList.add(activeParentClassStyleName)
   data[1].parentElement.classList.remove(nonActiveParentClassStyleName)
 }
-
 
 function MainMenuClickActionManager() {
   var parent = document.getElementsByClassName("parent")[0];

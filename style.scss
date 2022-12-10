@@ -1,15 +1,14 @@
-$primary-color: rgba(248, 240, 170, 0.753);
-$secondary-color:  hsl(104, 35%, 65%); 
-$tritiary-color:   #739278; 
-
-$accent-color: #42b19c; 
+$primary-color: hsla(54, 100%, 93%, 0.842);
+$secondary-color: hsl(108, 47%, 84%);
+$tritiary-color: #afe2b8;
+$accent-color: #42b19c;
 
 $secondary-background-color: rgba(248, 240, 170, 0.15);
-
 
 $heading-font-size: 3em; // h1 headings
 $subtitle-font-size: 2em; //icon font size + sub heading
 $sub-subtitle-font-size: 1.2em; 
+
 //#region texts
 // ------------- TEXT STYLING ---------------------//
 h1 {
@@ -203,6 +202,48 @@ div.first-page-main-content-box {
 
 //#region Page 2 styling
 
+#video-box {
+  position: absolute;
+  top: 5%;
+  left: 0;
+  width: 100%;
+  height: 95%;
+  opacity: 0.5;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+
+.arrow:hover {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 5px;
+  opacity: 0.5;
+  cursor: pointer;
+  margin: 7.5px;
+}
+
+.arrow {
+  border: solid $secondary-color;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 5px;
+  opacity: 0.5;
+  cursor: pointer;
+  margin: 7.5px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
 .indicator {
   background-color: $secondary-color;
   width: 10px;
@@ -229,7 +270,7 @@ div.first-page-main-content-box {
   display: flex;
   justify-content: center;
   img:hover {
-    animation: zoom 0.5s cubic-bezier(0.36, 0.04, 0, 1) forwards;
+    // animation: zoom 0.5s cubic-bezier(0.36, 0.04, 0, 1) forwards;
   }
   img { 
     border-radius: 5px;
@@ -326,6 +367,7 @@ div.first-page-main-content-box {
 
 //#region Page 3 style
 .tag {
+  font-size: $sub-subtitle-font-size;
   border-top-right-radius: 25%;
   border-bottom-right-radius: 25%;
   margin-left: 1%;
@@ -474,7 +516,7 @@ div#fourth-page {
     font-size: 1em;
   }
   div.first-page-icons a.active { 
-    font-size: 1.5em;
+    font-size: 1.1em;
   }
 
   h1 {
@@ -489,7 +531,7 @@ div#fourth-page {
     font-size: calc($sub-subtitle-font-size / 1.5) ; 
   }
   .first-page-icons a { 
-    font-size: 1em;
+    font-size:  $sub-subtitle-font-size;
   }
   
   .image-item {

@@ -31,6 +31,7 @@ function generateIndividualCharacters(GrandParent, string) {
   GrandParent.appendChild(parent);
 }
 
+
 function main() {
   var ProjectTitleContainer = document.getElementById(
     "second-page-heading-container"
