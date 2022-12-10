@@ -1,26 +1,29 @@
 $primary-color: rgba(248, 240, 170, 0.753);
 $secondary-color: hsl(104, 35%, 65%);
 $tritiary-color: #739278;
-
 $accent-color: #42b19c;
 
-$heading-font-size: 2em; // h1 headings
-$subtitle-font-size: 1.2em; //icon font size + sub heading
-$sub-subtitle-font-size: 1em;
+:root {
+  --heading-font-size: 2em; // h1 headings
+  --subtitle-font-size: 1.2em; //icon font size + sub heading
+  --sub-subtitle-font-size: 1em;
+  --main-title-font-size: 3em;
+}
+
 //#region texts
 // ------------- TEXT STYLING ---------------------//
 h1 {
   color: $primary-color;
-  font-size: $heading-font-size;
+  font-size: var(--heading-font-size);
 }
 
 h2 {
   color: $secondary-color;
-  font-size: $subtitle-font-size;
+  font-size: var(--subtitle-font-size);
 }
 
 h3 {
-  font-size: $sub-subtitle-font-size;
+  font-size: var(--sub-subtitle-font-size);
   color: $tritiary-color;
 }
 
@@ -35,7 +38,7 @@ a:hover {
 }
 
 div.first-page-icons a.active {
-  font-size: $subtitle-font-size;
+  font-size: var(--subtitle-font-size);
   color: $primary-color;
   filter: drop-shadow(16px 16px 20px $accent-color);
 }
@@ -43,7 +46,7 @@ div.first-page-icons a.active {
 #caption {
   margin: auto;
   display: block;
-  font-size: $heading-font-size;
+  font-size: var(--heading-font-size);
   width: 80%;
   max-width: 700px;
   text-align: center;
@@ -133,7 +136,7 @@ div.first-page-icons {
     justify-content: center;
   }
   a {
-    font-size: $sub-subtitle-font-size;
+    font-size: var(--sub-subtitle-font-size);
     padding-left: 2%;
     padding-right: 2%;
     align-items: center;
@@ -154,9 +157,10 @@ div.first-page-main-content-box {
     width: 50%;
     margin: auto;
     margin-top: 20vh;
-    font-size: $heading-font-size + 1em;
+    font-size: var(--main-title-font-size);
   }
   h2 {
+    font-size: var(--subtitle-font-size);
     text-align: center;
     height: fit-content;
     width: 50%;
@@ -166,7 +170,7 @@ div.first-page-main-content-box {
   ul {
     li {
       color: $secondary-color;
-      font-size: $subtitle-font-size;
+      font-size: var(--subtitle-font-size);
       text-align: center;
       align-items: center;
       height: 15%;
