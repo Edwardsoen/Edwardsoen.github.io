@@ -104,7 +104,7 @@ function PlaneProject() {
     return "Rogue Plane";
   };
   this.setVideoPreviewComponent = function (parent) {
-    let videoId = "MbId3aPHaE0" //REPLACE THIS
+    let videoId = "ft6JrK6IU5U" //REPLACE THIS
     let src = getYoutubeLink(videoId);
     let iframe = document.createElement('iframe')
     iframe.setAttribute("src", src)
@@ -166,7 +166,7 @@ function ResparkProject() {
   };
 
   this.setVideoPreviewComponent = function (parent) {
-    let videoId = "MbId3aPHaE0" //REPLACE THIS
+    let videoId = "-A0kJyBm9Pw" //REPLACE THIS
     let src = getYoutubeLink(videoId);
     let iframe = document.createElement('iframe')
     iframe.setAttribute("src", src)
