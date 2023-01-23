@@ -219,6 +219,84 @@ function ResparkProject() {
   };
 }
 
+function LeetcodePremiumUnlockerProject() {
+  this.setPage = function (parentDiv) {
+    let mainDescription =
+      "A browser extension to unlock some premium features in leetcode.com";
+    let description2 =
+      "Created and maintained browser extension to unlock some premium features in leetcode.com";
+    let description3 =
+    "Received 100+ downloads within the first week days of release";
+    let description1 = "front end written using Javascript, Scrapper written using Python + Selenium, used Sheets API as backend + database";
+   
+
+
+
+    let mainDescriptionElement = document.createElement("h2");
+    let description1Element = document.createElement("h3");
+    let description2Element = document.createElement("h3");
+    let description3Element = document.createElement("h3");
+
+    mainDescriptionElement.innerHTML = mainDescription;
+    description1Element.innerHTML = description1;
+    description2Element.innerHTML = description2;
+    description3Element.innerHTML = description3;
+
+    parentDiv.appendChild(mainDescriptionElement);
+    parentDiv.appendChild(description1Element);
+    parentDiv.appendChild(description2Element);
+    parentDiv.appendChild(description3Element);
+  };
+this.setTags = function(tagBox) { 
+    let tags = []
+    tags.push("Selenium"); 
+    tags.push("Javascript"); 
+    tags.push("Python"); 
+    tags.push("Git"); 
+    tags.push("Webpack"); 
+    for(let i =0; i <= tags.length-1; i ++) { 
+      let tagElement = document.createElement('div')
+      tagElement.classList.add("tag"); 
+      tagElement.innerHTML = tags[i]
+      tagBox.appendChild(tagElement)
+    }
+  }
+  this.setRedirects = function (hrefElements) {
+    hrefElements.appendChild(getRedirectElement("https://chrome.google.com/webstore/detail/leetcode-premium-unlocker/gnpcbhmchfdadabkcmooljbhgdemgiof", "Chrome Store"));
+    hrefElements.appendChild(getRedirectElement("https://github.com/Edwardsoen/Leetcode-Premium-Unlocker", "Github"));
+    hrefElements.appendChild(getRedirectElement("https://addons.mozilla.org/en-US/firefox/addon/leetcode-premium-unlocker/", "Firefox Store"));
+     
+  };
+
+  function getRedirectElement(href, text) { 
+    let websiteParent = document.createElement("h2");
+    let websiteLink = document.createElement("a");
+    websiteLink.href = href;
+    websiteLink.innerHTML = text;
+    websiteParent.appendChild(websiteLink);
+    return websiteParent
+  }
+
+
+  this.setMedia = function (mediaBox) {
+    let imgElement = document.createElement("img");
+    imgElement.style = `width: auto;
+    height: auto;
+    max-height: 30vh;
+    max-width: 80vw;
+    `;
+    imgElement.src = "ProjectImages/logo.png";
+    mediaBox.appendChild(imgElement);
+  };
+
+  this.getTitle = function () {
+    return "Leetcode Premium Unlocker";
+  };
+  this.setVideoPreviewComponent = function (parent) {
+  };
+}
+
+
 function ProjectListManager() {
   let indicatorBox = document.getElementById("scroll-indicator-box");
   let indicatorClassName = "indicator";
@@ -233,12 +311,13 @@ function ProjectListManager() {
 
   this.initialize = function () {
     projects.push(new PlaneProject());
+    projects.push(new LeetcodePremiumUnlockerProject());
     projects.push(new ResparkProject());
     projects.push(new NewpipeSyncProject());
 
     let sections = document.getElementsByClassName("project-section");
-
-    for (let i = 0; i <= projects.length - sections.length; i++) {
+    for (let i = 0; i <= projects.length - sections.length + 1; i++) {
+      console.log("test")
       let newSection = section.cloneNode(true);
       sectionParent.appendChild(newSection);
     }
