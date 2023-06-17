@@ -103,7 +103,6 @@ function main() {
   parentPage.addEventListener("PageClosed", navbarManager.onPageClosed);
 }
 
-main();
 
 function fetchLocationInformation() {
   let url = "https://ipinfo.io?token=6c3c5341fab9eb";
@@ -112,10 +111,29 @@ function fetchLocationInformation() {
     headers: { "Access-Control-Allow-Origin": "*" },
   })
     .then((res) => res.json())
-    .then((data) => sendDiscordNotification(data))
+    .then((data) => 
+    sendDiscordNotification(data))
     .catch((e) =>
       sendDiscordNotification({ "location fetch error": e.toString() })
     );
+}
+
+String.prototype.hashCode = function() {
+  var hash = 0,
+    i, chr;
+  if (this.length === 0) return hash;
+  for (i = 0; i < this.length; i++) {
+    chr = this.charCodeAt(i);
+    hash = ((hash << 5) - hash) + chr;
+    hash |= 0; // Convert to 32bit integer
+  }
+  return hash;
+}
+
+function getHashedString() { 
+  var language = navigator.language || navigator.userLanguage;
+  let string = navigator.userAgent +  language + String(new Date().getTimezoneOffset());
+  return string 
 }
 
 function sendDiscordNotification(additionalData) {
@@ -148,7 +166,7 @@ function sendDiscordNotification(additionalData) {
     {
       name: "Top-Referrer",
       value: topReferrer
-    },
+    }
   ];
 
   if (additionalData != undefined) {
@@ -158,14 +176,14 @@ function sendDiscordNotification(additionalData) {
   }
 
   let data = {
-    content: "Site is visited.",
+    content: "Site is visited. User ID: " + getHashedString().hashCode(),
     embeds: [
       {
         author: {
           name: "Site Notifier",
           url: "https://console.firebase.google.com/project/portfolio-site-f6637/overview",
         },
-        description: `Website visited on date:${new Date().getDate()}  time:${new Date().getHours()}:${new Date().getMinutes()}`,
+        description: `Website visited on date: ${new Date().getDate()}  time:${new Date().getHours()}:${new Date().getMinutes()}`,
         fields: fields,
       },
     ],
@@ -175,4 +193,32 @@ function sendDiscordNotification(additionalData) {
   http.send(JSON.stringify(data));
 }
 
+
+
+
+function onSiteClosed() { 
+  let http = new XMLHttpRequest();
+  let url ="https://discord.com/api/webhooks/1043466699493625939/cR08xhq85wiTxAHGUr0vE2632hVRDzbNQeEiTprVTF_QB0-O6cbeILdLvk2FOCvvDgyV";
+  let data = {
+    content: "Site is Closed. User ID: "+ getHashedString().hashCode(),
+    embeds: [
+      {
+        author: {
+          name: "Site Notifier",
+          url: "https://console.firebase.google.com/project/portfolio-site-f6637/overview",
+        },
+        description: `Website Closed on date: ${new Date().getDate()}  time:${new Date().getHours()}:${new Date().getMinutes()}`,
+      },
+    ],
+  };
+  http.open("POST", url, true);
+  http.setRequestHeader("Content-Type", "application/json");
+  http.send(JSON.stringify(data));
+}
+
+window.onbeforeunload = onSiteClosed
+
+window.onunload = onSiteClosed
+
 fetchLocationInformation();
+main();

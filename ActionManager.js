@@ -313,7 +313,6 @@ function ProjectListManager() {
 
     let sections = document.getElementsByClassName("project-section");
     for (let i = 0; i <= projects.length - sections.length + 1; i++) {
-      console.log("test")
       let newSection = section.cloneNode(true);
       sectionParent.appendChild(newSection);
     }
@@ -642,7 +641,6 @@ function imageLoader() {
     imageItem.className = "image-item";
     let imageElement = document.createElement("img");
     imageItem.appendChild(imageElement);
-    console.log(files[i]);
   }
 }
 
