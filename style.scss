@@ -16,6 +16,7 @@ h1 {
   font-size: $heading-font-size;
 }
 
+
 h2 {
   color: $secondary-color;
   font-size: $subtitle-font-size;
@@ -99,6 +100,7 @@ body {
   margin-top: 20%;
 }
 
+
 .sticky {
   position: fixed;
   top: 0;
@@ -116,8 +118,12 @@ div#first-page {
   background-color: transparent;
 }
 
+.redirect-button { 
+  background-color: rgb(0 0 0 / 30%) !important; 
+}
+
 .navbar-not-active { 
-  background-color: $secondary-background-color; 
+  background-color: $secondary-background-color;  
 }
 
 div.first-page-icons {

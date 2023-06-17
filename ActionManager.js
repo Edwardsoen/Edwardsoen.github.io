@@ -224,14 +224,11 @@ function LeetcodePremiumUnlockerProject() {
     let mainDescription =
       "A browser extension to unlock some premium features in leetcode.com";
     let description2 =
-      "Created and maintained browser extension to unlock some premium features in leetcode.com";
+      "Created and maintained browser extension to inject data for leetcode.com";
     let description3 =
-    "Received 100+ downloads within the first week days of release";
-    let description1 = "front end written using Javascript, Scrapper written using Python + Selenium, used Sheets API as backend + database";
+    "Downloaded more than 5000 times, received multiple 5 stars feedback accross browsers";
+    let description1 = "Used vanilla javascript as front end, github action, mocha and selenium for auto testing/deployment and Python selenium for scrapper";
    
-
-
-
     let mainDescriptionElement = document.createElement("h2");
     let description1Element = document.createElement("h3");
     let description2Element = document.createElement("h3");
@@ -265,7 +262,6 @@ this.setTags = function(tagBox) {
     hrefElements.appendChild(getRedirectElement("https://chrome.google.com/webstore/detail/leetcode-premium-unlocker/gnpcbhmchfdadabkcmooljbhgdemgiof", "Chrome Store"));
     hrefElements.appendChild(getRedirectElement("https://github.com/Edwardsoen/Leetcode-Premium-Unlocker", "Github"));
     hrefElements.appendChild(getRedirectElement("https://addons.mozilla.org/en-US/firefox/addon/leetcode-premium-unlocker/", "Firefox Store"));
-     
   };
 
   function getRedirectElement(href, text) { 
