@@ -226,7 +226,7 @@ function LeetcodePremiumUnlockerProject() {
     let description2 =
       "Created and maintained browser extension to inject data for leetcode.com";
     let description3 =
-    "Downloaded more than 5000 times, received multiple 5 stars feedback accross browsers";
+    "Downloaded more than 60000 times, received 300+ 5 stars reviews";
     let description1 = "Used vanilla javascript as front end, github action, mocha and selenium for auto testing/deployment and Python selenium for scrapper";
    
     let mainDescriptionElement = document.createElement("h2");
